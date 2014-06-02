@@ -32,7 +32,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests
 		{
 			get
 			{
-				return new DirectoryInfo(Path.Combine(AppDir.FullName, ConfigurationManager.AppSettings["Bot.Dir"]));
+				return new DirectoryInfo(ConfigurationManager.AppSettings["Bot.Dir"]);
 			}
 		}
 		public static DirectoryInfo TestDir

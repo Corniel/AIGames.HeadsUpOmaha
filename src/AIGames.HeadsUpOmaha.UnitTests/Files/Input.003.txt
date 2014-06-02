@@ -1,0 +1,537 @@
+﻿Settings timeBank 5000
+
+Settings timePerMove 500
+
+Settings handsPerLevel 10
+
+Settings startingStack 1000
+
+Settings yourBot player1
+
+Match round 1
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 1000
+
+player2 stack 1000
+
+player2 post 15
+
+player1 post 30
+
+player1 hand [9h,7c,5h,Qh]
+
+player2 fold 0
+
+player1 wins 45
+
+Match round 2
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 1015
+
+player2 stack 985
+
+player1 post 15
+
+player2 post 30
+
+player1 hand [7c,7s,As,2s]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player1 5000
+
+Output from your bot: "call 0"
+
+player1 call 15
+
+player2 check 0
+
+Match table [Qs,Jd,6h]
+
+player2 check 0
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 4560
+
+Output from your bot: "raise 20"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 30
+
+player2 call 30
+
+Match table [Qs,Jd,6h,Tc]
+
+player2 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 30"
+
+player1 raise 30
+
+player2 call 30
+
+Match table [Qs,Jd,6h,Tc,Ts]
+
+player2 check 0
+
+Match maxWinPot 180
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+player1 hand [7c,7s,As,2s]
+
+player2 hand [4c,Qc,Kh,2h]
+
+player2 wins 180
+
+Match round 3
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 925
+
+player2 stack 1075
+
+player2 post 15
+
+player1 post 30
+
+player1 hand [Kc,2c,2h,5s]
+
+player2 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 5"
+
+Engine says: "The action is not re-opened to your bot, raise action changed to 'call'"
+
+player1 call 0
+
+Match table [7s,6h,Qc]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 10"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 30
+
+player2 call 30
+
+Match table [7s,6h,Qc,Kh]
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 15"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 30
+
+player2 call 30
+
+Match table [7s,6h,Qc,Kh,9h]
+
+Match maxWinPot 180
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+player2 check 0
+
+player1 hand [Kc,2c,2h,5s]
+
+player2 hand [Ad,6c,3c,8h]
+
+player1 wins 180
+
+Match round 4
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 1015
+
+player2 stack 985
+
+player1 post 15
+
+player2 post 30
+
+player1 hand [5s,4d,6d,7h]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player1 5000
+
+Output from your bot: "fold 0"
+
+player1 fold 0
+
+player2 wins 45
+
+Match round 5
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 1000
+
+player2 stack 1000
+
+player2 post 15
+
+player1 post 30
+
+player1 hand [5d,4c,9h,Jc]
+
+player2 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+Match table [6c,Kh,3d]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+player2 check 0
+
+Match table [6c,Kh,3d,5s]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 30"
+
+player1 raise 30
+
+player2 call 30
+
+Match table [6c,Kh,3d,5s,4h]
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+player2 check 0
+
+player1 hand [5d,4c,9h,Jc]
+
+player2 hand [3c,2c,Ac,Kc]
+
+player2 wins 120
+
+Match round 6
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 940
+
+player2 stack 1060
+
+player1 post 15
+
+player2 post 30
+
+player1 hand [6c,As,9s,2s]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player1 5000
+
+Output from your bot: "call 0"
+
+player1 call 15
+
+player2 check 0
+
+Match table [4d,8h,7d]
+
+player2 check 0
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+Match table [4d,8h,7d,3h]
+
+player2 check 0
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+Match table [4d,8h,7d,3h,2d]
+
+player2 check 0
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 25"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 30
+
+player2 call 30
+
+player1 hand [6c,As,9s,2s]
+
+player2 hand [Td,Kc,Qc,4s]
+
+player2 wins 120
+
+Match round 7
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 880
+
+player2 stack 1120
+
+player2 post 15
+
+player1 post 30
+
+player1 hand [2h,4h,5c,2c]
+
+player2 raise 60
+
+Match maxWinPot 120
+
+Match amountToCall 60
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 60
+
+player2 raise 60
+
+Match maxWinPot 360
+
+Match amountToCall 60
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 60
+
+player2 raise 60
+
+Match maxWinPot 600
+
+Match amountToCall 60
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 60
+
+player2 raise 60
+
+Match maxWinPot 840
+
+Match amountToCall 60
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 60
+
+player2 raise 60
+
+Match maxWinPot 1080
+
+Match amountToCall 60
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 60
+
+player2 raise 60
+
+Match maxWinPot 1320
+
+Match amountToCall 60
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 60
+
+player2 raise 60
+
+Match maxWinPot 1560
+
+Match amountToCall 60
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically changed to minimum"
+
+player1 raise 60
+
+player2 raise 60
+
+Match maxWinPot 1750
+
+Match amountToCall 10
+
+Action player1 5000
+
+Output from your bot: "raise 50"
+
+Engine says: "Raise is below minimum amount, automatically put all-in because remaining stack is lower than minimum amount"
+
+Engine says: "Raise is below amount to call, action automatically changed to 'call'"
+
+player1 call 10
+
+Match table [Jd,4d,2d]
+
+Match table [Jd,4d,2d,Th]
+
+Match table [Jd,4d,2d,Th,Ks]
+
+player1 hand [2h,4h,5c,2c]
+
+player2 hand [9c,Kh,Qh,Tc]
+
+player2 wins 1810
+
+Engine says: "player1 finished 2"
+
+Engine says: "player2 finished 1"

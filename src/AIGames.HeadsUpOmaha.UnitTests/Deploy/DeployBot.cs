@@ -1,8 +1,7 @@
-﻿using System;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 {
@@ -13,7 +12,12 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 		public void Run()
 		{
 			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, AppConfig.BotDir.Name));
+			var collectDir = AppConfig.BotDir;
+			Deploy(collectDir, deployDir);
+		}
 
+		public static void Deploy(DirectoryInfo collectDir, DirectoryInfo deployDir)
+		{
 			if (!deployDir.Exists)
 			{
 				deployDir.Create();
@@ -26,7 +30,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 				}
 			}
 
-			foreach (var file in Collect(AppConfig.BotDir))
+			foreach (var file in Collect(collectDir))
 			{
 				file.CopyTo(Path.Combine(deployDir.FullName, file.Name));
 			}

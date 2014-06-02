@@ -46,9 +46,6 @@
     <Compile Include="RndBot.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AIGames.HeadsUpOmaha\AIGames.HeadsUpOmaha.csproj">
       <Project>{b9ad1bb1-917d-4267-8f2a-5851079af044}</Project>
       <Name>AIGames.HeadsUpOmaha</Name>

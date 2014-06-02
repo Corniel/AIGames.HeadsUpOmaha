@@ -1,0 +1,131 @@
+﻿Settings timeBank 5000
+
+Settings timePerMove 500
+
+Settings handsPerLevel 10
+
+Settings startingStack 1000
+
+Settings yourBot player1
+
+Match round 1
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 1000
+
+player2 stack 1000
+
+player2 post 15
+
+player1 post 30
+
+player1 hand [Jd,2c,Js,Tc]
+
+player2 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "check 0"
+
+player1 check 0
+
+Match table [Ts,6h,6d]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player1 4583
+
+Output from your bot: "raise 32"
+
+player1 raise 32
+
+player2 raise 64
+
+Match maxWinPot 188
+
+Match amountToCall 64
+
+Action player1 5000
+
+Output from your bot: "raise 86"
+
+player1 raise 86
+
+player2 call 86
+
+Match table [Ts,6h,6d,As]
+
+Match maxWinPot 424
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 66"
+
+player1 raise 66
+
+player2 raise 132
+
+Match maxWinPot 688
+
+Match amountToCall 132
+
+Action player1 5000
+
+Output from your bot: "raise 440"
+
+Engine says: "Raise is above maximum amount, automatically changed to maximum"
+
+player1 raise 396
+
+player2 call 396
+
+Match table [Ts,6h,6d,As,Kc]
+
+Match maxWinPot 1612
+
+Match amountToCall 0
+
+Action player1 5000
+
+Output from your bot: "raise 186"
+
+player1 raise 186
+
+player2 raise 8
+
+Match maxWinPot 1992
+
+Match amountToCall 8
+
+Action player1 5000
+
+Output from your bot: "raise 185"
+
+Engine says: "The action is not re-opened to your bot, raise action changed to 'call'"
+
+Engine says: "Other involved players are already all-in, raise action changed to 'call'"
+
+player1 call 8
+
+player1 hand [Jd,2c,Js,Tc]
+
+player2 hand [4s,6s,7h,8s]
+
+player2 wins 2000
+
+Engine says: "player1 finished 2"
+
+Engine says: "player2 finished 1"

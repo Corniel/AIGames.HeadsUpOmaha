@@ -90,6 +90,15 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Gets the best card of the cards.</summary>
 		public Card Best { get { return this.Max(); } }
 
+		/// <summary>Gets the nth-best card of the cards.</summary>
+		/// <remarks>
+		/// position 0 equals the best card.
+		/// </remarks>
+		public Card GetBest(int pos) 
+		{
+			return this.OrderByDescending(c => c).Skip(pos).FirstOrDefault();
+		}
+
 		/// <summary>Creates a new copy of the cards.</summary>
 		public Cards Copy()
 		{

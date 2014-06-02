@@ -66,6 +66,8 @@
     <Compile Include="Platform\InstructionTest.cs" />
     <Compile Include="Platform\ConsolePlatformTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Files\Input.002.txt" />
+    <Content Include="Files\Input.003.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AIGames.HeadsUpOmaha.AllIn\AIGames.HeadsUpOmaha.AllIn.csproj">
