@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="App.Dir" value="*\AIGames.HeadsUpOmaha\src"/>
+		<add key="Bot.Dir" value="AIGames.HeadsUpOmaha.*"/>
+		<add key="Test.Dir" value="AIGames.HeadsUpOmaha.UnitTests\Files"/>
+	</appSettings>
+</configuration>
