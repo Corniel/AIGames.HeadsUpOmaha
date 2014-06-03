@@ -177,7 +177,17 @@ namespace AIGames.HeadsUpOmaha.Game
 				case "raise": this[player].Raise(instruction.Int32Value); break;
 				case "stack": this[player].SetStack(instruction.Int32Value); break;
 				case "post": this[player].Post(player == this.OnButton ? this.SmallBlind : this.BigBlind); break;
-				case "wins": this.Result = player == PlayerType.player1 ? RoundResult.Player1Wins : RoundResult.Player2Wins; break;
+				case "wins":
+					if (this.Result == RoundResult.NoResult)
+					{
+						this.Result = player == PlayerType.player1 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+					}
+					// if set, and another results follows, its a draw.
+					else
+					{
+						this.Result = RoundResult.Draw;
+					}
+					break;
 			}
 		}
 
