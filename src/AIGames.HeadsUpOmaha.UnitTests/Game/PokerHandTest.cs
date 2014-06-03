@@ -76,6 +76,17 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		}
 
 		[TestMethod]
+		public void CreateFrom5_StraightWithAce_AreEqual()
+		{
+			var hand = Cards.Parse("[Ac,2d,3c,5h,4d]");
+
+			var act = PokerHand.CreateFrom5(hand);
+
+			Assert.AreEqual("[5h,4d,3c,2d,Ac]", act.ToString());
+			Assert.AreEqual(PokerHandType.Straight, act.ScoreType);
+		}
+
+		[TestMethod]
 		public void CreateFrom5_ThreeOfAKind_AreEqual()
 		{
 			var hand = Cards.Parse("[3c,Qs,2s,3h,3d]");
