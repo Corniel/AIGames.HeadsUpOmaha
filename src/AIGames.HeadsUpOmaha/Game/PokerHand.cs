@@ -190,12 +190,15 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		/// <summary>Creates a poker hand score from 5 cards.</summary>
 		/// <param name="cards">The 5 cards to get a poker hand from.</param>
+		/// <see cref="http://en.wikipedia.org/wiki/List_of_poker_hands"/>
 		public static PokerHand CreateFrom5(IEnumerable<Card> cards)
 		{
 			if (cards == null || cards.Count() != 5 || cards.Any(c => c.IsEmpty()))
 			{
 				throw new ArgumentException("Five cards are required.", "card");
 			}
+
+			var straight5432Ace = false;
 
 			var score = PokerHandType.HighCard;
 
@@ -214,7 +217,10 @@ namespace AIGames.HeadsUpOmaha.Game
 				case 2: score = o[2].Height == o[3].Height ? PokerHandType.TwoPair : PokerHandType.OnePair; break;
 				default:
 					var isFlush = o.All(c => o[0].Suit == c.Suit);
-					var straight = o[0].Height - o[4].Height == 4;
+
+					// Ace, 5,4,3,2
+					straight5432Ace = o[0].Height == 14 & o[1].Height - o[4].Height == 3;
+					var straight = straight5432Ace || (o[0].Height - o[4].Height == 4);
 
 					if (straight)
 					{
@@ -230,11 +236,11 @@ namespace AIGames.HeadsUpOmaha.Game
 			return new PokerHand()
 			{
 				tp = score,
-				c0 = o[0],
-				c1 = o[1],
-				c2 = o[2],
-				c3 = o[3],
-				c4 = o[4],
+				c0 = o[straight5432Ace ? 1 : 0],
+				c1 = o[straight5432Ace ? 2 : 1],
+				c2 = o[straight5432Ace ? 3 : 2],
+				c3 = o[straight5432Ace ? 4 : 3],
+				c4 = o[straight5432Ace ? 0 : 4],
 			};
 		}
 

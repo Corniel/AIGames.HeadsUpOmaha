@@ -64,6 +64,7 @@
     <Compile Include="Deploy\DeployBot.cs" />
     <Compile Include="Game\CardTest.cs" />
     <Compile Include="Game\PokerHandTest.cs" />
+    <Compile Include="Game\CardPairsTest.cs" />
     <Compile Include="Platform\InstructionTest.cs" />
     <Compile Include="Platform\ConsolePlatformTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +90,8 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="App.config" />
+    <None Include="App.config.devolop" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
