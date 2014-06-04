@@ -1,15 +1,16 @@
-﻿using AIGames.HeadsUpOmaha.Game;
+﻿using AIGames.HeadsUpOmaha.Arena.Platform;
+using AIGames.HeadsUpOmaha.Game;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace AIGames.HeadsUpOmaha.Arena
 {
 	public class CompetitionRunner
 	{
+		private static readonly int[] TableSizes = new int[] { 0, 3, 4, 5 };
+
 		public CompetitionRunner(DirectoryInfo dir) :
 			this(dir, System.Environment.TickCount) { }
 
@@ -39,7 +40,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		protected Dictionary<BotInfo, DirectoryInfo> BotLocations { get; set; }
 
-		public void RunGame()
+		public void Run()
 		{
 			ScanDirectory();
 
@@ -52,67 +53,192 @@ namespace AIGames.HeadsUpOmaha.Arena
 			{
 				player2 = Bots.GetRandom(Rnd);
 			}
+			var result = PlayMatch(player1, player2);
+			CalculateNewElos(player1, player2, result);
 
-			// Fix standard in and out issues.
-			using (var p1 = CreateProcess(player1))
+			Bots.Save(new DirectoryInfo("."));
+		}
+
+		/// <summary>Play the match.</summary>
+		/// <param name="player1">
+		/// Player 1.
+		/// </param>
+		/// <param name="player2">
+		/// Player 2.
+		/// </param>
+		private RoundResult PlayMatch(Bot player1, Bot player2)
+		{
+			using (var bot1 = ConsoleBot.Create(player1, BotLocations[player1.Info]))
 			{
-				using (var p2 = CreateProcess(player2))
+				using (var bot2 = ConsoleBot.Create(player2, BotLocations[player2.Info]))
 				{
-					var p1Settings = this.GameSettings.Copy(PlayerType.player1);
-					var p2Settings = this.GameSettings.Copy(PlayerType.player2);
-
-					// send settings.
-					foreach (var instruction in p1Settings.ToInstructions())
+					var bots = new Dictionary<PlayerType, ConsoleBot>()
 					{
-						p1.StandardInput.WriteLine(instruction);
-					}
-					foreach (var instruction in p2Settings.ToInstructions())
-					{
-						p2.StandardInput.WriteLine(instruction);
-					}
-
-					var state = new GameState(this.GameSettings)
-					{
-						Round = 1,
-						OnButton = (PlayerType)Rnd.Next(0, 2),
+						{ PlayerType.player1, bot1 },
+						{ PlayerType.player2, bot2 },
 					};
 
-					while (state.Player1.Stack > 0 && state.Player2.Stack > 0)
-					{
-						var deck = Cards.GetShuffledDeck(this.Rnd);
-						state.Player1.Hand = Cards.Create(deck.Take(4));
-						state.Player2.Hand = Cards.Create(deck.Skip(4).Take(4));
-					}
+					var state = CreateState();
+					ApplySettings(bots);
 
+					while (true)
+					{
+						state.StartNewRound(this.Rnd);
+
+						StartNewRound(bots, state);
+						HandleBlinds(state);
+						RunSubRounds(bots, state, state.OnButton);
+						var pot = state.ApplyRoundResult();
+						SendResult(bots, state, pot);
+
+						// upates the blind.
+						state.UpdateBlind(state.Round++);
+
+						if (state.Player1.Stack - state.BigBlind < 0 || state.Player2.Stack - state.BigBlind < 0)
+						{
+							return state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+						}
+					}
 				}
 			}
+		}
 
+		private static void SendResult(Dictionary<PlayerType, ConsoleBot> bots, GameState state, int pot)
+		{
+			foreach (var kvp in bots)
+			{
+				kvp.Value.Result(state.Copy(kvp.Key), pot);
+			}
+		}
+
+		private static void RunSubRounds(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
+		{
+			foreach (var tableSize in TableSizes)
+			{
+				// update the table.
+				foreach (var kvp in bots)
+				{
+					kvp.Value.UpdateTable(Cards.Create(state.Table.Take(tableSize)));
+				}
+
+				var action = RunBetting(bots, state, playerToMove, tableSize != 0);
+				if (action == GameActionType.fold) { return; }
+			}
+		}
+
+		private static GameActionType RunBetting(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove, bool canRaise)
+		{
+			while (true)
+			{
+				var action = bots[playerToMove].Action(state.Copy(playerToMove));
+				bots[playerToMove.Other()].Reaction(state.Copy(playerToMove.Other()), action);
+
+				switch (action.ActionType)
+				{
+					case GameActionType.check:
+						if (state.AmountToCall != 0)
+						{
+							state[playerToMove].Call(state.AmountToCall);
+						}
+						return GameActionType.check;
+					case GameActionType.call:
+						state[playerToMove].Call(state.AmountToCall);
+						if (canRaise) { return GameActionType.call; }
+						break;
+					case GameActionType.raise:
+						var stackMin = Math.Min(state.Player1.Stack, state.Player2.Stack);
+
+						var raise = action.Amount;
+						if (raise < state.AmountToCall) { raise = state.AmountToCall; }
+						else if (raise > state.MaxWinPot) { raise = state.MaxWinPot; }
+						if (raise > stackMin)
+						{
+							raise = stackMin;
+						}
+						// the small blind can not raise.
+						if (!canRaise)
+						{
+							raise = state.AmountToCall;
+						}
+						state[playerToMove].Raise(raise);
+						if (raise == 0)
+						{
+							return GameActionType.call;
+						}
+						break;
+					case GameActionType.fold:
+					default:
+						state[playerToMove.Other()].Win(state.Pot);
+						state[playerToMove].Fold();
+						return GameActionType.fold;
+				}
+
+				playerToMove = playerToMove.Other();
+				canRaise = true;
+			}
+		}
+
+		private static void HandleBlinds(GameState state)
+		{
+			state.Button.Post(state.SmallBlind);
+			state.Blind.Post(state.BigBlind);
+		}
+
+		private static void StartNewRound(Dictionary<PlayerType, ConsoleBot> bots, GameState state)
+		{
+			foreach (var kvp in bots)
+			{
+				kvp.Value.UpdateNewRound(state.Copy(kvp.Key));
+			}
+		}
+
+		private GameState CreateState()
+		{
+			var state = new GameState(this.GameSettings)
+			{
+				Round = 1,
+				OnButton = (PlayerType)Rnd.Next(0, 2),
+			};
+			return state;
+		}
+
+		private void ApplySettings(Dictionary<PlayerType, ConsoleBot> bots)
+		{
+			foreach (var kvp in bots)
+			{
+				kvp.Value.ApplySettings(this.GameSettings.Copy(kvp.Key));
+			}
+		}
+
+		/// <summary>Calculate the new elos for the players.</summary>
+		private static void CalculateNewElos(Bot player1, Bot player2, RoundResult result)
+		{
+			var score1 = 0.0;
 			var elo1 = player1.Rating;
 			var elo2 = player2.Rating;
 			var k1 = player1.K;
 			var k2 = player2.K;
 
-			// TODO: run an actual game.
-			var rnd1 = Rnd.Next(6);
-			var rnd2 = Rnd.Next(6);
-			var score1 = 0.0;
-
-			if (rnd1 == rnd2)
+			switch (result)
 			{
-				player1.Draws++;
-				player2.Draws++;
-				score1 = 0.5;
-			}
-			else if (rnd1 > rnd2)
-			{
-				player1.Wins++;
-				player2.Losses++;
-				score1 = 1.0;
-			}
-			else
-			{
-				player1.Losses++;
-				player2.Wins++;
+				case RoundResult.Player1Wins:
+					player1.Wins++;
+					player2.Losses++;
+					score1 = 1.0;
+					break;
+				case RoundResult.Player2Wins:
+					player1.Losses++;
+					player2.Wins++;
+					score1 = 0.0;
+					break;
+				case RoundResult.Draw:
+					player1.Draws++;
+					player2.Draws++;
+					score1 = 0.5;
+					break;
+				case RoundResult.NoResult:
+				default:
+					throw new ArgumentException("There should be a final rersult", "result");
 			}
 			var score2 = 1.0 - score1;
 
@@ -121,37 +247,6 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 			player1.K = NewK(k1, k2);
 			player2.K = NewK(k2, k1);
-
-			Bots.Save(new DirectoryInfo("."));
-		}
-
-		private Process CreateProcess(Bot player)
-		{
-			var process = new Process();
-			process.StartInfo.FileName = BotLocations[player.Info].GetFiles("*.exe").FirstOrDefault().FullName;
-			process.StartInfo.UseShellExecute = false;
-			process.StartInfo.RedirectStandardInput = true;
-			process.StartInfo.RedirectStandardOutput = true;
-			process.Start();
-			return process;
-		}
-
-		private MethodInfo GetMainMethod(BotInfo info)
-		{
-			var exe = BotLocations[info].GetFiles("*.exe").FirstOrDefault();
-			if (exe != null)
-			{
-				var assembly = Assembly.LoadFile(exe.FullName);
-
-				var program = assembly.GetTypes().FirstOrDefault(tp => tp.GetMethod("Main", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static) != null);
-
-				if (program != null)
-				{
-					var main = program.GetMethod("Main", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
-					return main;
-				}
-			}
-			return null;
 		}
 
 		private void ScanDirectory()

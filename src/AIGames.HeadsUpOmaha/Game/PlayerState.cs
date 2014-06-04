@@ -79,6 +79,19 @@ namespace AIGames.HeadsUpOmaha.Game
 			this.Pot += raise;
 		}
 
+		/// <summary>Handles a fold.</summary>
+		public void Fold()
+		{
+			this.Pot = 0;
+		}
+
+		/// <summary>Handles a Win.</summary>
+		public void Win(int pot)
+		{
+			this.Pot = 0;
+			this.Stack += pot;
+		}
+
 		/// <summary>Rest the player state.</summary>
 		/// <remarks>
 		/// Resets the hand.
@@ -92,7 +105,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 		private string DebugToString()
 		{
-			return String.Format("Player: {0} ({1}) {2:f}, Time: {3:0,000}", this.Stack, this.Pot, this.Hand, this.TimeBank.Milliseconds);
+			return String.Format("Player: {0} ({1}) {2:f}, Time: {3:#,##0}", this.Stack, this.Pot, this.Hand, this.TimeBank.TotalMilliseconds);
 		}
 	}
 }

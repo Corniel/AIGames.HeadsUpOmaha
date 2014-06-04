@@ -27,7 +27,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
             while (true)
             {
-                arena.RunGame();
+				arena.Run();
             }
 		}
 	}

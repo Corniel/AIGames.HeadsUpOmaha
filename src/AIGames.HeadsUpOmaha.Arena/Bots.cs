@@ -14,7 +14,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			var bot = this.FirstOrDefault(item => item.Info.Name == info.Name && item.Info.Version == info.Version);
 			if (bot != null) 
 			{
-				bot.Info = info.SetIsActive(false);
+				bot.Info = info.SetIsActive(info.Inactive);
 				return bot;
 			}
 
@@ -64,6 +64,7 @@ namespace AIGames.HeadsUpOmaha.Arena
         }
         public void Save(Stream stream)
         {
+			this.Sort();
             var serializer = new XmlSerializer(typeof(Bots));
             serializer.Serialize(stream, this);
         }

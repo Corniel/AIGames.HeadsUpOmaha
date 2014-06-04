@@ -47,6 +47,7 @@
     <Compile Include="Bots.cs" />
     <Compile Include="CompetitionRunner.cs" />
     <Compile Include="Elo.cs" />
+    <Compile Include="Platform\ConsoleBot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

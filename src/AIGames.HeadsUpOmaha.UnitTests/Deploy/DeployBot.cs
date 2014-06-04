@@ -75,7 +75,9 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			{
 				var options = new CompilerParameters();
 				options.GenerateExecutable = true;
-
+#if DEBUG
+				options.IncludeDebugInformation = true;
+#endif
 				foreach (var assembly in CompileAssemblies)
 				{
 					options.ReferencedAssemblies.Add(assembly.Location);
@@ -124,7 +126,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 
 		public static IEnumerable<FileInfo> Collect(DirectoryInfo dir)
 		{
-			foreach (var child in dir.GetDirectories().Where(d=> !ExcludeDirs.Contains(d.Name)))
+			foreach (var child in dir.GetDirectories().Where(d => !ExcludeDirs.Contains(d.Name)))
 			{
 				foreach (var file in Collect(child))
 				{

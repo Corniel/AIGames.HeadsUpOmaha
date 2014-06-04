@@ -1,6 +1,7 @@
 ﻿using AIGames.HeadsUpOmaha.Platform;
 using System;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace AIGames.HeadsUpOmaha.Game
@@ -14,6 +15,8 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			this.Player1 = new PlayerState();
 			this.Player2 = new PlayerState();
+			this.HandsPerLevel = 10;
+			this.SmallBlind = 15;
 		}
 
 		/// <summary>Constructs a new game state based on settings..</summary>
@@ -26,6 +29,9 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		/// <summary>The number of the currently played hand, counting starts at 1.</summary>
 		public int Round { get; set; }
+
+		/// <summary>The number of hands per (blind) level.</summary>
+		public int HandsPerLevel { get; set; }
 
 		/// <summary>The card that are on the table.</summary>
 		/// <remarks>
@@ -41,6 +47,15 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		/// <summary>The current size of the big blind.</summary>
 		public int BigBlind { get { return SmallBlind * 2; } }
+
+		/// <summary>Updates the blind when the number of hands per level is passed..</summary>
+		public void UpdateBlind(int round)
+		{
+			if (round % HandsPerLevel == 0)
+			{
+				this.SmallBlind += 5;
+			}
+		}
 
 		/// <summary>Get player based on the player type.</summary>
 		public PlayerState this[PlayerType tp]
@@ -62,10 +77,19 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Gets other player.</summary>
 		public PlayerState Opp { get { return this[this.YourBot.Other()]; } }
 
+		/// <summary>Gets the player with the button (small blind).</summary>
+		public PlayerState Button { get { return this[this.OnButton]; } }
+
+		/// <summary>Gets the player with the big blind.</summary>
+		public PlayerState Blind { get { return this[this.OnButton.Other()]; } }
+
 		/// <summary>Represents player1 specific data.</summary>
 		public PlayerState Player1 { get; set; }
 		/// <summary>Represents player2 specific data.</summary>
 		public PlayerState Player2 { get; set; }
+
+		/// <summary>Gets the pot.</summary>
+		public int Pot { get { return this.Player1.Pot + this.Player2.Pot; } }
 
 		/// <summary>The result of the match.</summary>
 		public RoundResult Result { get; set; }
@@ -94,7 +118,7 @@ namespace AIGames.HeadsUpOmaha.Game
 			var copy = new GameState()
 			{
 				Round = this.Round,
-				Table = Table.Copy(),
+				Table = this.Table == null ? Cards.Empty : Table.Copy(),
 				Player1 = this.Player1.Copy(),
 				Player2 = this.Player2.Copy(),
 			};
@@ -105,11 +129,8 @@ namespace AIGames.HeadsUpOmaha.Game
 		public GameState Copy(PlayerType player)
 		{
 			var copy = Copy();
-
 			// we set the player.
 			copy.YourBot = player;
-			// We don't send info about the opponent.
-			copy.Opp.Hand = Cards.Empty;
 
 			return copy;
 		}
@@ -118,6 +139,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		public void Update(Settings settings)
 		{
 			this.YourBot = settings.YourBot;
+			this.HandsPerLevel = settings.HandsPerLevel;
 			this.Player1.Update(settings);
 			this.Player2.Update(settings);
 		}
@@ -189,6 +211,48 @@ namespace AIGames.HeadsUpOmaha.Game
 					}
 					break;
 			}
+		}
+
+		/// <summary>Starts a new round.</summary>
+		/// <param name="rnd">
+		/// The randomizer to shuffle the deck.
+		/// </param>
+		public void StartNewRound(Random rnd)
+		{
+			var deck = Cards.GetShuffledDeck(rnd);
+			this.Player1.Hand = Cards.Create(deck.Take(4));
+			this.Player2.Hand = Cards.Create(deck.Skip(4).Take(4));
+			this.Table = Cards.Create(deck.Skip(8).Take(5));
+			this.OnButton = this.OnButton.Other();
+		}
+
+		/// <summary>Apply the round result.</summary>
+		public int ApplyRoundResult()
+		{
+			var pokerhand1 = PokerHand.CreateFromHeadsUpOmaha(this.Table, this.Player1.Hand);
+			var pokerhand2 = PokerHand.CreateFromHeadsUpOmaha(this.Table, this.Player2.Hand);
+
+			var compare = PokerHandComparer.Instance.Compare(pokerhand1, pokerhand2);
+
+			int pot = this.Pot;
+
+			if (compare == 0)
+			{
+				 pot /= 2;
+				this.Player1.Win(pot);
+				this.Player2.Win(pot);
+			}
+			else if (compare > 0)
+			{
+				this.Player1.Win(pot);
+				this.Player2.Win(0);
+			}
+			else
+			{
+				this.Player2.Win(pot);
+				this.Player1.Win(0);
+			}
+			return pot;
 		}
 
 		/// <summary>Resets the state.</summary>

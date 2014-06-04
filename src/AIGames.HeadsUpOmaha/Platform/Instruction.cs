@@ -204,7 +204,14 @@ namespace AIGames.HeadsUpOmaha.Platform
 			return instruction;
 		}
 
-		/// <summary>Creates a line representing an instruction.</summary>
+		/// <summary>Creates an instruction.</summary>
+		public static Instruction Create(PlayerType player, string action, object value)
+		{
+			var line = String.Format("{0} {1} {2}", player, action, value);
+			return Instruction.Parse(line);
+		}
+
+		/// <summary>Creates an instruction.</summary>
 		public static Instruction Create(InstructionType type, string action, object value)
 		{
 			var line = String.Format("{0} {1} {2}", type,  action, value);
