@@ -200,6 +200,192 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Console.WriteLine("Avarage: {0:0.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
 		}
 
+		/// <summary>
+		/// Should throw if hand is null
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_HandNull_Throws()
+		{
+			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), null);
+		}
+
+		/// <summary>
+		/// Should throw if hand is empty
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_EmptyHand_Throws()
+		{
+			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), new Card[] { });
+		}
+
+		/// <summary>
+		/// Should throw if hand contains 1 card
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_HandContains1Card_Throws()
+		{
+			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(1));
+		}
+
+		/// <summary>
+		/// Should throw if hand contains 2 cards
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_HandContains2Cards_Throws()
+		{
+			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(2));
+		}
+
+		/// <summary>
+		/// Should throw if hand contains 3 cards
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_HandContains3Cards_Throws()
+		{
+			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(3));
+		}
+
+		/// <summary>
+		/// Should succeed if hand contains 4 cards
+		/// </summary>
+		[TestMethod]
+		public void GetWinningChanceHeadsUpOmaha_HandContains4Cards_Succeeds()
+		{
+			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(4));
+		}
+
+		/// <summary>
+		/// Should throw if hand contains 5 cards
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_HandContains5Cards_Throws()
+		{
+			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(5));
+		}
+
+		/// <summary>
+		/// Should throw if table is null
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_TableNull_Throws()
+		{
+			var score = PokerHand.GetWinningChanceHeadsUpOmaha(null, GetTestHand());
+		}
+
+		/// <summary>
+		/// Should throw if table is empty
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_EmptyTable_Throws()
+		{
+			var score = PokerHand.GetWinningChanceHeadsUpOmaha(new Card[] { }, GetTestHand());
+		}
+
+		/// <summary>
+		/// Should throw if table contains 1 card
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_TableHasOneCard_Throws()
+		{
+			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(1), GetTestHand());
+		}
+
+		/// <summary>
+		/// Should throw if table contains 2 cards
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_TableHasTwoCards_Throws()
+		{
+			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(2), GetTestHand());
+		}
+
+		private const double delta = 0.001;
+
+		/// <summary>
+		/// Should succeed if table contains 3 cards
+		/// </summary>
+		[TestMethod]
+		public void GetWinningChanceHeadsUpOmaha_TableHasThreeCards_Succeeds()
+		{
+			Assert.AreEqual(0.939, PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(3), GetTestHand()), delta);
+		}
+
+		/// <summary>
+		/// Should succeed if table contains 4 cards
+		/// </summary>
+		[TestMethod]
+		public void GetWinningChanceHeadsUpOmaha_TableHasFourCards_Succeeds()
+		{
+			Assert.AreEqual(0.809, PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(4), GetTestHand()), delta);
+		}
+
+		/// <summary>
+		/// Should succeed if table contains 5 cards
+		/// </summary>
+		[TestMethod]
+		public void GetWinningChanceHeadsUpOmaha_TableHasFiveCards_Succeeds()
+		{
+			Assert.AreEqual(0.687, PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(5), GetTestHand()), delta);
+		}
+
+		/// <summary>
+		/// Should succeed if table contains 5 cards
+		/// </summary>
+		[TestMethod, ExpectedException(typeof(ArgumentException))]
+		public void GetWinningChanceHeadsUpOmaha_TableHasSixCards_Succeeds()
+		{
+			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(6), GetTestHand());
+		}
+
+		[TestMethod]
+		public void GetWinningChanceHeadsUpOmaha_VeryGoodHand_Returns1()
+		{
+			var hand = Cards.Parse("[Kc,Jc]");
+			var table = Cards.Parse("[Tc,Qc,Ac]");
+			var fullHand = hand.Concat(GetTestHand(2));
+			Assert.AreEqual(1.0, PokerHand.GetWinningChanceHeadsUpOmaha(table, fullHand));
+		}
+
+		[TestMethod]
+		public void GetWinningChanceHeadsUpOmaha_VeryBadHand_Returns0()
+		{
+			var hand = new Card[] { Card.Create(2, CardSuit.Clubs), Card.Create(3, CardSuit.Diamonds), Card.Create(4, CardSuit.Hearts), Card.Create(5, CardSuit.Spades) };
+			var table = new Card[] { Card.Create(7, CardSuit.Clubs), Card.Create(8, CardSuit.Diamonds), Card.Create(9, CardSuit.Hearts) };
+			Assert.AreEqual(0.0, PokerHand.GetWinningChanceHeadsUpOmaha(table, hand));
+		}
+
+		private IEnumerable<Card> GetTestHand()
+		{
+			return GetTestHand(4);
+		}
+		private IEnumerable<Card> GetTestHand(int count)
+		{
+			return new Card[] { 
+                Card.Create(2, CardSuit.Diamonds),
+                Card.Create(2, CardSuit.Clubs),
+                Card.Create(3, CardSuit.Diamonds), 
+                Card.Create(4, CardSuit.Hearts), 
+                Card.Create(5, CardSuit.Spades) 
+            }.OrderByDescending(c => c.Height).Take(count);
+		}
+
+		private IEnumerable<Card> GetTestTable()
+		{
+			return GetTestTable(5);
+		}
+
+		private IEnumerable<Card> GetTestTable(int count)
+		{
+			return new Card[] { 
+                Card.Create(6, CardSuit.Clubs), 
+                Card.Create(7, CardSuit.Diamonds), 
+                Card.Create(8, CardSuit.Hearts), 
+                Card.Create(9, CardSuit.Spades),
+                Card.Create(10, CardSuit.Clubs),
+                Card.Create(11, CardSuit.Diamonds)
+            }.OrderBy(c => c.Height).Take(count);
+		}
+
 		[TestMethod]
 		public void Generate_HeadsUpOmahaPermutations_AreEqual()
 		{
