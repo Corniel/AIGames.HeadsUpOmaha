@@ -54,24 +54,38 @@ namespace AIGames.HeadsUpOmaha.Arena
 			}
 
 			// Fix standard in and out issues.
-			//using (var p1 = Process.Start(BotLocations[player1.Info].GetFiles("*.exe").FirstOrDefault().FullName))
-			//{
-			//	using (var p2 = Process.Start(BotLocations[player2.Info].GetFiles("*.exe").FirstOrDefault().FullName))
-			//	{
-			//		var p1Settings = this.GameSettings.Copy(PlayerType.player1);
-			//		var p2Settings = this.GameSettings.Copy(PlayerType.player2);
+			using (var p1 = CreateProcess(player1))
+			{
+				using (var p2 = CreateProcess(player2))
+				{
+					var p1Settings = this.GameSettings.Copy(PlayerType.player1);
+					var p2Settings = this.GameSettings.Copy(PlayerType.player2);
 
-			//		// send instructions.
-			//		foreach (var instruction in p1Settings.ToInstructions())
-			//		{
-			//			p1.StandardInput.WriteLine(instruction);
-			//		}
-			//		foreach (var instruction in p2Settings.ToInstructions())
-			//		{
-			//			p2.StandardInput.WriteLine(instruction);
-			//		}
-			//	}
-			//}
+					// send settings.
+					foreach (var instruction in p1Settings.ToInstructions())
+					{
+						p1.StandardInput.WriteLine(instruction);
+					}
+					foreach (var instruction in p2Settings.ToInstructions())
+					{
+						p2.StandardInput.WriteLine(instruction);
+					}
+
+					var state = new GameState(this.GameSettings)
+					{
+						Round = 1,
+						OnButton = (PlayerType)Rnd.Next(0, 2),
+					};
+
+					while (state.Player1.Stack > 0 && state.Player2.Stack > 0)
+					{
+						var deck = Cards.GetShuffledDeck(this.Rnd);
+						state.Player1.Hand = Cards.Create(deck.Take(4));
+						state.Player2.Hand = Cards.Create(deck.Skip(4).Take(4));
+					}
+
+				}
+			}
 
 			var elo1 = player1.Rating;
 			var elo2 = player2.Rating;
@@ -109,6 +123,17 @@ namespace AIGames.HeadsUpOmaha.Arena
 			player2.K = NewK(k2, k1);
 
 			Bots.Save(new DirectoryInfo("."));
+		}
+
+		private Process CreateProcess(Bot player)
+		{
+			var process = new Process();
+			process.StartInfo.FileName = BotLocations[player.Info].GetFiles("*.exe").FirstOrDefault().FullName;
+			process.StartInfo.UseShellExecute = false;
+			process.StartInfo.RedirectStandardInput = true;
+			process.StartInfo.RedirectStandardOutput = true;
+			process.Start();
+			return process;
 		}
 
 		private MethodInfo GetMainMethod(BotInfo info)

@@ -86,10 +86,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config.devolop" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="App.config.develop" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -126,6 +126,14 @@ namespace AIGames.HeadsUpOmaha.Game
 			return cards;
 		}
 
+		/// <summary>Creates a set of cards.</summary>
+		public static Cards Create(IEnumerable<Card> cards)
+		{
+			var set = new Cards();
+			set.AddRange(cards);
+			return set;
+		}
+
 		/// <summary>Gets a new shuffled deck.</summary>
 		public static Cards GetShuffledDeck(Random rnd = null)
 		{
