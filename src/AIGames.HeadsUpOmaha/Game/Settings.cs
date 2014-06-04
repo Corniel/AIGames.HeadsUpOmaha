@@ -59,6 +59,19 @@ namespace AIGames.HeadsUpOmaha.Game
 			return Copy(this.YourBot);
 		}
 
+		/// <summary>Represents the settings as a set of instructions.</summary>
+		public Instruction[] ToInstructions()
+		{
+			return new Instruction[]
+			{
+				Instruction.Create(InstructionType.Settings, "timeBank", this.TimeBank),
+				Instruction.Create(InstructionType.Settings,"timePerMove", this.TimePerMove),
+				Instruction.Create(InstructionType.Settings,"handsPerLevel", this.HandsPerLevel),
+				Instruction.Create(InstructionType.Settings,"startingStack", this.StartingStack),
+				Instruction.Create(InstructionType.Settings,"yourBot", this.YourBot),
+			};
+		}
+		
 		/// <summary>Makes a full copy of the settings for a specified player.</summary>
 		public Settings Copy(PlayerType player)
 		{

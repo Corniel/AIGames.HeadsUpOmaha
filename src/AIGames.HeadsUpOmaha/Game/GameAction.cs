@@ -166,21 +166,24 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// </remarks>
 		public static bool TryParse(string str, out GameAction action)
 		{
-			action = Check;
+			action = GameAction.Check;
 
 			if (String.IsNullOrEmpty(str)) { return true; }
 
+
+			var splitted = str.Split(' ');
+
 			GameActionType tp;
 
-			if (Enum.TryParse<GameActionType>(str, out tp) && tp != GameActionType.raise)
+			if (splitted.Length < 3 && Enum.TryParse<GameActionType>(splitted[0], out tp))
 			{
-				action = new GameAction() { m_Value = (int)tp };
-				return true;
-			}
-			if (RaisePattern.IsMatch(str))
-			{
+				if(tp != GameActionType.raise && (splitted.Length == 1 || splitted[1] == "0"))
+				{
+					action = new GameAction() { m_Value = (int)tp };
+					return true;
+				}
 				int amount;
-				if (Int32.TryParse(str.Substring(6), out amount))
+				if (Int32.TryParse(splitted[1], out amount))
 				{
 					action = Raise(amount);
 					return true;
@@ -188,10 +191,6 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 			return false;
 		}
-
-		private static readonly Regex RaisePattern = new Regex(@"^raise [1-9][0-9]{0,5}$", RegexOptions.Compiled);
-
 		#endregion
-
 	}
 }

@@ -113,7 +113,10 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// </param>
 		public static Cards Parse(string str)
 		{
-			if (string.IsNullOrEmpty(str)) { throw new ArgumentNullException("str"); }
+			if (string.IsNullOrEmpty(str))
+			{
+				return new Cards();	
+			}
 
 			str = Pattern.Match(str).Groups[1].Value;
 

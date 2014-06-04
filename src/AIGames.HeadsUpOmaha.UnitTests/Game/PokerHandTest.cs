@@ -148,7 +148,28 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 				stopwatch.Stop();
 			}
 
-			Console.WriteLine("Avarage: {0:0.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
+			Console.WriteLine("Avarage: {0:#,##0.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
+		}
+
+		[TestMethod]
+		public void GetWinningChanceHeadsUpOmahaHandOnly_Speed_IsDoable()
+		{
+			var stopwatch = new Stopwatch();
+
+			var runs = 20;
+			var rnd = new Random(17);
+
+			for (int i = 0; i < runs; i++)
+			{
+				var deck = Cards.GetShuffledDeck(rnd);
+				var hand = deck.Take(4).ToList();
+
+				stopwatch.Start();
+				var score = PokerHand.GetWinningChanceHeadsUpOmaha(hand);
+				stopwatch.Stop();
+			}
+
+			Console.WriteLine("Avarage: {0:#,##0.00} ms/hand", (double)stopwatch.ElapsedMilliseconds / (double)runs);
 		}
 
 		[TestMethod]
@@ -175,7 +196,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 				}
 			}
 
-			Console.WriteLine("Avarage: {0:0.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
+			Console.WriteLine("Avarage: {0:#,##0.000.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
 		}
 
 		[TestMethod]
@@ -197,7 +218,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 				stopwatch.Stop();
 			}
 
-			Console.WriteLine("Avarage: {0:0.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
+			Console.WriteLine("Avarage: {0:#,##0.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
 		}
 
 		/// <summary>

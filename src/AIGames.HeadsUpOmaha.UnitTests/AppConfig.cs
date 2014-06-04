@@ -12,6 +12,13 @@ namespace AIGames.HeadsUpOmaha.UnitTests
 				return new DirectoryInfo(ConfigurationManager.AppSettings["App.Dir"]);
 			}
 		}
+		public static DirectoryInfo CoreDir
+		{
+			get
+			{
+				return new DirectoryInfo(ConfigurationManager.AppSettings["Core.Dir"]);
+			}
+		}
 		public static DirectoryInfo DeployDir
 		{
 			get
@@ -24,7 +31,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests
 		{
 			get
 			{
-				return new DirectoryInfo(Path.Combine(AppDir.FullName, "AIGames.HeadsUpOmaha"));
+				return new DirectoryInfo(Path.Combine(CoreDir.FullName, "AIGames.HeadsUpOmaha"));
 			}
 		}
 
