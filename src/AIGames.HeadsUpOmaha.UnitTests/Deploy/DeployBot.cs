@@ -22,11 +22,40 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 		};
 
 		[TestMethod]
-		public void Run()
+		public void Deploy_AllIn_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, AppConfig.BotDir.Name));
-			var collectDir = AppConfig.BotDir;
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "AllIn"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.AllIn"));
 			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
+		}
+		[TestMethod]
+		public void Deploy_Checkers_Successful()
+		{
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "Checkers"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Checkers"));
+			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
+		}
+		[TestMethod]
+		public void Deploy_StarterBot_Successful()
+		{
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "StarterBot"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.StarterBot"));
+			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
+		}
+		[TestMethod]
+		public void Deploy_RandomBot_Successful()
+		{
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "RandomBot"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Rnd"));
+			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
 		}
 
 		public static void Zip(DirectoryInfo deployDir)
@@ -45,6 +74,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			using (var provider = new CSharpCodeProvider())
 			{
 				var options = new CompilerParameters();
+				options.GenerateExecutable = true;
 
 				foreach (var assembly in CompileAssemblies)
 				{
