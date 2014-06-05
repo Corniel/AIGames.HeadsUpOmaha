@@ -16,13 +16,23 @@ namespace AIGames.HeadsUpOmaha.Arena
 		public int Wins { get; set; }
 		public int Draws { get; set; }
 		public int Losses { get; set; }
+		public int Games { get { return this.Wins + this.Draws + this.Losses; } }
+		public double Score 
+		{
+			get
+			{
+				if (this.Games == 0) { return double.NaN; }
+
+				return ((double)this.Wins + this.Draws * .5) / (double)this.Games;
+			}
+		}
         public Elo Rating { get; set; }
 		public double K { get; set; }
 
 		[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 		public string DebugToString()
 		{
-			return String.Format("Bot: {0}, Version: {1}{2}, Elo: {3:0000}, K: {4:0.0}, W: {5}, D: {6}, L: {7}",
+			return String.Format("Bot: {0}, Version: {1}{2}, Elo: {3:0000}, K: {4:0.0}, W: {5}, D: {6}, L: {7} ({8:0.0%})",
 				Info.Name,
 				Info.Version,
 				Info.Inactive ? ", Inactive" : "",
@@ -30,7 +40,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 				K,
 				Wins,
 				Draws,
-				Losses);
+				Losses,
+				Score);
 		}
 
 		public int CompareTo(object obj)

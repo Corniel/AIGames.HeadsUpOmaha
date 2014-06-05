@@ -2,6 +2,7 @@
 using AIGames.HeadsUpOmaha.Game;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -28,7 +29,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 				TimeBank = 5000,
 				TimePerMove = 500,
 			};
-
+			sw.Start();
 			ScanDirectory();
 		}
 
@@ -57,7 +58,29 @@ namespace AIGames.HeadsUpOmaha.Arena
 			CalculateNewElos(player1, player2, result);
 
 			Bots.Save(new DirectoryInfo("."));
+
+			UpdateScreen();
 		}
+
+		public void UpdateScreen()
+		{
+			if (sw.ElapsedMilliseconds - lastScreenUpdate > 2400)
+			{
+				lastScreenUpdate = sw.ElapsedMilliseconds;
+
+				Console.Clear();
+				Console.WriteLine(@"Running: {0:h\:mm\:ss}", sw.Elapsed);
+				Console.WriteLine();
+				for (int i = 0; i < Bots.Count; i++)
+				{
+					var b = Bots[i];
+
+					Console.WriteLine("{0,3}  {1:0000}  {2,5:0.0%}  {3} {4}", i + 1, b.Rating, b.Score, b.Info.Name, b.Info.Version);
+				}
+			}
+		}
+		private long lastScreenUpdate = 0;
+		private Stopwatch sw = new Stopwatch();
 
 		/// <summary>Play the match.</summary>
 		/// <param name="player1">
