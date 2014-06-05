@@ -40,6 +40,15 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Compile(deployDir);
 		}
 		[TestMethod]
+		public void Deploy_Chicken_Successful()
+		{
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "Chicken"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Chicken"));
+			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
+		}
+		[TestMethod]
 		public void Deploy_StarterBot_Successful()
 		{
 			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "StarterBot"));

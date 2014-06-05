@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.HeadsUpOmaha", "AIGames.HeadsUpOmaha\AIGames.HeadsUpOmaha.csproj", "{B9AD1BB1-917D-4267-8F2A-5851079AF044}"
 EndProject
@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.HeadsUpOmaha.Arena", "AIGames.HeadsUpOmaha.Arena\AIGames.HeadsUpOmaha.Arena.csproj", "{A69D498C-A26B-475D-AB4D-36C7BB5CD26D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.HeadsUpOmaha.Chicken", "AIGames.HeadsUpOmaha.Chicken\AIGames.HeadsUpOmaha.Chicken.csproj", "{9070C0DB-11CC-4137-8549-C50AA386CDC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{A69D498C-A26B-475D-AB4D-36C7BB5CD26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A69D498C-A26B-475D-AB4D-36C7BB5CD26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A69D498C-A26B-475D-AB4D-36C7BB5CD26D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9070C0DB-11CC-4137-8549-C50AA386CDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9070C0DB-11CC-4137-8549-C50AA386CDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9070C0DB-11CC-4137-8549-C50AA386CDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9070C0DB-11CC-4137-8549-C50AA386CDC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +74,6 @@ Global
 		{B2663881-79B5-4489-9D18-0F2F13758C04} = {8BDAE42B-DB46-4747-B5DE-E561138A361C}
 		{0FEE9D65-C666-498F-9F81-BACD82EF4728} = {8BDAE42B-DB46-4747-B5DE-E561138A361C}
 		{25C994AC-0359-40DF-A56F-DA332B3B3DC1} = {8BDAE42B-DB46-4747-B5DE-E561138A361C}
+		{9070C0DB-11CC-4137-8549-C50AA386CDC8} = {8BDAE42B-DB46-4747-B5DE-E561138A361C}
 	EndGlobalSection
 EndGlobal
