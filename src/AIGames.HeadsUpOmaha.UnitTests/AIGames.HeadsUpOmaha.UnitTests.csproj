@@ -60,6 +60,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
+    <Compile Include="StatisticalMathTest.cs" />
     <Content Include="Files\Input.001.txt" />
     <Compile Include="Deploy\DeployBot.cs" />
     <Compile Include="Game\CardTest.cs" />

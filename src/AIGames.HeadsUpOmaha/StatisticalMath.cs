@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AIGames.HeadsUpOmaha
 {
@@ -8,23 +9,36 @@ namespace AIGames.HeadsUpOmaha
 		/// <summary>Gets the number of permutations.</summary>
 		public static int Permutation(ulong n, ulong k)
 		{
-			ulong p = 1;
+			var key = n | (k << 32);
+			int res;
 
-			var n1 = n - k > k ? n - k : k;
-			var k1 = n - k < k ? n - k : k;
-
-
-			for (ulong nI = n; nI > n1; nI--)
+			if(!Permutations.TryGetValue(key, out res))
 			{
-				p *= nI;
+				ulong p = 1;
+
+				var n1 = n - k > k ? n - k : k;
+				var k1 = n - k < k ? n - k : k;
+
+				for (ulong nI = n; nI > n1; nI--)
+				{
+					p *= nI;
+				}
+				for (ulong kI = k1; kI > 1; kI--)
+				{
+					p /= kI;
+				}
+				res = (int)p;
+
+				var key2 = n | ((n - k) << 32);
+
+				Permutations[key] = res;
+				Permutations[key2] = res;
 			}
-			for (ulong kI = k1; k1 > 1; kI--)
-			{
-				p /= kI;
-			}
-			return (int)p;
+			return res;
 		}
 
+		private static readonly Dictionary<ulong, int> Permutations = new Dictionary<ulong, int>();
+	
 		/// <summary>Gets the next permutation given a array of comparable elements.</summary>
 		public static bool NextPermutation<T>(this T[] elements) where T : IComparable<T>
         {
