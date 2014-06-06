@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Game
 {
@@ -217,7 +218,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <param name="rnd">
 		/// The randomizer to shuffle the deck.
 		/// </param>
-		public void StartNewRound(Random rnd)
+		public void StartNewRound(MT19937Generator rnd)
 		{
 			var deck = Cards.GetShuffledDeck(rnd);
 			this.Player1.Hand = Cards.Create(deck.Take(4));

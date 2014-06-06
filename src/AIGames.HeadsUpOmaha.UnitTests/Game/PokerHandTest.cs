@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using AIGames.HeadsUpOmaha;
+using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Game
 {
@@ -136,7 +137,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			var stopwatch = new Stopwatch();
 
 			var runs = 100000;
-			var rnd = new Random(17);
+			var rnd = new MT19937Generator(17);
 
 			for (int i = 0; i < runs; i++)
 			{
@@ -157,7 +158,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			var stopwatch = new Stopwatch();
 
 			var runs = 20;
-			var rnd = new Random(17);
+			var rnd = new MT19937Generator(17);
 
 			for (int i = 0; i < runs; i++)
 			{
@@ -165,7 +166,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 				var hand = deck.Take(4).ToList();
 
 				stopwatch.Start();
-				var score = PokerHand.GetWinningChanceHeadsUpOmaha(hand);
+				var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(hand);
 				stopwatch.Stop();
 			}
 
@@ -178,25 +179,20 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			var stopwatch = new Stopwatch();
 
 			var runs = 10000;
-			var rnd = new Random(17);
+			var rnd = new MT19937Generator(17);
 
 			for (int i = 0; i < runs; i++)
 			{
 				var deck = Cards.GetShuffledDeck(rnd);
 				var hand = deck.Take(4).ToList();
-				var table = deck.Skip(4).Take(rnd.Next(3, 6)).ToList();
+				var table = deck.Skip(4).Take(5).ToList();
 
 				stopwatch.Start();
 				var score = PokerHand.CreateFromHeadsUpOmaha(table, hand);
 				stopwatch.Stop();
-
-				if (score.ScoreType > PokerHandType.FullHouse)
-				{
-					Console.WriteLine(score);
-				}
 			}
 
-			Console.WriteLine("Avarage: {0:#,##0.000.00} Ticks/hand", (double)stopwatch.ElapsedTicks / (double)runs);
+			Console.WriteLine("Avarage: {0:#,##0.000.00} ms/hand", (double)stopwatch.ElapsedMilliseconds / (double)runs);
 		}
 
 		[TestMethod]
@@ -205,7 +201,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			var stopwatch = new Stopwatch();
 
 			var runs = 100;
-			var rnd = new Random(17);
+			var rnd = new MT19937Generator(17);
 
 			for (int i = 0; i < runs; i++)
 			{
@@ -214,7 +210,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 				var table = deck.Skip(4).Take(rnd.Next(3, 6)).ToList();
 
 				stopwatch.Start();
-				var score = PokerHand.GetWinningChanceHeadsUpOmaha(table, hand);
+				var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(table, hand);
 				stopwatch.Stop();
 			}
 
@@ -227,7 +223,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_HandNull_Throws()
 		{
-			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), null);
+			var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), null);
 		}
 
 		/// <summary>
@@ -236,7 +232,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_EmptyHand_Throws()
 		{
-			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), new Card[] { });
+			var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), new Card[] { });
 		}
 
 		/// <summary>
@@ -245,7 +241,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_HandContains1Card_Throws()
 		{
-			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(1));
+			var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(1));
 		}
 
 		/// <summary>
@@ -254,7 +250,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_HandContains2Cards_Throws()
 		{
-			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(2));
+			double score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(2));
 		}
 
 		/// <summary>
@@ -263,7 +259,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_HandContains3Cards_Throws()
 		{
-			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(3));
+			double score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(3));
 		}
 
 		/// <summary>
@@ -272,7 +268,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod]
 		public void GetWinningChanceHeadsUpOmaha_HandContains4Cards_Succeeds()
 		{
-			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(4));
+			double score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(4));
 		}
 
 		/// <summary>
@@ -281,7 +277,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_HandContains5Cards_Throws()
 		{
-			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(5));
+			double score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(), GetTestHand(5));
 		}
 
 		/// <summary>
@@ -290,7 +286,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_TableNull_Throws()
 		{
-			var score = PokerHand.GetWinningChanceHeadsUpOmaha(null, GetTestHand());
+			var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(null, GetTestHand());
 		}
 
 		/// <summary>
@@ -299,7 +295,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_EmptyTable_Throws()
 		{
-			var score = PokerHand.GetWinningChanceHeadsUpOmaha(new Card[] { }, GetTestHand());
+			var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(new Card[] { }, GetTestHand());
 		}
 
 		/// <summary>
@@ -308,7 +304,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_TableHasOneCard_Throws()
 		{
-			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(1), GetTestHand());
+			var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(1), GetTestHand());
 		}
 
 		/// <summary>
@@ -317,7 +313,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_TableHasTwoCards_Throws()
 		{
-			var score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(2), GetTestHand());
+			var score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(2), GetTestHand());
 		}
 
 		private const double delta = 0.001;
@@ -328,7 +324,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod]
 		public void GetWinningChanceHeadsUpOmaha_TableHasThreeCards_Succeeds()
 		{
-			Assert.AreEqual(0.939, PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(3), GetTestHand()), delta);
+			Assert.AreEqual(0.939, OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(3), GetTestHand()), delta);
 		}
 
 		/// <summary>
@@ -337,7 +333,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod]
 		public void GetWinningChanceHeadsUpOmaha_TableHasFourCards_Succeeds()
 		{
-			Assert.AreEqual(0.809, PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(4), GetTestHand()), delta);
+			Assert.AreEqual(0.809, OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(4), GetTestHand()), delta);
 		}
 
 		/// <summary>
@@ -346,7 +342,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod]
 		public void GetWinningChanceHeadsUpOmaha_TableHasFiveCards_Succeeds()
 		{
-			Assert.AreEqual(0.687, PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(5), GetTestHand()), delta);
+			Assert.AreEqual(0.687, OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(5), GetTestHand()), delta);
 		}
 
 		/// <summary>
@@ -355,7 +351,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		[TestMethod, ExpectedException(typeof(ArgumentException))]
 		public void GetWinningChanceHeadsUpOmaha_TableHasSixCards_Succeeds()
 		{
-			double score = PokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(6), GetTestHand());
+			double score = OmahaPokerHand.GetWinningChanceHeadsUpOmaha(GetTestTable(6), GetTestHand());
 		}
 
 		[TestMethod]
@@ -364,7 +360,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			var hand = Cards.Parse("[Kc,Jc]");
 			var table = Cards.Parse("[Tc,Qc,Ac]");
 			var fullHand = hand.Concat(GetTestHand(2));
-			Assert.AreEqual(1.0, PokerHand.GetWinningChanceHeadsUpOmaha(table, fullHand));
+			Assert.AreEqual(1.0, OmahaPokerHand.GetWinningChanceHeadsUpOmaha(table, fullHand));
 		}
 
 		[TestMethod]
@@ -372,7 +368,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		{
 			var hand = new Card[] { Card.Create(2, CardSuit.Clubs), Card.Create(3, CardSuit.Diamonds), Card.Create(4, CardSuit.Hearts), Card.Create(5, CardSuit.Spades) };
 			var table = new Card[] { Card.Create(7, CardSuit.Clubs), Card.Create(8, CardSuit.Diamonds), Card.Create(9, CardSuit.Hearts) };
-			Assert.AreEqual(0.0, PokerHand.GetWinningChanceHeadsUpOmaha(table, hand));
+			Assert.AreEqual(0.0, OmahaPokerHand.GetWinningChanceHeadsUpOmaha(table, hand));
 		}
 
 		private IEnumerable<Card> GetTestHand()

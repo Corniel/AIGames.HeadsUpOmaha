@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Arena
 {
@@ -19,7 +20,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			this.RootDirectory = dir;
 			this.Bots = new Bots();
-			this.Rnd = new Random(seed);
+			this.Rnd = new MT19937Generator(seed);
 			this.BotLocations = new Dictionary<BotInfo, DirectoryInfo>();
 
 			this.GameSettings = new Settings()
@@ -35,7 +36,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		public DirectoryInfo RootDirectory { get; protected set; }
 		public Bots Bots { get; set; }
-		public Random Rnd { get; set; }
+		public MT19937Generator Rnd { get; set; }
 
 		public Settings GameSettings { get; set; }
 

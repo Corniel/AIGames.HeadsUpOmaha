@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Game
 {
@@ -135,13 +136,13 @@ namespace AIGames.HeadsUpOmaha.Game
 		}
 
 		/// <summary>Gets a new shuffled deck.</summary>
-		public static Cards GetShuffledDeck(Random rnd = null)
+		public static Cards GetShuffledDeck(MT19937Generator rnd = null)
 		{
 			var deck = new Cards();
 			rnd = rnd ?? s_Rnd;
 			deck.AddRange(Deck.OrderBy(c => rnd.Next()));
 			return deck;
 		}
-		private static Random s_Rnd = new Random();
+		private static MT19937Generator s_Rnd = new MT19937Generator();
 	}
 }

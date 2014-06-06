@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Arena
 {
@@ -37,7 +38,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		public bool HasActive { get { return this.Any(bot => !bot.Info.Inactive); } }
 
-		public Bot GetRandom(Random Rnd)
+		public Bot GetRandom(MT19937Generator Rnd)
 		{
 			if (!HasActive) { return null; }
 
