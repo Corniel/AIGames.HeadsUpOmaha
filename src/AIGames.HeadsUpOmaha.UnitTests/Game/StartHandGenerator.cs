@@ -13,7 +13,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 	[TestClass]
 	public class StartHandGenerator
 	{
-		[TestMethod]
+		[TestMethod, Ignore]
 		public void Generate_()
 		{
 			//var h1 = "AKQJT98765432";
@@ -92,7 +92,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 				}
 			}
 
-			using (var writer = new StreamWriter(@"d:\temp\options.txt"))
+			using (var writer = new StreamWriter(@"c:\temp\options.txt", false))
 			{
 				foreach (var line in list)
 				{

@@ -196,6 +196,30 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		#endregion
 
+		#region Index
+
+		/// <summary>Gets the index of the card.</summary>
+		/// <remarks>
+		/// these index can be in the range [0,51].
+		/// </remarks>
+		public int Index 
+		{ 
+			get
+			{
+				return (int)Suit * 13 + Height - 2;
+			}
+		}
+
+		/// <summary>Creates a card based on its index.</summary>
+		public static Card FromIndex(int index)
+		{
+			var height = 2 + index % 13;
+			var suit = (CardSuit)(index / 13);
+			return Create(height, suit);
+		}
+
+		#endregion
+
 		#region Factory methods
 
 		/// <summary>Creates a card.</summary>

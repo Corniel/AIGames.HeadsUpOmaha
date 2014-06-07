@@ -219,7 +219,7 @@ namespace AIGames.HeadsUpOmaha.Game
 					var isFlush = o.All(c => o[0].Suit == c.Suit);
 
 					// Ace, 5,4,3,2
-					straight5432Ace = o[0].Height == 14 & o[1].Height - o[4].Height == 3;
+					straight5432Ace = o[0].Height == 14 && o[1].Height == 5;
 					var straight = straight5432Ace || (o[0].Height - o[4].Height == 4);
 
 					if (straight)

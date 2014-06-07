@@ -155,6 +155,8 @@ namespace AIGames.HeadsUpOmaha
 		};
 		#endregion
 
+		/// <summary>A mask fro the first 13 bits.</summary>
+		public static readonly UInt64 Mask13 = 0x1fff;
 
 		/// <summary>Counts the number of (1) bits.</summary>
 		public static int Count(byte bits) { return BytesCount[bits]; }
