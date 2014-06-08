@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AIGames.HeadsUpOmaha.Arena</RootNamespace>
-    <AssemblyName>AIGames.HeadsUpOmaha.Arena</AssemblyName>
+    <AssemblyName>Arena</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

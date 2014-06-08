@@ -172,12 +172,17 @@ namespace AIGames.HeadsUpOmaha.Arena
 					case GameActionType.raise:
 						var stackMin = Math.Min(state.Player1.Stack, state.Player2.Stack);
 
-						var raise = action.Amount;
-						if (raise < state.AmountToCall) { raise = state.AmountToCall; }
-						else if (raise > state.MaxWinPot) { raise = state.MaxWinPot; }
+						// don't raise more then the minium stack
+						// raise at least the big blind.
+						// dont forget to add the amount to call.
+
+						var amount = Math.Min(state.MaxWinPot, action.Amount);
+
+						var raise = Math.Max(state.BigBlind, amount) + state.AmountToCall;
+
 						if (raise > stackMin)
 						{
-							raise = stackMin;
+							raise = state.AmountToCall;
 						}
 						// the small blind can not raise.
 						if (!canRaise)

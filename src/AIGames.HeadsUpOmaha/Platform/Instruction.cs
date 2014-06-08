@@ -172,7 +172,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 				};
 			}
 			var splited = line.Split(' ');
-			if (splited.Length != 3) { throw new ArgumentException("The line should describe 3 instruction.", "line"); }
+			if (splited.Length != 3) { throw new ArgumentException("The line should contain 3 tokens.", "line"); }
 
 			if (!ValidToken0.Contains(splited[0])) 
 			{
