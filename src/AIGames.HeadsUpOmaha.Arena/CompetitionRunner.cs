@@ -1,5 +1,6 @@
 ﻿using AIGames.HeadsUpOmaha.Arena.Platform;
 using AIGames.HeadsUpOmaha.Game;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +12,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 {
 	public class CompetitionRunner
 	{
+		private static readonly ILog log = LogManager.GetLogger(typeof(CompetitionRunner));
+
 		private static readonly int[] TableSizes = new int[] { 0, 3, 4, 5 };
 
 		public CompetitionRunner(DirectoryInfo dir) :
@@ -42,21 +45,36 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		protected Dictionary<BotInfo, DirectoryInfo> BotLocations { get; set; }
 
+		public Bot Player1 { get; set; }
+		public Bot Player2 { get; set; }
+		public Bot this[PlayerType player]
+		{
+			get
+			{
+				switch (player)
+				{
+					case PlayerType.player2: return this.Player2;
+					case PlayerType.player1:
+					default: return this.Player1;
+				}
+			}
+		}
+
 		public void Run()
 		{
 			ScanDirectory();
 
 			if (Bots.Count(bot => !bot.Info.Inactive) < 2) { return; }
 
-			Bot player1 = Bots.GetRandom(Rnd);
-			Bot player2 = Bots.GetRandom(Rnd);
+			this.Player1 = Bots.GetRandom(Rnd);
+			this.Player2 = Bots.GetRandom(Rnd);
 
-			while (player1.Equals(player2))
+			while (this.Player1.Equals(this.Player2))
 			{
-				player2 = Bots.GetRandom(Rnd);
+				this.Player2 = Bots.GetRandom(Rnd);
 			}
-			var result = PlayMatch(player1, player2);
-			CalculateNewElos(player1, player2, result);
+			var result = PlayMatch(this.Player1, this.Player2);
+			CalculateNewElos(this.Player1, this.Player2, result);
 
 			Bots.Save(new DirectoryInfo("."));
 
@@ -127,7 +145,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			}
 		}
 
-		private static void SendResult(Dictionary<PlayerType, ConsoleBot> bots, GameState state, int pot)
+		private void SendResult(Dictionary<PlayerType, ConsoleBot> bots, GameState state, int pot)
 		{
 			foreach (var kvp in bots)
 			{
@@ -135,7 +153,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			}
 		}
 
-		private static void RunSubRounds(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
+		private void RunSubRounds(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
 		{
 			foreach (var tableSize in TableSizes)
 			{
@@ -145,66 +163,98 @@ namespace AIGames.HeadsUpOmaha.Arena
 					kvp.Value.UpdateTable(Cards.Create(state.Table.Take(tableSize)));
 				}
 
-				var action = RunBetting(bots, state, playerToMove, tableSize != 0);
-				if (action == GameActionType.fold) { return; }
+				var action = RunBetting(bots, state, playerToMove);
+				if (action == GameAction.Fold) { return; }
 			}
 		}
 
-		private static GameActionType RunBetting(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove, bool canRaise)
+		private GameAction RunBetting(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
 		{
 			while (true)
 			{
 				var action = bots[playerToMove].Action(state.Copy(playerToMove));
-				bots[playerToMove.Other()].Reaction(state.Copy(playerToMove.Other()), action);
+				
 
 				switch (action.ActionType)
 				{
-					case GameActionType.check:
-						if (state.AmountToCall != 0)
-						{
-							state[playerToMove].Call(state.AmountToCall);
-						}
-						return GameActionType.check;
-					case GameActionType.call:
-						state[playerToMove].Call(state.AmountToCall);
-						if (canRaise) { return GameActionType.call; }
-						break;
-					case GameActionType.raise:
-						var stackMin = Math.Min(state.Player1.Stack, state.Player2.Stack);
-
-						// don't raise more then the minium stack
-						// raise at least the big blind.
-						// dont forget to add the amount to call.
-
-						var amount = Math.Min(state.MaxWinPot, action.Amount);
-
-						var raise = Math.Max(state.BigBlind, amount) + state.AmountToCall;
-
-						if (raise > stackMin)
-						{
-							raise = state.AmountToCall;
-						}
-						// the small blind can not raise.
-						if (!canRaise)
-						{
-							raise = state.AmountToCall;
-						}
-						state[playerToMove].Raise(raise);
-						if (raise == 0)
-						{
-							return GameActionType.call;
-						}
-						break;
+					case GameActionType.check: action = RunCheck(state, playerToMove); break;
+					case GameActionType.call: action = RunCall(state, playerToMove); break;
+					case GameActionType.raise: action = RunRaise(state, playerToMove, action.Amount); break;
+					
 					case GameActionType.fold:
-					default:
-						state[playerToMove.Other()].Win(state.Pot);
-						state[playerToMove].Fold();
-						return GameActionType.fold;
+					default: 
+						action = RunFold(state, playerToMove); break;
 				}
+				bots[playerToMove.Other()].Reaction(state.Copy(playerToMove.Other()), action);
 
+				if (action.ActionType != GameActionType.raise)
+				{
+					return action;
+				}
 				playerToMove = playerToMove.Other();
-				canRaise = true;
 			}
+		}
+
+		private GameAction RunCheck(GameState state, PlayerType playerToMove)
+		{
+			if (state.AmountToCall != 0)
+			{
+				log.WarnFormat("{0} checked, while calling was required.", this[playerToMove].FullName);
+				return RunCall(state, playerToMove);
+			}
+			return GameAction.Check;
+		}
+		private GameAction RunCall(GameState state, PlayerType playerToMove)
+		{
+			if (state.AmountToCall == 0)
+			{
+				log.WarnFormat("{0} called, while the amount to call was 0. Check was done.", this[playerToMove].FullName);
+				return RunCheck(state, playerToMove);
+			}
+			state[playerToMove].Call(state.AmountToCall);
+			return GameAction.Call;
+		}
+		private GameAction RunRaise(GameState state, PlayerType playerToMove, int raise)
+		{
+			// We only may call, if we have the small blind.
+			if (state.AmountToCall == state.SmallBlind)
+			{
+				log.WarnFormat("The action is not re-opened to '{0}', raise action changed to 'call'.", this[playerToMove].FullName);
+				return RunCall(state, playerToMove);
+			}
+			// In fact, we don't raise.
+			if (raise < state.AmountToCall + state.BigBlind)
+			{
+				log.WarnFormat("Raise of '{0}' is below minimum amount, automatically changed to minimum.", this[playerToMove].FullName);
+				return RunRaise(state, playerToMove, state.AmountToCall + state.BigBlind);
+			}
+			if (raise > state.BigBlind + state.MaxWinPot)
+			{
+				log.WarnFormat("Raise of '{0}' is above maximum amount, automatically changed to maximum.", this[playerToMove].FullName);
+				return RunRaise(state, playerToMove, state.BigBlind + state.MaxWinPot);
+			}
+			var stackMin = Math.Min(state.Player1.Stack, state.Player2.Stack);
+			if (raise > stackMin)
+			{
+				if (state.AmountToCall > 0)
+				{
+					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
+					return RunCall(state, playerToMove);
+				}
+				else
+				{
+					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
+					return RunCheck(state, playerToMove);
+				}
+			}
+			state[playerToMove].Raise(raise);
+			return GameAction.Raise(raise);
+		}
+		private GameAction RunFold(GameState state, PlayerType playerToMove)
+		{
+			state[playerToMove.Other()].Win(state.Pot);
+			state[playerToMove].Fold();
+			return GameAction.Fold;
 		}
 
 		private static void HandleBlinds(GameState state)
@@ -212,7 +262,6 @@ namespace AIGames.HeadsUpOmaha.Arena
 			state.Button.Post(state.SmallBlind);
 			state.Blind.Post(state.BigBlind);
 		}
-
 		private static void StartNewRound(Dictionary<PlayerType, ConsoleBot> bots, GameState state)
 		{
 			foreach (var kvp in bots)

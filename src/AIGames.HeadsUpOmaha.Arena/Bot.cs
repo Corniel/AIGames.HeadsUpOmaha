@@ -12,6 +12,12 @@ namespace AIGames.HeadsUpOmaha.Arena
             Rating = 1400.0;
 			K = 32.0;
 		}
+
+		public string FullName
+		{
+			get { return string.Format("{0} {1}", this.Info.Name, this.Info.Version); }
+		}
+
 		public BotInfo Info { get; set; }
 		public int Wins { get; set; }
 		public int Draws { get; set; }
