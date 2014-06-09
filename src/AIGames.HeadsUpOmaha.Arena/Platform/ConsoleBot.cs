@@ -152,8 +152,13 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			if (bot == null) { throw new ArgumentNullException("bot"); }
 			if (location == null) { throw new ArgumentNullException("location"); }
 
-			var exe = location.GetFiles("*.exe").FirstOrDefault();
-			if (exe == null) { throw new FileNotFoundException("Could not find an executable.", "*.exe"); }
+			var exe = location.GetFiles("run.bat").FirstOrDefault();
+
+			if (exe == null)
+			{
+				exe = location.GetFiles("*.exe").FirstOrDefault();
+			}
+			if (exe == null) { throw new FileNotFoundException("Could not find an executable.", "*.exe|run.bat"); }
 
 			var p = new Process();
 			p.StartInfo.FileName = exe.FullName;
