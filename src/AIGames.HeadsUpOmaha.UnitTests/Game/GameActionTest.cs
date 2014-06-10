@@ -50,7 +50,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		public void Parse_StringEmpty_AreEqual()
 		{
 			var act = GameAction.Parse("");
-			var exp = GameAction.Fold;
+			var exp = GameAction.Check;
 			Assert.AreEqual(exp, act);
 		}
 	}

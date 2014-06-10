@@ -87,14 +87,24 @@ namespace AIGames.HeadsUpOmaha.Arena
 			{
 				lastScreenUpdate = sw.ElapsedMilliseconds;
 
+				int pos = 1;
+
 				Console.Clear();
 				Console.WriteLine(@"Running: {0:h\:mm\:ss}", sw.Elapsed);
 				Console.WriteLine();
-				for (int i = 0; i < Bots.Count; i++)
+				Console.WriteLine("Pos   ELo   Score    Games  Bot");
+				Console.WriteLine("=======================================================");
+				foreach(var bot in this.Bots)
 				{
-					var b = Bots[i];
-
-					Console.WriteLine("{0,3}  {1:0000}  {2,5:0.0%}  {3} {4}", i + 1, b.Rating, b.Score, b.Info.Name, b.Info.Version);
+					if (!bot.Info.Inactive)
+					{
+						if (bot.K < 13)
+						{
+							Console.ForegroundColor = ConsoleColor.White;
+						}
+						Console.WriteLine("{0,3}  {1:0000}  {2,6:0.0%} {3,8}  {4} {5}", pos++, bot.Rating, bot.Score, bot.Games, bot.Info.Name, bot.Info.Version);
+						Console.ForegroundColor = ConsoleColor.Gray;
+					}
 				}
 			}
 		}
