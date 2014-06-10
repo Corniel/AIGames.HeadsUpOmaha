@@ -221,6 +221,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		private GameAction RunBetting(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
 		{
+			var step = 1;
 			while (true)
 			{
 				var action = bots[playerToMove].Action(state.Copy(playerToMove));
@@ -238,10 +239,12 @@ namespace AIGames.HeadsUpOmaha.Arena
 				}
 				bots[playerToMove.Other()].Reaction(state.Copy(playerToMove.Other()), action);
 
-				if (action.ActionType != GameActionType.raise)
-				{
-					return action;
-				}
+				// on fold return direct.
+				if (action == GameAction.Fold) { return action; }
+
+				// If not folding or raising, do at least two steps.
+				if (action.ActionType != GameActionType.raise && step++ >= 2) { return action; }
+
 				playerToMove = playerToMove.Other();
 			}
 		}
