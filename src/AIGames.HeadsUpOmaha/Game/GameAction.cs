@@ -21,7 +21,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Creates a raise.</summary>
 		public static GameAction Raise(int amount)
 		{
-			if (amount < 1) { throw new ArgumentOutOfRangeException("The amount should be at least 1.", "amount"); }
+			if (amount < 0) { throw new ArgumentOutOfRangeException("The amount should be at least 0.", "amount"); }
 			return new GameAction() { m_Value = (amount << 2) + (int)GameActionType.raise };
 		}
 
@@ -182,7 +182,7 @@ namespace AIGames.HeadsUpOmaha.Game
 					return true;
 				}
 				int amount;
-				if (Int32.TryParse(splitted[1], out amount))
+				if (Int32.TryParse(splitted[1], out amount) && amount > -1)
 				{
 					action = Raise(amount);
 					return true;
