@@ -30,8 +30,8 @@ namespace AIGames.HeadsUpOmaha.PlayBetterHandsOnly
 					var oppo = other.Take(4);
 					tbl.AddRange(other.Skip(4).Take(5 - tbl.Count));
 
-					var ownHand = PokerHand.CreateFromHeadsUpOmaha(table, state.Own.Hand);
-					var oppHand = PokerHand.CreateFromHeadsUpOmaha(table, oppo);
+					var ownHand = PokerHand.CreateFromHeadsUpOmaha(tbl, state.Own.Hand);
+					var oppHand = PokerHand.CreateFromHeadsUpOmaha(tbl, oppo);
 					var compare = PokerHandComparer.Instance.Compare(ownHand, oppHand);
 
 					if (compare > 0)

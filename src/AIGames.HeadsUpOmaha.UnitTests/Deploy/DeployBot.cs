@@ -30,6 +30,17 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Zip(deployDir);
 			Compile(deployDir);
 		}
+
+		[TestMethod]
+		public void Deploy_BluntAxe_Successful()
+		{
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "BluntAxe"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.BluntAxe"));
+			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
+		}
+
 		[TestMethod]
 		public void Deploy_Checkers_Successful()
 		{

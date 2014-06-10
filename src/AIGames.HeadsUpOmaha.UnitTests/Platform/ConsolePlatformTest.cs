@@ -1,4 +1,5 @@
-﻿using AIGames.HeadsUpOmaha.Bot;
+﻿using AIGames.HeadsUpOmaha.BluntAxe;
+using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
 using AIGames.HeadsUpOmaha.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,6 +27,20 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 
 			Assert.AreEqual(58, actions.Length);
 		}
+		[TestMethod]
+		public void DoRun_Input003Txt_AreEqual()
+		{
+			var sb = new StringBuilder();
+			var writer = new StringWriter(sb);
+
+			using (var cp = new ConsolePlatformMock(new StreamReader(AppConfig.GetTestFile("Input.003.txt").FullName), writer))
+			{
+				cp.DoRun(new BluntAxeBot());
+			}
+
+			var actions = sb.ToString().Split(new string[] { "\r\n" }, StringSplitOptions.None);
+		}
+
 	}
 
 	public class ConsolePlatformMock : ConsolePlatform
