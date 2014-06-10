@@ -1,15 +1,19 @@
 ﻿using AIGames.HeadsUpOmaha.Game;
 using AIGames.HeadsUpOmaha.Platform;
+using log4net;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace AIGames.HeadsUpOmaha.Arena.Platform
 {
 	[DebuggerDisplay("{DebugToString()}")]
 	public class ConsoleBot : IDisposable
 	{
+		private static readonly ILog log = LogManager.GetLogger(typeof(ConsoleBot));
+
 		/// <summary>Gets the player.</summary>
 		public PlayerType Player { get; protected set; }
 
@@ -138,6 +142,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			{
 				return action;
 			}
+			log.ErrorFormat("Could not parse action '{0}' for '{1}'.", line, this.Bot.FullName);
 			return GameAction.Fold;
 		}
 
@@ -161,8 +166,10 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			if (exe == null) { throw new FileNotFoundException("Could not find an executable.", "*.exe|run.bat"); }
 
 			var p = new Process();
+			p.StartInfo.WorkingDirectory = location.FullName;
 			p.StartInfo.FileName = exe.FullName;
 			p.StartInfo.UseShellExecute = false;
+			p.StartInfo.CreateNoWindow = true;
 			p.StartInfo.RedirectStandardInput = true;
 			p.StartInfo.RedirectStandardOutput = true;
 			p.Start();

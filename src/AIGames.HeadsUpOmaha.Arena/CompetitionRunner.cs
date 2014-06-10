@@ -59,13 +59,17 @@ namespace AIGames.HeadsUpOmaha.Arena
 				}
 			}
 		}
+		public int Games { get; set; }
 
-		public void Run()
+		public bool Run()
 		{
 			ScanDirectory();
 
-			if (Bots.Count(bot => !bot.Info.Inactive) < 2) { return; }
+			if (Bots.Count(bot => !bot.Info.Inactive) < 2) { return false; }
 
+			UpdateScreen();
+
+			this.Games++;
 			this.Player1 = Bots.GetRandom(Rnd);
 			this.Player2 = Bots.GetRandom(Rnd);
 
@@ -78,35 +82,72 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 			Bots.Save(new DirectoryInfo("."));
 
-			UpdateScreen();
+			return true;
 		}
 
 		public void UpdateScreen()
 		{
-			if (sw.ElapsedMilliseconds - lastScreenUpdate > 2400)
+			int pos = 1;
+
+			Console.Clear();
+			Console.Write(' ');
+			
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.Write('♦');
+			
+			Console.ForegroundColor = ConsoleColor.Gray;
+			Console.Write(" Omaha Arena ");
+			
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.Write('♣');
+			
+			Console.ForegroundColor = ConsoleColor.Gray;
+			Console.Write(@" {0:h\:mm\:ss} ", sw.Elapsed);
+			
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.Write('♥');
+
+			Console.ForegroundColor = ConsoleColor.Gray;
+			Console.Write(@" {0:#,###0} ", this.Games);
+			
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.Write('♠');
+			
+			Console.ForegroundColor = ConsoleColor.Gray;
+			Console.WriteLine(" {0:0.00}s/game", sw.ElapsedMilliseconds / 1000.0 / (double)this.Games);
+
+			Console.WriteLine("=======================================================");
+			Console.WriteLine("Pos   ELo   Score    Games  Bot");
+			Console.WriteLine("=======================================================");
+			foreach (var bot in this.Bots)
 			{
-				lastScreenUpdate = sw.ElapsedMilliseconds;
-
-				int pos = 1;
-
-				Console.Clear();
-				Console.WriteLine(@"Running: {0:h\:mm\:ss}", sw.Elapsed);
-				Console.WriteLine();
-				Console.WriteLine("Pos   ELo   Score    Games  Bot");
-				Console.WriteLine("=======================================================");
-				foreach(var bot in this.Bots)
+				if (!bot.Info.Inactive)
 				{
-					if (!bot.Info.Inactive)
+					if (pos == 1)
 					{
-						if (bot.K < 13)
-						{
-							Console.ForegroundColor = ConsoleColor.White;
-						}
-						Console.WriteLine("{0,3}  {1:0000}  {2,6:0.0%} {3,8}  {4} {5}", pos++, bot.Rating, bot.Score, bot.Games, bot.Info.Name, bot.Info.Version);
-						Console.ForegroundColor = ConsoleColor.Gray;
+						Console.BackgroundColor = ConsoleColor.Yellow;
+						Console.ForegroundColor = ConsoleColor.Black;
 					}
+					else if (pos == 2)
+					{
+						Console.BackgroundColor = ConsoleColor.Gray;
+						Console.ForegroundColor = ConsoleColor.Black;
+					}
+					else if (pos == 3)
+					{
+						Console.BackgroundColor = ConsoleColor.DarkYellow;
+						Console.ForegroundColor = ConsoleColor.Black;
+					}
+					else if (bot.K < 13)
+					{
+						Console.ForegroundColor = ConsoleColor.White;
+					}
+					Console.WriteLine("{0,3}  {1:0000}  {2,6:0.0%} {3,8}  {4,-27}", pos++, bot.Rating, bot.Score, bot.Games, bot.Info.Name + ' ' + bot.Info.Version);
+					Console.BackgroundColor = ConsoleColor.Black;
+					Console.ForegroundColor = ConsoleColor.Gray;
 				}
 			}
+			lastScreenUpdate = sw.ElapsedMilliseconds;
 		}
 		private long lastScreenUpdate = 0;
 		private Stopwatch sw = new Stopwatch();
@@ -183,16 +224,16 @@ namespace AIGames.HeadsUpOmaha.Arena
 			while (true)
 			{
 				var action = bots[playerToMove].Action(state.Copy(playerToMove));
-				
+
 
 				switch (action.ActionType)
 				{
 					case GameActionType.check: action = RunCheck(state, playerToMove); break;
 					case GameActionType.call: action = RunCall(state, playerToMove); break;
 					case GameActionType.raise: action = RunRaise(state, playerToMove, action.Amount); break;
-					
+
 					case GameActionType.fold:
-					default: 
+					default:
 						action = RunFold(state, playerToMove); break;
 				}
 				bots[playerToMove.Other()].Reaction(state.Copy(playerToMove.Other()), action);

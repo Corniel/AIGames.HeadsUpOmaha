@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace AIGames.HeadsUpOmaha.Arena
 {
@@ -25,10 +21,7 @@ namespace AIGames.HeadsUpOmaha.Arena
             }
             catch { }
 
-            while (true)
-            {
-				arena.Run();
-            }
+			while (arena.Run()) { }
 		}
 	}
 }
