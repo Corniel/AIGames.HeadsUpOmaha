@@ -77,9 +77,8 @@ namespace Troschuetz.Random.Generators
 	///   The <see cref="MT19937Generator"/> type bases upon information and the implementation presented on the
 	///   <a href="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html">Mersenne Twister Home Page</a>.
 	/// </remarks>
-	// ReSharper disable InconsistentNaming
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	public sealed class MT19937Generator /*: IGenerator*/
-	// ReSharper restore InconsistentNaming
 	{
 		#region Class Fields
 

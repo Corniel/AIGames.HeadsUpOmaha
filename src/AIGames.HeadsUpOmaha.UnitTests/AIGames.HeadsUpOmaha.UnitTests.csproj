@@ -60,7 +60,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
+    <Compile Include="Game\CardsTest.cs" />
     <Compile Include="Game\StartHandGenerator.cs" />
+    <Compile Include="Game\PlayerTypeTest.cs" />
+    <Compile Include="Game\GameActionTest.cs" />
     <Compile Include="StatisticalMathTest.cs" />
     <Compile Include="BitsTest.cs" />
     <Content Include="Files\Input.001.txt" />
