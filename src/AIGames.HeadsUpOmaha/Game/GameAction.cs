@@ -174,7 +174,7 @@ namespace AIGames.HeadsUpOmaha.Game
 
 			GameActionType tp;
 
-			if (splitted.Length < 3 && Enum.TryParse<GameActionType>(splitted[0], out tp))
+			if (splitted.Length < 3 && Enum.TryParse<GameActionType>(splitted[0], true, out tp))
 			{
 				if(tp != GameActionType.raise && (splitted.Length == 1 || splitted[1] == "0"))
 				{

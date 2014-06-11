@@ -17,7 +17,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
             try
             {
-                arena.Bots = Bots.Load(new DirectoryInfo("."));
+                arena.Bots = Bots.Load(dir);
             }
             catch { }
 

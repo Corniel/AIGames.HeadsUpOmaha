@@ -3,6 +3,7 @@ using AIGames.HeadsUpOmaha.Game;
 using log4net;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -78,7 +79,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			var result = PlayMatch(this.Player1, this.Player2);
 			CalculateNewElos(this.Player1, this.Player2, result);
 
-			Bots.Save(new DirectoryInfo("."));
+			Bots.Save(new DirectoryInfo(ConfigurationManager.AppSettings["Bots.Dir"]));
 
 			return true;
 		}
@@ -196,6 +197,30 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		private void SendResult(Dictionary<PlayerType, ConsoleBot> bots, GameState state, int pot, LastGameAction lastaction)
 		{
+			if (lastaction.Action != GameAction.Fold)
+			{
+				var hand1 = PokerHand.CreateFromHeadsUpOmaha(state.Table, state.Player1.Hand);
+				var hand2 = PokerHand.CreateFromHeadsUpOmaha(state.Table, state.Player2.Hand);
+				var compare = PokerHandComparer.Instance.Compare(hand1, hand2);
+
+				if (compare > 0)
+				{
+					state.Result = RoundResult.Player1Wins;
+				}
+				else if (compare < 0)
+				{
+					state.Result = RoundResult.Player2Wins;
+				}
+				else
+				{
+					state.Result = RoundResult.Draw;
+				}
+			}
+			else
+			{
+				state.Result = lastaction.Player == PlayerType.player1 ? RoundResult.Player2Wins : RoundResult.Player1Wins;
+			}
+
 			foreach (var kvp in bots)
 			{
 				kvp.Value.Result(state.Copy(kvp.Key), pot, lastaction);

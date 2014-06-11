@@ -39,6 +39,14 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		}
 
 		[TestMethod]
+		public void Parse_Check_AreEqual()
+		{
+			var act = GameAction.Parse("Check");
+			var exp = GameAction.Check;
+			Assert.AreEqual(exp, act);
+		}
+
+		[TestMethod]
 		public void Parse_Check0_AreEqual()
 		{
 			var act = GameAction.Parse("check 0");

@@ -19,6 +19,10 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			typeof(System.Linq.Enumerable).Assembly,
 			typeof(System.Xml.XmlNode).Assembly,
 			typeof(System.Text.RegularExpressions.Regex).Assembly,
+			#if DEBUG
+			typeof(System.Configuration.ConfigurationManager).Assembly,
+			typeof(log4net.ILog).Assembly,
+			#endif
 		};
 
 		[TestMethod]
@@ -164,9 +168,16 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			}
 			foreach (var file in dir.GetFiles("*.cs"))
 			{
-				yield return file;
+#if DEBUG
+				if (!file.Name.EndsWith(".Release.cs") && file.Name != "AssemblyInfo.cs")
+#else
+				if (!file.Name.EndsWith(".Debug.cs") && file.Name != "AssemblyInfo.cs")
+#endif
+				{
+					yield return file;
+				}
 			}
 		}
-		private static readonly string[] ExcludeDirs = new string[] { "bin", "obj", "Properties" };
+		private static readonly string[] ExcludeDirs = new string[] { "bin", "obj" };
 	}
 }

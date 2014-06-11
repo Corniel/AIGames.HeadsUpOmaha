@@ -99,7 +99,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 				WriteInstructions(Instruction.Create(PlayerType.player1, "hand", state.Player1.Hand));
 				WriteInstructions(Instruction.Create(PlayerType.player2, "hand", state.Player2.Hand));
 			}
-			
+
 			var win1 = Instruction.Create(PlayerType.player1, "wins", pot);
 			var win2 = Instruction.Create(PlayerType.player2, "wins", pot);
 
@@ -140,8 +140,13 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 
 		protected GameAction ReadInstruction()
 		{
-
 			var line = process.StandardOutput.ReadLine();
+			
+			// the bat file for java engines seems to output this line first.
+			if ((line ?? string.Empty).Contains(">java "))
+			{
+				line = process.StandardOutput.ReadLine();
+			}
 			GameAction action;
 			if (GameAction.TryParse(line, out action))
 			{
