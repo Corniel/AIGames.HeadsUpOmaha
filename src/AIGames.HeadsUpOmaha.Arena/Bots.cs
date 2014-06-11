@@ -10,6 +10,46 @@ namespace AIGames.HeadsUpOmaha.Arena
     [Serializable]
 	public class Bots : List<Bot>
 	{
+		public bool HasActive { get { return GetActive().Any(); } }
+
+		public IEnumerable<Bot> GetActive()
+		{
+			return this.Where(bot => !bot.Info.Inactive);
+		}
+		public IEnumerable<Bot> GetStable(double k)
+		{
+			return this.GetActive().Where(bot => bot.K <= k);
+		}
+		public IEnumerable<Bot> GetUnstable(double k)
+		{
+			return this.GetActive().Where(bot => bot.K > k);
+		}
+
+		public Bot[] CreatePair(MT19937Generator rnd, double k)
+		{
+			var bots = new Bot[2];
+
+			var f = rnd.Next(2);
+			var s = f == 1 ? 0 : 1;
+
+			var stable = GetStable(k).ToList();
+			var unstable = GetUnstable(k).ToList();
+
+			// pair a stable and an unstabel
+			if (stable.Count > 0 && unstable.Count > 0)
+			{
+				bots[f] = stable[rnd.Next(stable.Count)];
+				bots[s] = unstable[rnd.Next(unstable.Count)];
+			}
+			else
+			{
+				var random = GetActive().OrderBy(b => rnd.Next()).ToList();
+				bots[f] = random[0];
+				bots[s] = random[1];
+			}
+			return bots;
+		}
+
 		public Bot GetOrCreate(BotInfo info)
 		{
 			var bot = this.FirstOrDefault(item => item.Info.Name == info.Name && item.Info.Version == info.Version);
@@ -36,20 +76,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			return bot;
 		}
 
-		public bool HasActive { get { return this.Any(bot => !bot.Info.Inactive); } }
-
-		public Bot GetRandom(MT19937Generator Rnd)
-		{
-			if (!HasActive) { return null; }
-
-			var bot = this[Rnd.Next(0, this.Count)];
-			while (bot.Info.Inactive)
-			{
-				bot = this[Rnd.Next(0, this.Count)];
-			}
-			return bot;
-		}
-
+		
         #region Load & Save
 
         public void Save(DirectoryInfo dir)
@@ -89,5 +116,5 @@ namespace AIGames.HeadsUpOmaha.Arena
         }
 
         #endregion
-    }
+	}
 }

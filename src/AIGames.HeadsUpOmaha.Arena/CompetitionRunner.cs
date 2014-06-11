@@ -65,18 +65,16 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			ScanDirectory();
 
-			if (Bots.Count(bot => !bot.Info.Inactive) < 2) { return false; }
+			if(Bots.GetActive().Count() < 2) { return false; }
 
 			UpdateScreen();
 
 			this.Games++;
-			this.Player1 = Bots.GetRandom(Rnd);
-			this.Player2 = Bots.GetRandom(Rnd);
 
-			while (this.Player1.Equals(this.Player2))
-			{
-				this.Player2 = Bots.GetRandom(Rnd);
-			}
+			Bot[] pair = Bots.CreatePair(this.Rnd, 12.0);
+			this.Player1 = pair[0];
+			this.Player2 = pair[1];
+
 			var result = PlayMatch(this.Player1, this.Player2);
 			CalculateNewElos(this.Player1, this.Player2, result);
 
