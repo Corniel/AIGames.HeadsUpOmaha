@@ -228,13 +228,24 @@ namespace AIGames.HeadsUpOmaha.Game
 		}
 
 		/// <summary>Apply the round result.</summary>
-		public int ApplyRoundResult()
+		public int ApplyRoundResult(RoundResult result)
 		{
-			var pokerhand1 = PokerHand.CreateFromHeadsUpOmaha(this.Table, this.Player1.Hand);
-			var pokerhand2 = PokerHand.CreateFromHeadsUpOmaha(this.Table, this.Player2.Hand);
+			int compare = 0;
+			if (result == RoundResult.NoResult)
+			{
+				var pokerhand1 = PokerHand.CreateFromHeadsUpOmaha(this.Table, this.Player1.Hand);
+				var pokerhand2 = PokerHand.CreateFromHeadsUpOmaha(this.Table, this.Player2.Hand);
 
-			var compare = PokerHandComparer.Instance.Compare(pokerhand1, pokerhand2);
-
+				compare = PokerHandComparer.Instance.Compare(pokerhand1, pokerhand2);
+			}
+			else
+			{
+				switch (result)
+				{
+					case RoundResult.Player1Wins: compare = 1; break;
+					case RoundResult.Player2Wins: compare = -1; break;
+				}
+			}
 			int pot = this.Pot;
 
 			if (compare == 0)

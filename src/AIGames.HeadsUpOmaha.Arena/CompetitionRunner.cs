@@ -180,9 +180,9 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 						StartNewRound(bots, state);
 						HandleBlinds(state);
-						RunSubRounds(bots, state, state.OnButton);
-						var pot = state.ApplyRoundResult();
-						SendResult(bots, state, pot);
+						var lastaction = RunSubRounds(bots, state, state.OnButton);
+						var pot = state.ApplyRoundResult(lastaction.GetResult());
+						SendResult(bots, state, pot, lastaction);
 
 						// upates the blind.
 						state.UpdateBlind(state.Round++);
@@ -196,16 +196,17 @@ namespace AIGames.HeadsUpOmaha.Arena
 			}
 		}
 
-		private void SendResult(Dictionary<PlayerType, ConsoleBot> bots, GameState state, int pot)
+		private void SendResult(Dictionary<PlayerType, ConsoleBot> bots, GameState state, int pot, LastGameAction lastaction)
 		{
 			foreach (var kvp in bots)
 			{
-				kvp.Value.Result(state.Copy(kvp.Key), pot);
+				kvp.Value.Result(state.Copy(kvp.Key), pot, lastaction);
 			}
 		}
 
-		private void RunSubRounds(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
+		private LastGameAction RunSubRounds(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
 		{
+			LastGameAction action = new LastGameAction(playerToMove, GameAction.Check);
 			foreach (var tableSize in TableSizes)
 			{
 				// update the table.
@@ -214,12 +215,16 @@ namespace AIGames.HeadsUpOmaha.Arena
 					kvp.Value.UpdateTable(Cards.Create(state.Table.Take(tableSize)));
 				}
 
-				var action = RunBetting(bots, state, playerToMove);
-				if (action == GameAction.Fold) { return; }
+				action = RunBetting(bots, state, playerToMove);
+				if (action.Action == GameAction.Fold)
+				{
+					return action;
+				}
 			}
+			return action;
 		}
 
-		private GameAction RunBetting(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
+		private LastGameAction RunBetting(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
 		{
 			var step = 1;
 			while (true)
@@ -240,10 +245,10 @@ namespace AIGames.HeadsUpOmaha.Arena
 				bots[playerToMove.Other()].Reaction(state.Copy(playerToMove.Other()), action);
 
 				// on fold return direct.
-				if (action == GameAction.Fold) { return action; }
+				if (action == GameAction.Fold) { return new LastGameAction(playerToMove, action); }
 
 				// If not folding or raising, do at least two steps.
-				if (action.ActionType != GameActionType.raise && step++ >= 2) { return action; }
+				if (action.ActionType != GameActionType.raise && step++ >= 2) { return new LastGameAction(playerToMove, action); }
 
 				playerToMove = playerToMove.Other();
 			}

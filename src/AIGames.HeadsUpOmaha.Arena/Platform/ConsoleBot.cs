@@ -5,7 +5,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading;
 
 namespace AIGames.HeadsUpOmaha.Arena.Platform
 {
@@ -93,8 +92,14 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		}
 
 		/// <summary>Communicate the result with the bot.</summary>
-		public void Result(GameState state, int pot)
+		public void Result(GameState state, int pot, LastGameAction lastaction)
 		{
+			if (lastaction.Action != GameAction.Fold)
+			{
+				WriteInstructions(Instruction.Create(PlayerType.player1, "hand", state.Player1.Hand));
+				WriteInstructions(Instruction.Create(PlayerType.player2, "hand", state.Player2.Hand));
+			}
+			
 			var win1 = Instruction.Create(PlayerType.player1, "wins", pot);
 			var win2 = Instruction.Create(PlayerType.player2, "wins", pot);
 
