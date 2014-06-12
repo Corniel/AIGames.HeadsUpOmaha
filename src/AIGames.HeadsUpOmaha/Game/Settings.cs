@@ -53,12 +53,6 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 		}
 
-		/// <summary>Makes a full copy of the settings.</summary>
-		public Settings Copy()
-		{
-			return Copy(this.YourBot);
-		}
-
 		/// <summary>Represents the settings as a set of instructions.</summary>
 		public Instruction[] ToInstructions()
 		{
@@ -73,16 +67,10 @@ namespace AIGames.HeadsUpOmaha.Game
 		}
 		
 		/// <summary>Makes a full copy of the settings for a specified player.</summary>
-		public Settings Copy(PlayerType player)
+		public Settings Personalize(PlayerType player)
 		{
-			return new Settings()
-			{
-				TimeBank = this.TimeBank,
-				TimePerMove = this.TimePerMove,
-				HandsPerLevel = this.HandsPerLevel,
-				StartingStack = this.StartingStack,
-				YourBot = player,
-			};
+			this.YourBot = player;
+			return this;
 		}
 
 		#region I/O operations

@@ -244,6 +244,13 @@ namespace AIGames.HeadsUpOmaha.Game
 			return pot;
 		}
 
+		/// <summary>Makes a full copy of the settings for a specified player.</summary>
+		public GameState Personalize(PlayerType player)
+		{
+			this.YourBot = player;
+			return this;
+		}
+
 		/// <summary>Resets the state.</summary>
 		/// <remarks>
 		/// Tables, hands an result are being reset.

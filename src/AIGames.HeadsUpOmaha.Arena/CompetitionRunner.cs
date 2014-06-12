@@ -64,12 +64,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		public bool Run()
 		{
-			ScanDirectory();
-
-			if(Bots.GetActive().Count() < 2) { return false; }
-
+			if (!ScanDirectory()) { return false; }
 			UpdateScreen();
-
 			this.Games++;
 
 			Bot[] pair = Bots.CreatePair(this.Rnd, 12.0);
@@ -238,7 +234,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 			foreach (var kvp in bots)
 			{
-				kvp.Value.Result(state, pot, lastaction);
+				kvp.Value.Result(state.Personalize(kvp.Key), pot, lastaction);
 			}
 		}
 
@@ -267,7 +263,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			var step = 1;
 			while (true)
 			{
-				var action = bots[playerToMove].Action(state);
+				var action = bots[playerToMove].Action(state.Personalize(playerToMove));
 
 
 				switch (action.ActionType)
@@ -280,7 +276,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 					default:
 						action = RunFold(state, playerToMove); break;
 				}
-				bots[playerToMove.Other()].Reaction(state, action);
+				bots[playerToMove.Other()].Reaction(state.Personalize(playerToMove.Other()), action);
 
 				// on fold return direct.
 				if (action == GameAction.Fold) { return new LastGameAction(playerToMove, action); }
@@ -363,7 +359,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			foreach (var kvp in bots)
 			{
-				kvp.Value.UpdateNewRound(state);
+				kvp.Value.UpdateNewRound(state.Personalize(kvp.Key));
 			}
 		}
 
@@ -381,7 +377,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			foreach (var kvp in bots)
 			{
-				kvp.Value.ApplySettings(this.GameSettings.Copy(kvp.Key));
+				kvp.Value.ApplySettings(this.GameSettings.Personalize(kvp.Key));
 			}
 		}
 
@@ -424,8 +420,13 @@ namespace AIGames.HeadsUpOmaha.Arena
 			player2.K = NewK(k2, k1);
 		}
 
-		private void ScanDirectory()
+		/// <summary>Scans the directory.</summary>
+		/// <returns>
+		/// Return true if at least two bots are active.
+		/// </returns>
+		private bool ScanDirectory()
 		{
+			int active = 0;
 			BotLocations.Clear();
 			// Disable all.
 			foreach (var bot in Bots)
@@ -442,9 +443,11 @@ namespace AIGames.HeadsUpOmaha.Arena
 					if (!info.Inactive)
 					{
 						BotLocations[bot.Info] = dir;
+						active++;
 					}
 				}
 			}
+			return active > 1;
 		}
 
 		public static double NewK(double kOwn, double kOther)
