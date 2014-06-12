@@ -34,7 +34,6 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Zip(deployDir);
 			Compile(deployDir);
 		}
-
 		[TestMethod]
 		public void Deploy_BluntAxe_Successful()
 		{
@@ -44,7 +43,6 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Zip(deployDir);
 			Compile(deployDir);
 		}
-
 		[TestMethod]
 		public void Deploy_Checkers_Successful()
 		{
@@ -59,6 +57,15 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 		{
 			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "Chicken"));
 			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Chicken"));
+			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
+		}
+		[TestMethod]
+		public void Deploy_Log4netBot_Successful()
+		{
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "Log4netBot"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Logger"));
 			Deploy(collectDir, deployDir);
 			Zip(deployDir);
 			Compile(deployDir);
