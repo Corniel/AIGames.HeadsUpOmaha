@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 
 namespace AIGames.HeadsUpOmaha.Arena
@@ -17,6 +18,9 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			get { return string.Format("{0} {1}", this.Info.Name, this.Info.Version); }
 		}
+
+		/// <summary>Returns true if the bot is configured as [Bot.Selected], otherwise false.</summary>
+		public bool IsSelected { get { return this.FullName == ConfigurationManager.AppSettings["Bot.Selected"]; } }
 
 		public BotInfo Info { get; set; }
 		public int Wins { get; set; }
@@ -38,7 +42,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 		[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 		public string DebugToString()
 		{
-			return String.Format("Bot: {0}, Version: {1}{2}, Elo: {3:0000}, K: {4:0.0}, W: {5}, D: {6}, L: {7} ({8:0.0%})",
+			return String.Format("Bot{9}: {0}, Version: {1}{2}, Elo: {3:0000}, K: {4:0.0}, W: {5}, D: {6}, L: {7} ({8:0.0%})",
 				Info.Name,
 				Info.Version,
 				Info.Inactive ? ", Inactive" : "",
@@ -47,7 +51,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 				Wins,
 				Draws,
 				Losses,
-				Score);
+				Score,
+				IsSelected ? "*": "");
 		}
 
 		public int CompareTo(object obj)

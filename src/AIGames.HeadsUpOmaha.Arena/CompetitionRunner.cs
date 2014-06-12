@@ -118,7 +118,11 @@ namespace AIGames.HeadsUpOmaha.Arena
 			{
 				if (!bot.Info.Inactive)
 				{
-					if (pos == 1)
+					if (bot.IsSelected)
+					{
+						Console.ForegroundColor = ConsoleColor.Red;
+					}
+					else if (pos == 1)
 					{
 						Console.BackgroundColor = ConsoleColor.Yellow;
 						Console.ForegroundColor = ConsoleColor.Black;
@@ -133,7 +137,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 						Console.BackgroundColor = ConsoleColor.DarkYellow;
 						Console.ForegroundColor = ConsoleColor.Black;
 					}
-					else if (bot.K < 13)
+					else if (bot.K <= 12)
 					{
 						Console.ForegroundColor = ConsoleColor.White;
 					}
@@ -416,8 +420,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 			player1.Rating = player1.Rating.GetNew(elo2, score1, k1);
 			player2.Rating = player2.Rating.GetNew(elo1, score2, k2);
 
-			player1.K = NewK(k1, k2);
-			player2.K = NewK(k2, k1);
+			player1.K = NewK(k1);
+			player2.K = NewK(k2);
 		}
 
 		/// <summary>Scans the directory.</summary>
@@ -450,16 +454,9 @@ namespace AIGames.HeadsUpOmaha.Arena
 			return active > 1;
 		}
 
-		public static double NewK(double kOwn, double kOther)
+		public static double NewK(double kOwn)
 		{
-			if (kOwn <= kOther)
-			{
-				kOwn *= 0.99;
-				return Math.Max(12.0, kOwn);
-			}
-			kOwn = (kOwn - kOther) * 0.90 + kOther;
-
-			return kOwn;
+			return Math.Max(12.0, kOwn * 0.98);
 		}
 	}
 }

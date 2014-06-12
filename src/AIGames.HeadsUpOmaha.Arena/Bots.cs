@@ -24,6 +24,10 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			return this.GetActive().Where(bot => bot.K > k);
 		}
+		public Bot GetSelectedBot()
+		{
+			return this.GetActive().FirstOrDefault(bot => bot.IsSelected);
+		}
 
 		public Bot[] CreatePair(MT19937Generator rnd, double k)
 		{
@@ -31,6 +35,14 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 			var f = rnd.Next(2);
 			var s = f == 1 ? 0 : 1;
+
+			var selected = GetSelectedBot();
+			if (selected != null)
+			{
+				bots[f] = selected;
+				bots[s] = this.GetActive().Where(bot => !bot.IsSelected).OrderBy(bot => rnd.Next()).FirstOrDefault();
+				return bots;
+			}
 
 			var stable = GetStable(k).ToList();
 			var unstable = GetUnstable(k).ToList();
