@@ -113,29 +113,6 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 		}
 
-		/// <summary>Copies the game state.</summary>
-		public GameState Copy()
-		{
-			var copy = new GameState()
-			{
-				Round = this.Round,
-				Table = this.Table == null ? Cards.Empty : Table.Copy(),
-				Player1 = this.Player1.Copy(),
-				Player2 = this.Player2.Copy(),
-			};
-			return copy;
-		}
-
-		/// <summary>Copies the game state without the hand of the opponent player.</summary>
-		public GameState Copy(PlayerType player)
-		{
-			var copy = Copy();
-			// we set the player.
-			copy.YourBot = player;
-
-			return copy;
-		}
-
 		/// <summary>Updates the state based on the settings.</summary>
 		public void Update(Settings settings)
 		{

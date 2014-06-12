@@ -19,6 +19,9 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		/// <summary>Gets the bot.</summary>
 		public Bot Bot { get; protected set; }
 
+		/// <summary>Gets the writer.</summary>
+		public StreamWriter Writer { get;  protected set; }
+
 		/// <summary>Applies the settings to the console bot.</summary>
 		public void ApplySettings(Settings settings)
 		{
@@ -64,7 +67,6 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 				WriteInstructions(instruction);
 			}
 		}
-
 
 		/// <summary>The action of the the bot.</summary>
 		public GameAction Action(GameState state)
@@ -115,6 +117,8 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 					WriteInstructions(win1);
 					WriteInstructions(win2);
 					break;
+				default:
+					throw new NotSupportedException("The game state is not final.");
 			}
 		}
 
@@ -134,6 +138,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		{
 			foreach (var instruction in instructions)
 			{
+				this.Writer.WriteLine(instruction);
 				process.StandardInput.WriteLine(instruction);
 			}
 		}
@@ -150,9 +155,11 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			GameAction action;
 			if (GameAction.TryParse(line, out action))
 			{
+				this.Writer.WriteLine("{0} {1}", this.Player, action);
 				return action;
 			}
 			log.ErrorFormat("Could not parse action '{0}' for '{1}'.", line, this.Bot.FullName);
+			this.Writer.WriteLine("{0} {1}", this.Player, GameAction.Fold);
 			return GameAction.Fold;
 		}
 
@@ -162,10 +169,11 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		/// <param name="bot"></param>
 		/// <param name="location"></param>
 		/// <returns></returns>
-		public static ConsoleBot Create(Bot bot, DirectoryInfo location)
+		public static ConsoleBot Create(Bot bot, DirectoryInfo location, StreamWriter writer)
 		{
 			if (bot == null) { throw new ArgumentNullException("bot"); }
 			if (location == null) { throw new ArgumentNullException("location"); }
+			if (writer == null) { throw new ArgumentNullException("writer"); }
 
 			var exe = location.GetFiles("run.bat").FirstOrDefault();
 
@@ -187,7 +195,8 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			var cb = new ConsoleBot()
 			{
 				process = p,
-				Bot = bot
+				Bot = bot,
+				Writer = writer,
 			};
 
 			return cb;
@@ -212,6 +221,11 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 					if (process != null)
 					{
 						process.Dispose();
+					}
+					if (this.Writer != null)
+					{
+						this.Writer.Flush();
+						this.Writer.Dispose();
 					}
 				}
 				m_IsDisposed = true;

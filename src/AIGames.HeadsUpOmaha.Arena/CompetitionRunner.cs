@@ -160,9 +160,9 @@ namespace AIGames.HeadsUpOmaha.Arena
 		/// </param>
 		private RoundResult PlayMatch(Bot player1, Bot player2)
 		{
-			using (var bot1 = ConsoleBot.Create(player1, BotLocations[player1.Info]))
+			using (var bot1 = ConsoleBot.Create(player1, BotLocations[player1.Info], CreateWriter(player1, player2)))
 			{
-				using (var bot2 = ConsoleBot.Create(player2, BotLocations[player2.Info]))
+				using (var bot2 = ConsoleBot.Create(player2, BotLocations[player2.Info], CreateWriter(player2, player1)))
 				{
 					var bots = new Dictionary<PlayerType, ConsoleBot>()
 					{
@@ -188,11 +188,26 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 						if (state.Player1.Stack - state.BigBlind < 0 || state.Player2.Stack - state.BigBlind < 0)
 						{
-							return state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+							var winner = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+
+							bot1.Writer.WriteLine(@"Engine says: ""{0}""", winner);
+							bot2.Writer.WriteLine(@"Engine says: ""{0}""", winner);
+
+							return winner;
 						}
 					}
 				}
 			}
+		}
+
+		private static StreamWriter CreateWriter(Bot player, Bot opponent)
+		{
+			var location = new FileInfo(Path.Combine(ConfigurationManager.AppSettings["Games.Dir"], player.FullName, string.Format("{0:yyyy-MM-dd_hh_mm_ss_f}.{1}.log", DateTime.Now, opponent.FullName)));
+			if (!location.Directory.Exists)
+			{
+				location.Directory.Create();
+			}
+			return new StreamWriter(location.FullName);
 		}
 
 		private void SendResult(Dictionary<PlayerType, ConsoleBot> bots, GameState state, int pot, LastGameAction lastaction)
@@ -223,7 +238,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 			foreach (var kvp in bots)
 			{
-				kvp.Value.Result(state.Copy(kvp.Key), pot, lastaction);
+				kvp.Value.Result(state, pot, lastaction);
 			}
 		}
 
@@ -252,7 +267,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			var step = 1;
 			while (true)
 			{
-				var action = bots[playerToMove].Action(state.Copy(playerToMove));
+				var action = bots[playerToMove].Action(state);
 
 
 				switch (action.ActionType)
@@ -265,7 +280,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 					default:
 						action = RunFold(state, playerToMove); break;
 				}
-				bots[playerToMove.Other()].Reaction(state.Copy(playerToMove.Other()), action);
+				bots[playerToMove.Other()].Reaction(state, action);
 
 				// on fold return direct.
 				if (action == GameAction.Fold) { return new LastGameAction(playerToMove, action); }
@@ -348,7 +363,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			foreach (var kvp in bots)
 			{
-				kvp.Value.UpdateNewRound(state.Copy(kvp.Key));
+				kvp.Value.UpdateNewRound(state);
 			}
 		}
 

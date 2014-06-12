@@ -2,5 +2,6 @@
 <configuration>
 	<appSettings>
 		<add key="Bots.Dir" value="*\AIGames.HeadsUpOmaha\bots"/>
+		<add key="Games.Dir" value="*\AIGames.HeadsUpOmaha\games"/>
 	</appSettings>
 </configuration>

@@ -31,19 +31,6 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>The time left for of the player.</summary>
 		public TimeSpan TimeBank { get; set; }
 
-		/// <summary>Creates a copy of the player hand.</summary>
-		public PlayerState Copy()
-		{
-			var copy = new PlayerState()
-			{
-				Stack = this.Stack,
-				Pot = this.Pot,
-				Hand = this.Hand.Copy(),
-			};
-
-			return copy;
-		}
-
 		/// <summary>Updates the player state based on the settings.</summary>
 		public void Update(Settings settings)
 		{
