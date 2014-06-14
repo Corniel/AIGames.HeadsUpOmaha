@@ -62,6 +62,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Analysis\PokerHandEvaluatorTest.cs" />
+    <Compile Include="Analysis\UInt64CardsTest.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Game\CardsTest.cs" />
     <Compile Include="Game\StartHandGenerator.cs" />

@@ -1,14 +1,18 @@
-﻿using AIGames.HeadsUpOmaha.Bot;
+﻿using AIGames.HeadsUpOmaha.Analysis;
+using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
-using System;
 using System.Linq;
+using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.PlayBetterHandsOnly
 {
 	public class PlayBetterHandsOnlyBot : IBot
 	{
-		private Random rnd = new Random();
-		private const int Simulations = 1024;
+		public PlayBetterHandsOnlyBot()
+		{
+			this.Rnd = new MT19937Generator();
+		}
+		protected MT19937Generator Rnd { get; set; }
 
 		public GameAction Action(GameState state)
 		{
@@ -17,34 +21,9 @@ namespace AIGames.HeadsUpOmaha.PlayBetterHandsOnly
 				var other = Cards.Deck.ToList();
 				var table = state.Table.ToList();
 
-				var wins = 0;
+				var chance = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd);
 
-				foreach (var card in state.Own.Hand) { other.Remove(card); }
-				foreach (var card in table) { other.Remove(card); }
-
-				for (int i = 0; i < Simulations; i++)
-				{
-					other = other.OrderBy(c => rnd.Next()).ToList();
-					var tbl = table.ToList();
-
-					var oppo = other.Take(4);
-					tbl.AddRange(other.Skip(4).Take(5 - tbl.Count));
-
-					var ownHand = PokerHand.CreateFromHeadsUpOmaha(tbl, state.Own.Hand);
-					var oppHand = PokerHand.CreateFromHeadsUpOmaha(tbl, oppo);
-					var compare = PokerHandComparer.Instance.Compare(ownHand, oppHand);
-
-					if (compare > 0)
-					{
-						wins += 2;
-					}
-					else if (compare == 0)
-					{
-						wins++;
-					}
-
-				}
-				if (wins < Simulations)
+				if (chance < 0.6)
 				{
 					return GameAction.Fold;
 				}

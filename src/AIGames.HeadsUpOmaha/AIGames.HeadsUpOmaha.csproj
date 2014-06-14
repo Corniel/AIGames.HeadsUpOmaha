@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\PokerHandEvaluator.cs" />
+    <Compile Include="Analysis\UInt32PokerHand.cs" />
+    <Compile Include="Analysis\UInt64Cards.cs" />
     <Compile Include="Bits.cs" />
     <Compile Include="Bot\IBot.cs" />
     <Compile Include="Game\CardPairs.cs">

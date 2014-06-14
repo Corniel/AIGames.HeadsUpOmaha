@@ -61,6 +61,8 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Zip(deployDir);
 			Compile(deployDir);
 		}
+
+#if DEBUG
 		[TestMethod]
 		public void Deploy_Log4netBot_Successful()
 		{
@@ -70,6 +72,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Zip(deployDir);
 			Compile(deployDir);
 		}
+#endif
 		[TestMethod]
 		public void Deploy_PlayBetterHandsOnly_Successful()
 		{
