@@ -113,6 +113,28 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 		}
 
+		/// <summary>Test the minimum amount to raise.</summary>
+		public int MinimumRaise
+		{
+			get
+			{
+				return BigBlind + AmountToCall;
+			}
+		}
+		/// <summary>Test the maximum amount to raise.</summary>
+		public int MaxinumRaise
+		{
+			get
+			{
+				var minStack = Math.Min(Own.Stack, Opp.Stack);
+				if (minStack < MinimumRaise) { return 0; };
+				return  MaxWinPot + AmountToCall;
+			}
+		}
+
+		/// <summary>Returns true if pre flop (empty table), otherwise false.</summary>
+		public bool IsPreFlop { get { return this.Table.Count == 0; } }
+
 		/// <summary>Updates the state based on the settings.</summary>
 		public void Update(Settings settings)
 		{

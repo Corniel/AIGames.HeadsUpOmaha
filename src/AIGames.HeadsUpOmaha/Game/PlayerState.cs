@@ -25,6 +25,9 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>The chips in the pot of the player.</summary>
 		public int Pot { get; set; }
 
+		/// <summary>Gets the stack and the pot.</summary>
+		public int Chips { get { return this.Stack + this.Pot; } }
+
 		/// <summary>The hand of the player.</summary>
 		public Cards Hand { get; set; }
 

@@ -1,12 +1,15 @@
 ﻿using AIGames.HeadsUpOmaha.Analysis;
 using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
+using AIGames.HeadsUpOmaha.Platform;
 using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.BluntAxe
 {
 	public class BluntAxeBot : IBot
 	{
+		public static void Main(string[] args) { ConsolePlatform.Run(new BluntAxeBot()); }
+
 		public BluntAxeBot()
 		{
 			this.Rnd = new MT19937Generator();
@@ -17,11 +20,23 @@ namespace AIGames.HeadsUpOmaha.BluntAxe
 		{
 			var change = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd);
 
-			if (state.AmountToCall == state.SmallBlind && change < 0.4)
+			// Only play doable small blinds.
+			if (state.IsPreFlop && change < 0.4 && state.AmountToCall == state.SmallBlind)
 			{
 				return GameAction.Fold;
 			}
-			if (change > 0.75)
+			// Don't play bad hands on pre flop if we have to call.
+			if (state.IsPreFlop && change < 0.3 && state.AmountToCall >= state.BigBlind)
+			{
+				return GameAction.Fold;
+			}
+
+			// It's look like we're winning, use brute force.
+			if (state.Own.Chips / state.Opp.Chips > 2.5 && change > 0.7 && state.MaxinumRaise > 0)
+			{
+				return GameAction.Raise(state.MaxinumRaise);
+			}
+			if (change > 0.75 && state.MaxinumRaise > 0)
 			{
 				var raise = state.AmountToCall + state.BigBlind + this.Rnd.Next(state.MaxWinPot - state.BigBlind) * change * change;
 				return GameAction.Raise((int)raise);

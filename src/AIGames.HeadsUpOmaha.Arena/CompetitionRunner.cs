@@ -319,31 +319,46 @@ namespace AIGames.HeadsUpOmaha.Arena
 				log.WarnFormat("The action is not re-opened to '{0}', raise action changed to 'call'.", this[playerToMove].FullName);
 				return RunCall(state, playerToMove);
 			}
-			// In fact, we don't raise.
-			if (raise < state.AmountToCall + state.BigBlind)
+
+			var minStack = Math.Min(state.Player1.Stack, state.Player2.Stack);
+
+			if (raise == 0)
 			{
-				log.WarnFormat("Raise of '{0}' is below minimum amount, automatically changed to minimum.", this[playerToMove].FullName);
-				return RunRaise(state, playerToMove, state.AmountToCall + state.BigBlind);
+				log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
+				return RunCheck(state, playerToMove);
 			}
-			if (raise > state.BigBlind + state.MaxWinPot)
+
+			// If we raise but don't have te money.
+			if (raise > minStack)
 			{
-				log.WarnFormat("Raise of '{0}' is above maximum amount, automatically changed to maximum.", this[playerToMove].FullName);
-				return RunRaise(state, playerToMove, state.BigBlind + state.MaxWinPot);
-			}
-			var stackMin = Math.Min(state.Player1.Stack, state.Player2.Stack);
-			if (raise > stackMin)
-			{
-				if (state.AmountToCall > 0)
+				if (raise >= state.MinimumRaise)
 				{
-					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
-					return RunCall(state, playerToMove);
+					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to a smaller 'raise'.", this[playerToMove].FullName);
+					return RunRaise(state, playerToMove, Math.Min(state.MaxinumRaise, minStack));
 				}
 				else
 				{
+					if (state.AmountToCall > 0)
+					{
+						log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
+						return RunCall(state, playerToMove);
+					}
 					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
 					return RunCheck(state, playerToMove);
 				}
 			}
+			// In fact, we don't raise.
+			if (raise < state.MinimumRaise)
+			{
+				log.WarnFormat("Raise of '{0}' is below minimum amount, automatically changed to minimum.", this[playerToMove].FullName);
+				return RunRaise(state, playerToMove, state.MinimumRaise);
+			}
+			if (raise > state.MaxinumRaise)
+			{
+				log.WarnFormat("Raise of '{0}' is above maximum amount, automatically changed to maximum.", this[playerToMove].FullName);
+				return RunRaise(state, playerToMove, state.MaxinumRaise);
+			}
+			
 			state[playerToMove].Raise(raise);
 			return GameAction.Raise(raise);
 		}
