@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace AIGames.HeadsUpOmaha.Arena
 {
@@ -26,7 +27,20 @@ namespace AIGames.HeadsUpOmaha.Arena
 		public int Wins { get; set; }
 		public int Draws { get; set; }
 		public int Losses { get; set; }
+		public long ElapsedMilliseconds { get; set; }
+
 		public int Games { get { return this.Wins + this.Draws + this.Losses; } }
+
+		public double Duration
+		{
+			get
+			{
+				if (this.Games == 0) { return double.NaN; }
+
+				return (double)ElapsedMilliseconds / (double)Games/1000.0;
+			}
+		}
+		
 		public double Score 
 		{
 			get

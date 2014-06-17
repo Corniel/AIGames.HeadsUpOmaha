@@ -141,7 +141,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 					{
 						Console.ForegroundColor = ConsoleColor.White;
 					}
-					Console.WriteLine("{0,3}  {1:0000}  {2,6:0.0%} {3,8}  {4,-27}", pos++, bot.Rating, bot.Score, bot.Games, bot.Info.Name + ' ' + bot.Info.Version);
+					Console.WriteLine("{0,3}  {1:0000}  {2,6:0.0%} {3,8} {4,5:0.00}ms/g  {5,-27}", pos++, bot.Rating, bot.Score, bot.Games, bot.Duration, bot.Info.Name + ' ' + bot.Info.Version);
 					Console.BackgroundColor = ConsoleColor.Black;
 					Console.ForegroundColor = ConsoleColor.Gray;
 				}
@@ -192,7 +192,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 							bot1.Writer.WriteLine(@"Engine says: ""{0}""", winner);
 							bot2.Writer.WriteLine(@"Engine says: ""{0}""", winner);
-
+							bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
+							bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
 							return winner;
 						}
 					}

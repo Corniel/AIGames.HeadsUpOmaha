@@ -12,9 +12,17 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 	public class ConsoleBot : IDisposable
 	{
 		private static readonly ILog log = LogManager.GetLogger(typeof(ConsoleBot));
+		private Stopwatch sw = new Stopwatch();
 
 		/// <summary>Gets the player.</summary>
 		public PlayerType Player { get; protected set; }
+
+		/// <summary>Start the timer for the bot.</summary>
+		public void Start() { sw.Start(); }
+		/// <summary>Stop the timer for the bot.</summary>
+		public void Stop() { sw.Stop(); }
+		/// <summary>Get the elapsed milliseconds.</summary>
+		public long ElapsedMilliseconds { get { return sw.ElapsedMilliseconds; } }
 
 		/// <summary>Gets the bot.</summary>
 		public Bot Bot { get; protected set; }
@@ -145,22 +153,31 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 
 		protected GameAction ReadInstruction()
 		{
-			var line = process.StandardOutput.ReadLine();
-			
-			// the bat file for java engines seems to output this line first.
-			if ((line ?? string.Empty).Contains(">java "))
+			try
 			{
-				line = process.StandardOutput.ReadLine();
+				Start();
+				var line = process.StandardOutput.ReadLine();
+				Stop();
+
+				// the bat file for java engines seems to output this line first.
+				if ((line ?? string.Empty).Contains(">java "))
+				{
+					line = process.StandardOutput.ReadLine();
+				}
+				GameAction action;
+				if (GameAction.TryParse(line, out action))
+				{
+					this.Writer.WriteLine("{0} {1}", this.Player, action);
+					return action;
+				}
+				log.ErrorFormat("Could not parse action '{0}' for '{1}'.", line, this.Bot.FullName);
+				this.Writer.WriteLine("{0} {1}", this.Player, GameAction.Fold);
+				return GameAction.Fold;
 			}
-			GameAction action;
-			if (GameAction.TryParse(line, out action))
+			catch(TimeoutException x)
 			{
-				this.Writer.WriteLine("{0} {1}", this.Player, action);
-				return action;
+				throw new TimeoutException(this.Bot.FullName, x);
 			}
-			log.ErrorFormat("Could not parse action '{0}' for '{1}'.", line, this.Bot.FullName);
-			this.Writer.WriteLine("{0} {1}", this.Player, GameAction.Fold);
-			return GameAction.Fold;
 		}
 
 		#endregion
