@@ -61,7 +61,15 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Zip(deployDir);
 			Compile(deployDir);
 		}
-
+		[TestMethod]
+		public void Deploy_KingKong_Successful()
+		{
+			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "KingKong"));
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.KingKong"));
+			Deploy(collectDir, deployDir);
+			Zip(deployDir);
+			Compile(deployDir);
+		}
 #if DEBUG
 		[TestMethod]
 		public void Deploy_Log4netBot_Successful()

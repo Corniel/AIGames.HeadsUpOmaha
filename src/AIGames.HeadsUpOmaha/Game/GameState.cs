@@ -92,8 +92,14 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Gets the pot.</summary>
 		public int Pot { get { return this.Player1.Pot + this.Player2.Pot; } }
 
+		/// <summary>Gets the total of chips of the game.</summary>
+		public int Chips { get { return this.Player1.Chips + this.Player2.Chips; } }
+
 		/// <summary>The result of the match.</summary>
 		public RoundResult Result { get; set; }
+
+		/// <summary>Represents the sub round (equals the size of the table).</summary>
+		public int SubRound { get { return this.Table == null ? 0 : this.Table.Count; } }
 
 		/// <summary>Total amount of chips currently in the pot (plus sidepot).</summary>
 		public int MaxWinPot
