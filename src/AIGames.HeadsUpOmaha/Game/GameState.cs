@@ -106,7 +106,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			get
 			{
-				return Player1.Pot + Player2.Pot;
+				return Player1.Pot + Player2.Pot + AmountToCall;
 			}
 		}
 
@@ -124,7 +124,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			get
 			{
-				return BigBlind + AmountToCall;
+				return BigBlind;
 			}
 		}
 		/// <summary>Test the maximum amount to raise.</summary>
@@ -134,7 +134,7 @@ namespace AIGames.HeadsUpOmaha.Game
 			{
 				var minStack = Math.Min(Own.Stack, Opp.Stack);
 				if (minStack < MinimumRaise) { return 0; };
-				return  MaxWinPot + AmountToCall;
+				return  MaxWinPot;
 			}
 		}
 
@@ -202,7 +202,7 @@ namespace AIGames.HeadsUpOmaha.Game
 				case "check": break;
 				case "hand": this[player].Hand = instruction.CardsValue; break;
 				case "call": this[player].Call(this.AmountToCall); break;
-				case "raise": this[player].Raise(instruction.Int32Value); break;
+				case "raise": this[player].Raise(instruction.Int32Value, this.AmountToCall); break;
 				case "stack": this[player].SetStack(instruction.Int32Value); break;
 				case "post": this[player].Post(player == this.OnButton ? this.SmallBlind : this.BigBlind); break;
 				case "wins":

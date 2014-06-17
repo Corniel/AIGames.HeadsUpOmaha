@@ -63,10 +63,10 @@ namespace AIGames.HeadsUpOmaha.Game
 		}
 
 		/// <summary>Handle a raise.</summary>
-		public void Raise(int raise)
+		public void Raise(int raise, int ammountToCall)
 		{
-			this.Stack -= raise;
-			this.Pot += raise;
+			this.Stack -= raise + ammountToCall;
+			this.Pot += raise + ammountToCall;
 		}
 
 		/// <summary>Handles a fold.</summary>

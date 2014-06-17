@@ -111,9 +111,9 @@ namespace AIGames.HeadsUpOmaha.Arena
 			Console.ForegroundColor = ConsoleColor.Gray;
 			Console.WriteLine(" {0:0.00}s/game", sw.ElapsedMilliseconds / 1000.0 / (double)this.Games);
 
-			Console.WriteLine("=======================================================");
-			Console.WriteLine("Pos   ELo   Score    Games  Bot");
-			Console.WriteLine("=======================================================");
+			Console.WriteLine("==============================================================");
+			Console.WriteLine("Pos   ELo  Score  Games Duriation  Bot");
+			Console.WriteLine("==============================================================");
 			foreach (var bot in this.Bots)
 			{
 				if (!bot.Info.Inactive)
@@ -141,7 +141,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 					{
 						Console.ForegroundColor = ConsoleColor.White;
 					}
-					Console.WriteLine("{0,3}  {1:0000}  {2,6:0.0%} {3,8} {4,5:0.00}ms/g  {5,-27}", pos++, bot.Rating, bot.Score, bot.Games, bot.Duration, bot.Info.Name + ' ' + bot.Info.Version);
+					Console.WriteLine("{0,3}  {1:0000} {2,6:0.0%} {3,6} {4,6:0.00}s/g  {5,-27}", pos++, bot.Rating, bot.Score, bot.Games, bot.Duration, bot.Info.Name + ' ' + bot.Info.Version);
 					Console.BackgroundColor = ConsoleColor.Black;
 					Console.ForegroundColor = ConsoleColor.Gray;
 				}
@@ -186,8 +186,21 @@ namespace AIGames.HeadsUpOmaha.Arena
 						// upates the blind.
 						state.UpdateBlind(state.Round++);
 
-						if (state.Player1.Stack - state.BigBlind < 0 || state.Player2.Stack - state.BigBlind < 0)
+						if (state.Player1.Stack - state.BigBlind < 0 || state.Player2.Stack - state.BigBlind < 0 || bot1.TimedOut || bot2.TimedOut)
 						{
+							if (bot1.TimedOut)
+							{
+								state.Player2.Stack = state.Chips;
+								state.Player1.Stack = 0;
+								log.ErrorFormat("{0} timed out.", bot1.Bot.FullName);
+							}
+							else if (bot2.TimedOut)
+							{
+								state.Player1.Stack = state.Chips;
+								state.Player2.Stack = 0;
+								log.ErrorFormat("{0} timed out.", bot2.Bot.FullName);
+							}
+
 							var winner = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
 
 							bot1.Writer.WriteLine(@"Engine says: ""{0}""", winner);
@@ -268,8 +281,20 @@ namespace AIGames.HeadsUpOmaha.Arena
 			var step = 1;
 			while (true)
 			{
+				if (step > 1)
+				{
+					bots[playerToMove].UpdateBettting(state);
+				}
+				state[playerToMove].TimeBank.Add(TimeSpan.FromMilliseconds(this.GameSettings.TimePerMove));
+				if (state[playerToMove].TimeBank > TimeSpan.FromMilliseconds(this.GameSettings.TimeBank))
+				{
+					state[playerToMove].TimeBank = TimeSpan.FromMilliseconds(this.GameSettings.TimeBank);
+				}
+				var sw = new Stopwatch();
+				sw.Start();
 				var action = bots[playerToMove].Action(state.Personalize(playerToMove));
-
+				sw.Stop();
+				state[playerToMove].TimeBank = state[playerToMove].TimeBank.Add(-sw.Elapsed);
 
 				switch (action.ActionType)
 				{
@@ -321,32 +346,27 @@ namespace AIGames.HeadsUpOmaha.Arena
 				return RunCall(state, playerToMove);
 			}
 
-			var minStack = Math.Min(state.Player1.Stack, state.Player2.Stack);
-
-			if (raise == 0)
+			if (state.MaxinumRaise == 0)
 			{
-				log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
-				return RunCheck(state, playerToMove);
+				if (state.AmountToCall > 0)
+				{
+					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
+					return RunCall(state, playerToMove);
+				}
+				else
+				{
+					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
+					return RunCheck(state, playerToMove);
+				}
 			}
+
+			var minStack = Math.Min(state.Own.Stack, state.Opp.Stack);
 
 			// If we raise but don't have te money.
 			if (raise > minStack)
 			{
-				if (raise >= state.MinimumRaise)
-				{
-					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to a smaller 'raise'.", this[playerToMove].FullName);
-					return RunRaise(state, playerToMove, Math.Min(state.MaxinumRaise, minStack));
-				}
-				else
-				{
-					if (state.AmountToCall > 0)
-					{
-						log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
-						return RunCall(state, playerToMove);
-					}
-					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
-					return RunCheck(state, playerToMove);
-				}
+				log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to a smaller 'raise'.", this[playerToMove].FullName);
+				return RunRaise(state, playerToMove, Math.Min(state.MaxinumRaise, minStack));
 			}
 			// In fact, we don't raise.
 			if (raise < state.MinimumRaise)
@@ -360,7 +380,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 				return RunRaise(state, playerToMove, state.MaxinumRaise);
 			}
 			
-			state[playerToMove].Raise(raise);
+			state[playerToMove].Raise(raise, state.AmountToCall);
 			return GameAction.Raise(raise);
 		}
 		private GameAction RunFold(GameState state, PlayerType playerToMove)

@@ -5,6 +5,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AIGames.HeadsUpOmaha.Arena.Platform
 {
@@ -12,17 +14,20 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 	public class ConsoleBot : IDisposable
 	{
 		private static readonly ILog log = LogManager.GetLogger(typeof(ConsoleBot));
-		private Stopwatch sw = new Stopwatch();
+		private Stopwatch Timer = new Stopwatch();
 
 		/// <summary>Gets the player.</summary>
 		public PlayerType Player { get; protected set; }
 
 		/// <summary>Start the timer for the bot.</summary>
-		public void Start() { sw.Start(); }
+		public void Start() { Timer.Start(); }
 		/// <summary>Stop the timer for the bot.</summary>
-		public void Stop() { sw.Stop(); }
+		public void Stop() { Timer.Stop(); }
 		/// <summary>Get the elapsed milliseconds.</summary>
-		public long ElapsedMilliseconds { get { return sw.ElapsedMilliseconds; } }
+		public long ElapsedMilliseconds { get { return Timer.ElapsedMilliseconds; } }
+
+		/// <summary>Did the bot time out?</summary>
+		public bool TimedOut { get; protected set; }
 
 		/// <summary>Gets the bot.</summary>
 		public Bot Bot { get; protected set; }
@@ -76,6 +81,17 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			}
 		}
 
+		/// <summary>Updates the table.</summary>
+		public void UpdateBettting(GameState state)
+		{
+			var instructions = new Instruction[]
+			{
+				Instruction.Create(InstructionType.Match, "maxWinPot", state.MaxWinPot),
+				Instruction.Create(InstructionType.Match, "amountToCall", state.AmountToCall),
+			};
+			WriteInstructions(instructions);
+		}
+
 		/// <summary>The action of the the bot.</summary>
 		public GameAction Action(GameState state)
 		{
@@ -84,8 +100,8 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			try
 			{
 				WriteInstructions(instruction);
-
-				return ReadInstruction();
+				var action = ReadInstruction(state[this.Player].TimeBank);
+				return action;
 			}
 			catch (Exception x)
 			{
@@ -151,35 +167,37 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			}
 		}
 
-		protected GameAction ReadInstruction()
+		protected GameAction ReadInstruction(TimeSpan timeout)
 		{
-			try
+			Start();
+			var tokenSource = new CancellationTokenSource();
+			CancellationToken token = tokenSource.Token;
+			var task = Task.Factory.StartNew(() => process.StandardOutput.ReadLine(), token);
+			if (!task.Wait((int)timeout.TotalMilliseconds, token))
 			{
-				Start();
-				var line = process.StandardOutput.ReadLine();
-				Stop();
-
-				// the bat file for java engines seems to output this line first.
-				if ((line ?? string.Empty).Contains(">java "))
-				{
-					line = process.StandardOutput.ReadLine();
-				}
-				GameAction action;
-				if (GameAction.TryParse(line, out action))
-				{
-					this.Writer.WriteLine("{0} {1}", this.Player, action);
-					return action;
-				}
-				log.ErrorFormat("Could not parse action '{0}' for '{1}'.", line, this.Bot.FullName);
-				this.Writer.WriteLine("{0} {1}", this.Player, GameAction.Fold);
+				process.Kill();
+				this.TimedOut = true;
 				return GameAction.Fold;
 			}
-			catch(TimeoutException x)
-			{
-				throw new TimeoutException(this.Bot.FullName, x);
-			}
-		}
+			Stop();
+			var line = task.Result;
 
+			// the bat file for java engines seems to output this line first.
+			if ((line ?? string.Empty).Contains(">java "))
+			{
+				line = process.StandardOutput.ReadLine();
+			}
+			GameAction action;
+			if (GameAction.TryParse(line, out action))
+			{
+				this.Writer.WriteLine("{0} {1}", this.Player, action);
+				return action;
+			}
+			log.ErrorFormat("Could not parse action '{0}' for '{1}'.", line, this.Bot.FullName);
+			this.Writer.WriteLine("{0} {1}", this.Player, GameAction.Fold);
+			return GameAction.Fold;
+		}
+	
 		#endregion
 
 		/// <summary>Creates an console bot.</summary>
