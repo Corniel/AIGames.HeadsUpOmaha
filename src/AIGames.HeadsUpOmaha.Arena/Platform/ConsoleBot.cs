@@ -95,7 +95,9 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		/// <summary>The action of the the bot.</summary>
 		public GameAction Action(GameState state)
 		{
-			var instruction  = Instruction.Create(InstructionType.Action, this.Player.ToString(), (int)state.Own.TimeBank.TotalMilliseconds);
+			var time = (int)state[this.Player].TimeBank.TotalMilliseconds;
+			if (time < 0) { time = 0; }
+			var instruction = Instruction.Create(InstructionType.Action, this.Player.ToString(), time);
 			
 			try
 			{

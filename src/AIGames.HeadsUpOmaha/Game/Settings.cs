@@ -16,6 +16,7 @@ namespace AIGames.HeadsUpOmaha.Game
 			this.TimePerMove = 500;
 			this.HandsPerLevel = 10;
 			this.StartingStack = 1000;
+			this.SmallBlind = 15;
 			this.YourBot = PlayerType.player1;
 		}
 
@@ -30,6 +31,9 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		/// <summary>Amount of chips that each bot starts the tournament with.</summary>
 		public int StartingStack { get; set; }
+
+		/// <summary>The initial size of the small blind.</summary>
+		public int SmallBlind { get; set; }
 
 		/// <summary>The name of your bot during this match.</summary>
 		public PlayerType YourBot { get; set; }
@@ -75,6 +79,11 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		#region I/O operations
 
+		public void Save(DirectoryInfo dir)
+		{
+			Save(new FileInfo(Path.Combine(dir.FullName, "settings.xml")));
+		}
+
 		/// <summary>Saves the settings to a file.</summary>
 		/// <param name="fileName">
 		/// The name of the file.
@@ -107,6 +116,11 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			var serializer = new XmlSerializer(typeof(Settings));
 			serializer.Serialize(stream, this);
+		}
+
+		public static Settings Load(DirectoryInfo dir)
+		{
+			return Load(new FileInfo(Path.Combine(dir.FullName, "settings.xml")));
 		}
 
 		/// <summary>Loads the settings from a file.</summary>

@@ -293,7 +293,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 				var sw = new Stopwatch();
 				sw.Start();
 				var action = bots[playerToMove].Action(state.Personalize(playerToMove));
-				sw.Stop();
+				sw.Stop(); 
+				
 				state[playerToMove].TimeBank = state[playerToMove].TimeBank.Add(-sw.Elapsed);
 
 				switch (action.ActionType)

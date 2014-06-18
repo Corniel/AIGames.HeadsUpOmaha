@@ -132,6 +132,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			get
 			{
+				if (this.AmountToCall == SmallBlind) { return 0; }
 				var minStack = Math.Min(Own.Stack, Opp.Stack);
 				if (minStack < MinimumRaise) { return 0; };
 				return  MaxWinPot;
@@ -139,13 +140,14 @@ namespace AIGames.HeadsUpOmaha.Game
 		}
 
 		/// <summary>Returns true if pre flop (empty table), otherwise false.</summary>
-		public bool IsPreFlop { get { return this.Table.Count == 0; } }
+		public bool IsPreFlop { get { return this.Table == null || this.Table.Count == 0; } }
 
 		/// <summary>Updates the state based on the settings.</summary>
 		public void Update(Settings settings)
 		{
 			this.YourBot = settings.YourBot;
 			this.HandsPerLevel = settings.HandsPerLevel;
+			this.SmallBlind = settings.SmallBlind;
 			this.Player1.Update(settings);
 			this.Player2.Update(settings);
 		}

@@ -1,11 +1,12 @@
-﻿using System.Configuration;
+﻿using AIGames.HeadsUpOmaha.Game;
+using System.Configuration;
 using System.IO;
 
 namespace AIGames.HeadsUpOmaha.Arena
 {
-	class Program
+	public class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			var dir = new DirectoryInfo(ConfigurationManager.AppSettings["Bots.Dir"]);
             if (args != null && args.Length > 0)
@@ -15,6 +16,15 @@ namespace AIGames.HeadsUpOmaha.Arena
 
             var arena = new CompetitionRunner(dir);
 
+			try
+			{
+				arena.GameSettings = Settings.Load(dir);
+			}
+			// No valid settings, so write them down.
+			catch
+			{
+				arena.GameSettings.Save(dir);
+			}
             try
             {
                 arena.Bots = Bots.Load(dir);
