@@ -2,11 +2,6 @@
 using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
 using AIGames.HeadsUpOmaha.Platform;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.KingKong
@@ -23,27 +18,27 @@ namespace AIGames.HeadsUpOmaha.KingKong
 
 		public GameAction Action(GameState state)
 		{
-			var change = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 1000);
+			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 1000);
 
 			// Only play doable small blinds.
-			if (state.IsPreFlop && change < 0.4 && state.AmountToCall == state.SmallBlind)
+			if (state.IsPreFlop && pWin < 0.4 && state.AmountToCall == state.SmallBlind)
 			{
 				return GameAction.Fold;
 			}
 			// Don't play bad hands on pre flop if we have to call.
-			if (state.IsPreFlop && change < 0.3 && state.AmountToCall >= state.BigBlind)
+			if (state.IsPreFlop && pWin < 0.3 && state.AmountToCall >= state.BigBlind)
 			{
 				return GameAction.Fold;
 			}
-			if (change > 0.55 && state.AmountToCall == 0)
+			if (pWin > 0.55 && state.AmountToCall == 0)
 			{
 				return GameAction.Raise(state.MaxinumRaise);
 			}
-			if (change > 0.7)
+			if (pWin > 0.7)
 			{
 				return GameAction.Raise(state.MaxinumRaise);
 			}
-			if (change < 0.35 && state.AmountToCall > 0)
+			if (pWin < 0.35 && state.AmountToCall > 0)
 			{
 				return GameAction.Fold;
 			}
