@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using Troschuetz.Random.Generators;
@@ -68,14 +69,14 @@ namespace AIGames.HeadsUpOmaha.Arena
 			UpdateScreen();
 			this.Games++;
 
-			Bot[] pair = Bots.CreatePair(this.Rnd, 12.0);
+			Bot[] pair = Bots.CreatePair(this.Rnd, ArenaConfig.KStabalizer * 1.1);
 			this.Player1 = pair[0];
 			this.Player2 = pair[1];
 
 			var result = PlayMatch(this.Player1, this.Player2);
 			CalculateNewElos(this.Player1, this.Player2, result);
 
-			Bots.Save(new DirectoryInfo(ConfigurationManager.AppSettings["Bots.Dir"]));
+			Bots.Save(ArenaConfig.BotsDirectory);
 
 			return true;
 		}
@@ -203,8 +204,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 							var winner = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
 
-							bot1.Writer.WriteLine(@"Engine says: ""{0}""", winner);
-							bot2.Writer.WriteLine(@"Engine says: ""{0}""", winner);
+							bot1.WriteLine(@"Engine says: ""{0}""", winner);
+							bot2.WriteLine(@"Engine says: ""{0}""", winner);
 							bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
 							bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
 							return winner;
@@ -216,7 +217,10 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		private static StreamWriter CreateWriter(Bot player, Bot opponent)
 		{
-			var location = new FileInfo(Path.Combine(ConfigurationManager.AppSettings["Games.Dir"], player.FullName, string.Format("{0:yyyy-MM-dd_hh_mm_ss_f}.{1}.log", DateTime.Now, opponent.FullName)));
+			var dir = ConfigurationManager.AppSettings["Games.Dir"];
+			if (string.IsNullOrEmpty(dir)) { return null; }
+
+			var location = new FileInfo(Path.Combine(dir, player.FullName, string.Format("{0:yyyy-MM-dd_hh_mm_ss_f}.{1}.log", DateTime.Now, opponent.FullName)));
 			if (!location.Directory.Exists)
 			{
 				location.Directory.Create();
@@ -457,8 +461,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 			player1.Rating = player1.Rating.GetNew(elo2, score1, k1);
 			player2.Rating = player2.Rating.GetNew(elo1, score2, k2);
 
-			player1.K = NewK(k1);
-			player2.K = NewK(k2);
+			player1.K = NewK(k1, k2);
+			player2.K = NewK(k2, k1);
 		}
 
 		/// <summary>Scans the directory.</summary>
@@ -491,9 +495,13 @@ namespace AIGames.HeadsUpOmaha.Arena
 			return active > 1;
 		}
 
-		public static double NewK(double kOwn)
+		public static double NewK(double kOwn, double KOther)
 		{
-			return Math.Max(12.0, kOwn * 0.98);
+			if (kOwn < KOther)
+			{
+				return kOwn / ArenaConfig.KStabalizer;
+			}
+			return Math.Max(ArenaConfig.KStable, kOwn * ArenaConfig.KStabalizer);
 		}
 	}
 }

@@ -11,8 +11,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 	{
 		public Bot()
 		{
-            Rating = 1400.0;
-			K = 32.0;
+            Rating = ArenaConfig.EloInitial;
+			K = ArenaConfig.KInitial;
 		}
 
 		public string FullName

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArenaConfig.cs" />
     <Compile Include="Bot.cs" />
     <Compile Include="BotInfo.cs" />
     <Compile Include="Bots.cs" />

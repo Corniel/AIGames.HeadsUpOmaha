@@ -33,7 +33,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		public Bot Bot { get; protected set; }
 
 		/// <summary>Gets the writer.</summary>
-		public StreamWriter Writer { get;  protected set; }
+		protected StreamWriter Writer { get; set; }
 
 		/// <summary>Applies the settings to the console bot.</summary>
 		public void ApplySettings(Settings settings)
@@ -154,6 +154,23 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			return this.Player + ": " + this.Bot.DebugToString();
 		}
 
+		/// <summary>Writes a line to the logfile if the writer is set.</summary>
+		public void WriteLine(string format, params object[] args)
+		{
+			if (this.Writer != null)
+			{
+				this.Writer.WriteLine(format, args);
+			}
+		}
+		/// <summary>Writes a line to the logfile if the writer is set.</summary>
+		public void WriteLine(object obj)
+		{
+			if (this.Writer != null)
+			{
+				this.Writer.WriteLine(obj);
+			}
+		}
+
 		#region Process
 
 		/// <summary>The process required to run the bot.</summary>
@@ -164,7 +181,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		{
 			foreach (var instruction in instructions)
 			{
-				this.Writer.WriteLine(instruction);
+				WriteLine(instruction);
 				process.StandardInput.WriteLine(instruction);
 			}
 		}
@@ -192,11 +209,11 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			GameAction action;
 			if (GameAction.TryParse(line, out action))
 			{
-				this.Writer.WriteLine("{0} {1}", this.Player, action);
+				WriteLine("{0} {1}", this.Player, action);
 				return action;
 			}
 			log.ErrorFormat("Could not parse action '{0}' for '{1}'.", line, this.Bot.FullName);
-			this.Writer.WriteLine("{0} {1}", this.Player, GameAction.Fold);
+			WriteLine("{0} {1}", this.Player, GameAction.Fold);
 			return GameAction.Fold;
 		}
 	
@@ -210,7 +227,6 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		{
 			if (bot == null) { throw new ArgumentNullException("bot"); }
 			if (location == null) { throw new ArgumentNullException("location"); }
-			if (writer == null) { throw new ArgumentNullException("writer"); }
 
 			var exe = location.GetFiles("run.bat").FirstOrDefault();
 
