@@ -55,7 +55,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 		public void Deploy_PlayBetterHandsOnly_Successful()
 		{
 			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.PlayBetterHandsOnly"));
-			Deployer.Run(collectDir, "PlayBetterHandsOnly", "0002", IsDebugDeploy);
+			Deployer.Run(collectDir, "PlayBetterHandsOnly", "0003", IsDebugDeploy);
 		}
 		[Test]
 		public void Deploy_StarterBot_Successful()
