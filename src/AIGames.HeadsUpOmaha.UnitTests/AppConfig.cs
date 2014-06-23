@@ -12,47 +12,9 @@ namespace AIGames.HeadsUpOmaha.UnitTests
 				return new DirectoryInfo(ConfigurationManager.AppSettings["App.Dir"]);
 			}
 		}
-		public static DirectoryInfo CoreDir
-		{
-			get
-			{
-				return new DirectoryInfo(ConfigurationManager.AppSettings["Core.Dir"]);
-			}
-		}
-		public static DirectoryInfo DeployDir
-		{
-			get
-			{
-				return new DirectoryInfo(Path.Combine(AppDir.FullName, "..", "deploy"));
-			}
-		}
-
-		public static DirectoryInfo HeadsUpOmahaDir
-		{
-			get
-			{
-				return new DirectoryInfo(Path.Combine(CoreDir.FullName, "AIGames.HeadsUpOmaha"));
-			}
-		}
-
-		public static DirectoryInfo BotDir
-		{
-			get
-			{
-				return new DirectoryInfo(ConfigurationManager.AppSettings["Bot.Dir"]);
-			}
-		}
-		public static DirectoryInfo TestDir
-		{
-			get
-			{
-				return new DirectoryInfo(Path.Combine(AppDir.FullName, ConfigurationManager.AppSettings["Test.Dir"]));
-			}
-		}
-
 		public static FileInfo GetTestFile(string filename)
 		{
-			return new FileInfo(Path.Combine(AppConfig.TestDir.FullName, filename));
+			return new FileInfo(Path.Combine(ConfigurationManager.AppSettings["Test.Dir"], filename));
 		}
 	}
 }
