@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -131,6 +132,20 @@ namespace AIGames.HeadsUpOmaha.Platform
 		/// </remarks>
 		public PlayerType PlayerTypeValue { get { return (PlayerType)token2; } }
 
+		/// <summary>Returns true if an player[12] finished 1 instruction, otherwise false.</summary>
+		/// <remarks>
+		/// Only check first, otherwise, we would send final result two times.
+		/// </remarks>
+		public bool IsFinished
+		{
+			get
+			{
+				return 
+					this.InstructionType == Platform.InstructionType.Output &&
+					Regex.IsMatch(token2.ToString(), "player[12] finished 1", RegexOptions.IgnoreCase);
+			}
+		}
+
 		private string token0;
 		private string token1;
 		private object token2;
@@ -216,6 +231,20 @@ namespace AIGames.HeadsUpOmaha.Platform
 		{
 			var line = String.Format("{0} {1} {2}", type,  action, value);
 			return Instruction.Parse(line);
+		}
+
+		/// <summary>Creates a player1|2 finished 1|2 instruction.</summary>
+		/// <remarks>
+		/// This is logged as engines says instruction unfortunatly.
+		/// </remarks>
+		public static Instruction CreateFinished(PlayerType player, int rank)
+		{
+			return new Instruction()
+			{
+				token0 = "Engine",
+				token1 = "says:",
+				token2 = string.Format("{0} finished {1}", '"', player, rank)
+			};
 		}
 
 		private static int ParseInt32(string token2)

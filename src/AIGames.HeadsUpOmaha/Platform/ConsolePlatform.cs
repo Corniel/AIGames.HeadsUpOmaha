@@ -73,8 +73,15 @@ namespace AIGames.HeadsUpOmaha.Platform
 						Writer.WriteLine(action);
 						break;
 
-					case InstructionType.None:
 					case InstructionType.Output:
+						if (instruction.IsFinished)
+						{
+							match.Finalize(instruction);
+							bot.FinalResult(match);
+						}
+						break;
+
+					case InstructionType.None:
 					default:
 						break;
 				}

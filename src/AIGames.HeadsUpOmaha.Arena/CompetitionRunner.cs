@@ -1,5 +1,6 @@
 ﻿using AIGames.HeadsUpOmaha.Arena.Platform;
 using AIGames.HeadsUpOmaha.Game;
+using AIGames.HeadsUpOmaha.Platform;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -204,8 +205,14 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 							var winner = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
 
-							bot1.WriteLine(@"Engine says: ""{0}""", winner);
-							bot2.WriteLine(@"Engine says: ""{0}""", winner);
+							var first = Instruction.CreateFinished(winner.GetFirst(), 1);
+							var second = Instruction.CreateFinished(winner.GetSecond(), 2);
+
+							bot1.WriteLine(second);
+							bot2.WriteLine(second);
+							bot1.WriteLine(first);
+							bot2.WriteLine(first);
+
 							bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
 							bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
 							return winner;

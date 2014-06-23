@@ -20,5 +20,6 @@ namespace AIGames.HeadsUpOmaha.AllIn
 		}
 		public void Reaction(GameState state, GameAction reaction) { }
 		public void Result(GameState state) { }
+		public void FinalResult(GameState state) { }
 	}
 }

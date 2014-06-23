@@ -24,5 +24,6 @@ namespace AIGames.HeadsUpOmaha.Logger
 		{
 			log.InfoFormat("Result[{0}]: {1}", state.Round, state.Result);
 		}
+		public void FinalResult(GameState state) { }
 	}
 }

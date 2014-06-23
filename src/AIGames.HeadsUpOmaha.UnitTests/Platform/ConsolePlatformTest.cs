@@ -40,7 +40,6 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 
 			var actions = sb.ToString().Split(new string[] { "\r\n" }, StringSplitOptions.None);
 		}
-
 	}
 
 	public class ConsolePlatformMock : ConsolePlatform
@@ -56,7 +55,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 			return GameAction.Fold;
 		}
 		public void Reaction(GameState state, GameAction reaction) { }
-
 		public void Result(GameState state) { }
+		public void FinalResult(GameState state) { }
 	}
 }

@@ -30,5 +30,6 @@ namespace AIGames.HeadsUpOmaha.StarterBot
 		}
 
 		public void Result(GameState state) { }
+		public void FinalResult(GameState state) { }
 	}
 }

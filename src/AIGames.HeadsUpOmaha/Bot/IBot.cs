@@ -20,7 +20,10 @@ namespace AIGames.HeadsUpOmaha.Bot
 		/// </param>
 		void Reaction(GameState state, GameAction reaction);
 
-		/// <summary>The state when a result (win, loss, draw) made.</summary>
+		/// <summary>The state when a result (win, loss, draw) was made.</summary>
 		void Result(GameState state);
+
+		/// <summary>The state when a final result (first, second) was made.</summary>
+		void FinalResult(GameState state);
 	}
 }

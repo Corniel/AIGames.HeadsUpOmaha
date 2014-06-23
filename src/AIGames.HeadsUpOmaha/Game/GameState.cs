@@ -221,6 +221,23 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 		}
 
+		/// <summary>Updates the state based on a player instruction.</summary>
+		public void Finalize(Instruction instruction)
+		{
+			if (instruction.ToString().Contains("player1"))
+			{
+				this.Result = RoundResult.Player1Wins;
+				this.Player1.Stack = this.Chips;
+				this.Player2.Stack = 0;
+			}
+			else
+			{
+				this.Result = RoundResult.Player2Wins;
+				this.Player2.Stack = this.Chips;
+				this.Player1.Stack = 0;
+			}
+		}
+
 		/// <summary>Starts a new round.</summary>
 		/// <param name="rnd">
 		/// The randomizer to shuffle the deck.
