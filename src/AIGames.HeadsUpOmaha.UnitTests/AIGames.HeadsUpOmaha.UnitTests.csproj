@@ -91,6 +91,10 @@
       <Project>{dff6d870-749a-4d77-8558-fee9f0fe8cfd}</Project>
       <Name>AIGames.HeadsUpOmaha.BluntAxe</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AIGames.HeadsUpOmaha.BotDeployment\AIGames.HeadsUpOmaha.BotDeployment.csproj">
+      <Project>{7f515ffe-d7a2-4dfc-97b0-fa6ec778e0fd}</Project>
+      <Name>AIGames.HeadsUpOmaha.BotDeployment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AIGames.HeadsUpOmaha.Rnd\AIGames.HeadsUpOmaha.Rnd.csproj">
       <Project>{b2663881-79b5-4489-9d18-0f2f13758c04}</Project>
       <Name>AIGames.HeadsUpOmaha.Rnd</Name>

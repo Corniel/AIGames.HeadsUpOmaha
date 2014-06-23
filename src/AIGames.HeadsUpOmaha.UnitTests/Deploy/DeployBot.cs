@@ -1,201 +1,73 @@
-﻿using Microsoft.CSharp;
+﻿using AIGames.HeadsUpOmaha.BotDeployment;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Reflection;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 {
 	[TestClass]
 	public class DeployBot
 	{
-		public static readonly Assembly[] CompileAssemblies = new Assembly[]
-		{
-			typeof(System.Int32).Assembly,
-			typeof(System.Linq.Enumerable).Assembly,
-			typeof(System.Xml.XmlNode).Assembly,
-			typeof(System.Text.RegularExpressions.Regex).Assembly,
-			#if DEBUG
-			typeof(System.Configuration.ConfigurationManager).Assembly,
-			typeof(log4net.ILog).Assembly,
-			#endif
-		};
+#if DEBUG
+		private const bool IsDebugDeploy = true;
+#else
+		private const bool IsDebugDeploy = false;
+#endif
 
 		[TestMethod]
 		public void Deploy_AllIn_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "AllIn"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.AllIn"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.AllIn"));
+			Deployer.Run(collectDir, "AllIn", "0003", IsDebugDeploy);
 		}
 		[TestMethod]
 		public void Deploy_BluntAxe_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "BluntAxe"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.BluntAxe"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.BluntAxe"));
+			Deployer.Run(collectDir, "BluntAxe", "0012", IsDebugDeploy);
 		}
 		[TestMethod]
 		public void Deploy_Checkers_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "Checkers"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Checkers"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.Checkers"));
+			Deployer.Run(collectDir, "Checkers", "0002", IsDebugDeploy);
 		}
 		[TestMethod]
 		public void Deploy_Chicken_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "Chicken"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Chicken"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.Chicken"));
+			Deployer.Run(collectDir, "Chicken", "0003", IsDebugDeploy);
 		}
 		[TestMethod]
 		public void Deploy_KingKong_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "KingKong"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.KingKong"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.KingKong"));
+			Deployer.Run(collectDir, "KingKong", "0013", IsDebugDeploy);
 		}
 #if DEBUG
 		[TestMethod]
 		public void Deploy_Log4netBot_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "Log4netBot"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Logger"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.Logger"));
+			Deployer.Run(collectDir, "Log4netBot", "", IsDebugDeploy);
 		}
 #endif
 		[TestMethod]
 		public void Deploy_PlayBetterHandsOnly_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "PlayBetterHandsOnly"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.PlayBetterHandsOnly"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.PlayBetterHandsOnly"));
+			Deployer.Run(collectDir, "PlayBetterHandsOnly", "0002", IsDebugDeploy);
 		}
 		[TestMethod]
 		public void Deploy_StarterBot_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "StarterBot"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.StarterBot"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.StarterBot"));
+			Deployer.Run(collectDir, "StarterBot", "0001", IsDebugDeploy);
 		}
 		[TestMethod]
 		public void Deploy_RandomBot_Successful()
 		{
-			var deployDir = new DirectoryInfo(Path.Combine(AppConfig.DeployDir.FullName, "RandomBot"));
-			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.CoreDir.FullName, "AIGames.HeadsUpOmaha.Rnd"));
-			Deploy(collectDir, deployDir);
-			Zip(deployDir);
-			Compile(deployDir);
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.Rnd"));
+			Deployer.Run(collectDir, "RandomBot", "0002", IsDebugDeploy);
 		}
-
-		public static void Zip(DirectoryInfo deployDir)
-		{
-			var destination = new FileInfo(Path.Combine(AppConfig.CoreDir.FullName, @"..\bots\zips", deployDir.Name + ".zip"));
-
-			if (destination.Exists)
-			{
-				destination.Delete();
-			}
-			ZipFile.CreateFromDirectory(deployDir.FullName, destination.FullName);
-		}
-
-		public static void Compile(DirectoryInfo deployDir)
-		{
-			using (var provider = new CSharpCodeProvider())
-			{
-				var options = new CompilerParameters();
-				options.GenerateExecutable = true;
-#if DEBUG
-				options.IncludeDebugInformation = true;
-#endif
-				foreach (var assembly in CompileAssemblies)
-				{
-					options.ReferencedAssemblies.Add(assembly.Location);
-				}
-
-				options.OutputAssembly = Path.Combine(AppConfig.CoreDir.FullName, @"..\bots\bin", deployDir.Name.Substring(deployDir.Name.LastIndexOf('.') + 1) + ".exe");
-
-				var csFiles = deployDir.GetFiles("*.cs").Select(f => f.FullName).ToArray();
-
-				var exe = provider.CompileAssemblyFromFile(options, csFiles);
-
-				if (exe.Errors.HasErrors)
-				{
-					foreach (var error in exe.Errors.OfType<CompilerError>().Where(e => !e.IsWarning))
-					{
-						Console.WriteLine(error);
-					}
-					Assert.Fail("Compiled with errors.");
-				}
-			}
-		}
-
-		public static void Deploy(DirectoryInfo collectDir, DirectoryInfo deployDir)
-		{
-			if (!deployDir.Exists)
-			{
-				deployDir.Create();
-			}
-			else
-			{
-				foreach (var file in deployDir.GetFiles("*.cs"))
-				{
-					file.Delete();
-				}
-			}
-
-			foreach (var file in Collect(collectDir))
-			{
-				file.CopyTo(Path.Combine(deployDir.FullName, file.Name));
-			}
-			foreach (var file in Collect(AppConfig.HeadsUpOmahaDir))
-			{
-				file.CopyTo(Path.Combine(deployDir.FullName, file.Name));
-			}
-		}
-
-		public static IEnumerable<FileInfo> Collect(DirectoryInfo dir)
-		{
-			foreach (var child in dir.GetDirectories().Where(d => !ExcludeDirs.Contains(d.Name)))
-			{
-				foreach (var file in Collect(child))
-				{
-					yield return file;
-				}
-			}
-			foreach (var file in dir.GetFiles("*.cs"))
-			{
-#if DEBUG
-				if (!file.Name.EndsWith(".Release.cs") && file.Name != "AssemblyInfo.cs")
-#else
-				if (!file.Name.EndsWith(".Debug.cs") && file.Name != "AssemblyInfo.cs")
-#endif
-				{
-					yield return file;
-				}
-			}
-		}
-		private static readonly string[] ExcludeDirs = new string[] { "bin", "obj" };
 	}
 }
