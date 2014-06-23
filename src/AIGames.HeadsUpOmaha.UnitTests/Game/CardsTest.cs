@@ -1,14 +1,14 @@
 ﻿using AIGames.HeadsUpOmaha.Game;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Game
 {
-	[TestClass]
+	[TestFixture]
 	public class CardsTest
 	{
 		public static readonly Cards TestInstance = Cards.Parse("[Tc,8d,Ah,7s,8s]");
 
-		[TestMethod]
+		[Test]
 		public void ToString_f_AreEqual()
 		{
 			var act = TestInstance.ToString("f");
@@ -17,7 +17,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Copy_TestInstance_AreEqualNotIdentical()
 		{
 			var exp = TestInstance;

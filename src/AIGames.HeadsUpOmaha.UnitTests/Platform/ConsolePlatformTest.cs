@@ -2,17 +2,17 @@
 using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
 using AIGames.HeadsUpOmaha.Platform;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.IO;
 using System.Text;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 {
-	[TestClass]
+	[TestFixture]
 	public class ConsolePlatformTest
 	{
-		[TestMethod]
+		[Test]
 		public void DoRun_Input001Txt_AreEqual()
 		{
 			var sb = new StringBuilder();
@@ -27,7 +27,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 
 			Assert.AreEqual(58, actions.Length);
 		}
-		[TestMethod]
+		[Test]
 		public void DoRun_Input003Txt_AreEqual()
 		{
 			var sb = new StringBuilder();

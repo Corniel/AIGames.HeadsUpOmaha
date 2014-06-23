@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace AIGames.HeadsUpOmaha.UnitTests
 {
-	[TestClass]
+	[TestFixture]
 	public class BitsTest
 	{
-		[TestMethod]
+		[Test]
 		public void Count_Ushort_AreEqual()
 		{
 			for (ulong i = 0; i < Bits.Flag[14]; i++)

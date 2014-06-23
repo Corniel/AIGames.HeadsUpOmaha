@@ -1,6 +1,6 @@
 ﻿using AIGames.HeadsUpOmaha.Analysis;
 using AIGames.HeadsUpOmaha.Game;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -8,10 +8,10 @@ using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 {
-	[TestClass]
+	[TestFixture]
 	public class PokerHandEvaluatorTest
 	{
-		[TestMethod]
+		[Test]
 		public void Calculate_SpeedTable0_IsDoable()
 		{
 			var sw = new Stopwatch();
@@ -31,7 +31,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 
 			Console.WriteLine("Avarage: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
 		}
-		[TestMethod]
+		[Test]
 		public void Calculate_SpeedTable3_IsDoable()
 		{
 			var sw = new Stopwatch();
@@ -51,7 +51,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 
 			Console.WriteLine("Avarage: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
 		}
-		[TestMethod]
+		[Test]
 		public void Calculate_SpeedTable4_IsDoable()
 		{
 			var sw = new Stopwatch();
@@ -71,7 +71,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 
 			Console.WriteLine("Avarage: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
 		}
-		[TestMethod]
+		[Test]
 		public void Calculate_SpeedTable5_IsDoable()
 		{
 			var sw = new Stopwatch();
@@ -92,7 +92,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Console.WriteLine("Avarage: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Calculate_2d2c2h2sTable0_AreEqual()
 		{
 			var rnd = new MT19937Generator(17);
@@ -106,7 +106,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(0.09, ch, 0.01);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Calculate_2d3c5h6sTable0_AreEqual()
 		{
 			var rnd = new MT19937Generator(17);
@@ -120,7 +120,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(0.357, ch, 0.01);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Calculate_Tc9c8dQhTable0_AreEqual()
 		{
 			var rnd = new MT19937Generator(17);
@@ -134,7 +134,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(0.536, ch, 0.01);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Calculate_AcAdKCKdTable0_AreEqual()
 		{
 			var rnd = new MT19937Generator(17);
@@ -148,7 +148,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(0.706, ch, 0.01);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Calculate_Tc9c8dQhTable3_AreEqual()
 		{
 			var rnd = new MT19937Generator(17);
@@ -162,7 +162,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(0.309, ch, 0.01);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Calculate_Tc9c8dQhTable4_AreEqual()
 		{
 			var rnd = new MT19937Generator(17);
@@ -175,7 +175,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 
 			Assert.AreEqual(0.096, ch, 0.01);
 		}
-		[TestMethod]
+		[Test]
 		public void Calculate_Tc9c8dQhTable5_AreEqual()
 		{
 			var rnd = new MT19937Generator(17);

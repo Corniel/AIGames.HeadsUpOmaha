@@ -1,6 +1,6 @@
 ﻿using AIGames.HeadsUpOmaha.Analysis;
 using AIGames.HeadsUpOmaha.Game;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,10 +9,10 @@ using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 {
-	[TestClass]
+	[TestFixture]
 	public class UInt64CardsTest
 	{
-		[TestMethod]
+		[Test]
 		public void GetScore_StraightFlush_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[7c,Jc,8c,Tc,9c]");
@@ -23,7 +23,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.StraightFlush, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_FourOfAKind_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[Ac,6c,6d,6h,6s]");
@@ -34,7 +34,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.FourOfAKind, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_FullHouse_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[5s,8d,8h,5d,5h]");
@@ -45,7 +45,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.FullHouse, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_Flush_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[3s,As,Ts,6s,Qs]");
@@ -56,7 +56,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.Flush, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_Straight_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[5c,7s,6h,9s,8d]");
@@ -67,7 +67,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.Straight, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_StraightWithAce_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[Ac,2d,3c,5h,4d]");
@@ -78,7 +78,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.Straight, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_ThreeOfAKind_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[3c,Qs,2s,3h,3d]");
@@ -89,7 +89,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.ThreeOfAKind, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_TwoPair_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[9d,Kc,9h,Ks,Jh]");
@@ -100,7 +100,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.TwoPair, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_OnePair_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[7h,2d,6c,2h,Qh]");
@@ -111,7 +111,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.OnePair, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_HighCard_AreEqual()
 		{
 			var hand = UInt64Cards.Parse("[Th,Kh,2c,Qc,Ah]");
@@ -122,7 +122,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Assert.AreEqual(PokerHandType.HighCard, act.ScoreType);
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetScore_Speed_IsDoable()
 		{
 			var sw0 = new Stopwatch();
@@ -175,7 +175,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			Console.WriteLine("Avarage: {0:#,##0.00} Ticks/hand new", (double)sw0.ElapsedTicks / (double)runs);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Generate_Permuations_Successful()
 		{
 			var p4_2 = new List<uint>();

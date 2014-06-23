@@ -1,15 +1,15 @@
 ﻿using AIGames.HeadsUpOmaha.Platform;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 {
-	[TestClass]
+	[TestFixture]
 	public class InstructionTest
 	{
-		[TestMethod]
+		[Test]
 		public void Parse_Input001Txt_AreEqual()
 		{
 			var instruction = new List<Instruction>();

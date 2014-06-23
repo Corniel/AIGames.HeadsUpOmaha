@@ -1,19 +1,16 @@
-﻿using System;
-using System.Linq;
-using System.Text;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Linq;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Game
 {
-	/// <summary>
-	/// Summary description for StartHandGenerator
-	/// </summary>
-	[TestClass]
+	/// <summary>Summary description for StartHandGenerator</summary>
+	[TestFixture]
 	public class StartHandGenerator
 	{
-		[TestMethod, Ignore]
+		[Test, Ignore]
 		public void Generate_()
 		{
 			//var h1 = "AKQJT98765432";

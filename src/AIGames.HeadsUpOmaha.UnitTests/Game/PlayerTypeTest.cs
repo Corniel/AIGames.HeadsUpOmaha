@@ -1,12 +1,12 @@
 ﻿using AIGames.HeadsUpOmaha.Game;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Game
 {
-	[TestClass]
+	[TestFixture]
 	public class PlayerTypeTest
 	{
-		[TestMethod]
+		[Test]
 		public void Other_Player1_IsPlayer2()
 		{
 			var act = PlayerType.player1.Other();
@@ -15,7 +15,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(act, exp);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Other_Player2_IsPlayer1()
 		{
 			var act = PlayerType.player2.Other();

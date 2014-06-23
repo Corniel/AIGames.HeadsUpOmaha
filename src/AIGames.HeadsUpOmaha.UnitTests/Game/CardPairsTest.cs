@@ -1,12 +1,12 @@
 ﻿using AIGames.HeadsUpOmaha.Game;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Game
 {
-	[TestClass]
+	[TestFixture]
 	public class CardPairsTest
 	{
-		[TestMethod]
+		[Test]
 		public void Best_Empty_AreEqual()
 		{
 			var pairs = CardPairs.Create(Cards.Empty);
@@ -17,7 +17,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Best_56KQ_AreEqual()
 		{
 			var cards = Cards.Parse("[5c,6c,Kh,Qc]");
@@ -29,7 +29,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Best_56KK_AreEqual()
 		{
 			var cards = Cards.Parse("[5c,6c,Kh,Kc]");
@@ -41,7 +41,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Second_56KQ_AreEqual()
 		{
 			var cards = Cards.Parse("[5c,6c,Kh,Qc]");
@@ -53,7 +53,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Second_56KK_AreEqual()
 		{
 			var cards = Cards.Parse("[5c,6c,Kh,Kc]");

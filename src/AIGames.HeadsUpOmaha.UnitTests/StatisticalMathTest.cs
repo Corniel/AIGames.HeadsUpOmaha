@@ -1,13 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AIGames.HeadsUpOmaha.Game;
+﻿using AIGames.HeadsUpOmaha.Game;
+using NUnit.Framework;
 
 namespace AIGames.HeadsUpOmaha.UnitTests
 {
-	[TestClass]
+	[TestFixture]
 	public class StatisticalMathTest
 	{
-		[TestMethod]
+		[Test]
 		public void Permutation_5Over2Equals5Over3_AreEqual()
 		{
 			var act = StatisticalMath.Permutation(5, 2);
@@ -16,7 +15,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Permutation_52Over5_AreEqual()
 		{
 			var act = StatisticalMath.Permutation(52, 5);

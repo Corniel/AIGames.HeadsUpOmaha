@@ -1,28 +1,28 @@
 ﻿using AIGames.HeadsUpOmaha.Game;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Game
 {
-	[TestClass]
+	[TestFixture]
 	public class GameActionTest
 	{
 		public static readonly GameAction TestInstance = GameAction.Raise(17);
 
-		[TestMethod]
+		[Test]
 		public void Equals_OtherInstance_IsTrue()
 		{
 			object other = GameAction.Raise(17);
 			Assert.IsTrue(TestInstance.Equals(other));
 		}
 
-		[TestMethod]
+		[Test]
 		public void Equals_OtherInstance_IsFalse()
 		{
 			object other = GameAction.Raise(16);
 			Assert.IsFalse(TestInstance.Equals(other));
 		}
 
-		[TestMethod]
+		[Test]
 		public void GetHashCode_None_AreEqual()
 		{
 			var act = TestInstance.GetHashCode();
@@ -30,7 +30,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Parse_Raise17_AreEqual()
 		{
 			var act = GameAction.Parse("raise 17");
@@ -38,7 +38,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Parse_Check_AreEqual()
 		{
 			var act = GameAction.Parse("Check");
@@ -46,7 +46,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Parse_Check0_AreEqual()
 		{
 			var act = GameAction.Parse("check 0");
@@ -54,7 +54,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Parse_StringEmpty_AreEqual()
 		{
 			var act = GameAction.Parse("");

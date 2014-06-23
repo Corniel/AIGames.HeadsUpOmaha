@@ -1,14 +1,12 @@
 ﻿using AIGames.HeadsUpOmaha.Game;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Linq;
+using NUnit.Framework;
 
 namespace AIGames.HeadsUpOmaha.UnitTests.Game
 {
-	[TestClass]
+	[TestFixture]
 	public class CardTest
 	{
-		[TestMethod]
+		[Test]
 		public void Empty_None_StringEmpty()
 		{
 			var act = Card.Empty.ToString();
@@ -17,7 +15,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			Assert.AreEqual(exp, act.ToString());
 		}
 
-		[TestMethod]
+		[Test]
 		public void Create_H12Hearts_QueenOfHearts()
 		{
 			var act = Card.Create(12, CardSuit.Hearts);
@@ -27,7 +25,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void Parse_Td_10Diamond()
 		{
 			var act = Card.Parse("Td");
@@ -35,7 +33,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			IsCard(10, CardSuit.Diamonds, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void Parse_As_AceOfSpades()
 		{
 			var act = Card.Parse("As");
@@ -43,7 +41,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			IsCard(14, CardSuit.Spades, act);
 		}
 
-		[TestMethod]
+		[Test]
 		public void ParseSet_5Cards_AreEqual()
 		{
 			var act = Cards.Parse("[7s,Js,3h,5d,9s]").ToArray();
