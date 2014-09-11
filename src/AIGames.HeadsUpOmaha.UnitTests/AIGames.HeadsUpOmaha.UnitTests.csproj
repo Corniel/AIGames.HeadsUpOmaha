@@ -107,7 +107,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.config.develop" />
+    <None Include="App.config.develop">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

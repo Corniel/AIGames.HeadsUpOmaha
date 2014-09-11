@@ -87,7 +87,6 @@ namespace AIGames.HeadsUpOmaha.Arena
 			this.Add(bot);
 			return bot;
 		}
-
 		
         #region Load & Save
 
@@ -104,7 +103,7 @@ namespace AIGames.HeadsUpOmaha.Arena
         }
         public void Save(Stream stream)
         {
-			this.Sort();
+			this.Sort(ArenaConfig.SortType);
             var serializer = new XmlSerializer(typeof(Bots));
             serializer.Serialize(stream, this);
         }
@@ -126,6 +125,11 @@ namespace AIGames.HeadsUpOmaha.Arena
             var data = (Bots)serializer.Deserialize(stream);
             return data;
         }
+
+		public void Sort(BotCompareType tp)
+		{
+			this.Sort(new BotComparer(tp));
+		}
 
         #endregion
 	}

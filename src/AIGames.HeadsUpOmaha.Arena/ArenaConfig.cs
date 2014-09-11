@@ -88,5 +88,20 @@ namespace AIGames.HeadsUpOmaha.Arena
 				return 1400.0;
 			}
 		}
+		
+		/// <summary>Gets the way to sort bots.</summary>
+		public static BotCompareType SortType
+		{
+			get
+			{
+				BotCompareType tp;
+
+				if (Enum.TryParse<BotCompareType>(ConfigurationManager.AppSettings["Bot.Sorting"], true, out tp))
+				{
+					return tp;
+				}
+				return BotCompareType.Elo;
+			}
+		}
 	}
 }
