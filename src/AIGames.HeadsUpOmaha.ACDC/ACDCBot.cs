@@ -1,8 +1,6 @@
 ﻿using AIGames.HeadsUpOmaha.Analysis;
 using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
-using AIGames.HeadsUpOmaha.Platform;
-using System;
 using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.ACDC
@@ -14,20 +12,15 @@ namespace AIGames.HeadsUpOmaha.ACDC
 			this.Rnd = new MT19937Generator();
 			this.Opponent = new OpponentBot();
 
-			//try
-			//{
-			//	this.Data = ActionData.Load("data.xml");
-			//}
-			//catch 
-			//{
-			//	this.Data = new ActionData();
-			//}
+			try
+			{
+				this.Data = ActionData.Load("data.xml");
+			}
+			catch
+			{
+				this.Data = new ActionData();
+			}
 		}
-
-		///// <summary>Gets and sets the sub round.</summary>
-		//public int SubRound { get; set; }
-		///// <summary>Gets and sets the bet round.</summary>
-		//public int BetRound { get; set; }
 
 		/// <summary>Gets the opponent bot.</summary>
 		public OpponentBot Opponent { get; protected set; }
@@ -36,7 +29,7 @@ namespace AIGames.HeadsUpOmaha.ACDC
 		public MT19937Generator Rnd { get; set; }
 
 		///// <summary>Gets the action data.</summary>
-		//public ActionData Data { get; protected set; }
+		public ActionData Data { get; protected set; }
 
 		/// <summary>The action of the the bot.</summary>
 		/// <param name="state">
@@ -93,7 +86,6 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				return GameAction.Check;
 			}
 		}
-
 		
 		/// <summary>The reaction of the opponent.</summary>
 		/// <param name="state">
@@ -104,14 +96,14 @@ namespace AIGames.HeadsUpOmaha.ACDC
 		/// </param>
 		public void Reaction(GameState state, GameAction reaction)
 		{
-			//this.Data.Add(state, reaction);
+			this.Data.Add(state, reaction);
 		}
 
 		/// <summary>The state when a result (win, loss, draw) made.</summary>
 		public void Result(GameState state) 
 		{
-			//this.Data.Update(state, this.Rnd);
-			//this.Data.Save("data.xml");
+			this.Data.Update(state, this.Rnd);
+			this.Data.Save("data.xml");
 		}
 
 		/// <summary>The state when a final result (first, second) was made.</summary>

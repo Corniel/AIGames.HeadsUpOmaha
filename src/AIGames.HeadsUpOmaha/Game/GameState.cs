@@ -1,14 +1,17 @@
 ﻿using AIGames.HeadsUpOmaha.Platform;
 using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Serialization;
 using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Game
 {
 	/// <summary>Represents the game state.</summary>
-	[Serializable]
+	[Serializable, DebuggerDisplay("{DebuggerDisplay}")]
 	public class GameState
 	{
 		/// <summary>Constructs a new game state.</summary>
@@ -17,7 +20,7 @@ namespace AIGames.HeadsUpOmaha.Game
 			this.Player1 = new PlayerState();
 			this.Player2 = new PlayerState();
 			this.HandsPerLevel = 10;
-			this.SmallBlind = 15;
+			this.SmallBlind = 10;
 		}
 
 		/// <summary>Constructs a new game state based on settings..</summary>
@@ -375,5 +378,18 @@ namespace AIGames.HeadsUpOmaha.Game
 		}
 
 		#endregion
+
+		[ExcludeFromCodeCoverage, DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		private string DebuggerDisplay
+		{
+			get
+			{
+				var sb = new StringBuilder();
+				sb.AppendFormat("State[{0}.{1}], Pot: {2}", Round, SubRound, Pot);
+
+
+				return sb.ToString();
+			}
+		}
 	}
 }

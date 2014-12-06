@@ -7,7 +7,8 @@ using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.ACDC
 {
-	[Serializable, DebuggerDisplay("{DebugToString()}")]
+	[DebuggerDisplay("{DebugToString()}")]
+	[Serializable, XmlType("rec")]
 	public class ActionDataRecord
 	{
 		public ActionDataRecord()
@@ -58,24 +59,28 @@ namespace AIGames.HeadsUpOmaha.ACDC
 		/// <summary>Returns true if not winning chance is available.</summary>
 		public bool NoWinningChance { get { return double.IsNaN(this.WinningChance); } }
 
-		public RoundResult Result { get; set; }
-
 		/// <summary>Update a record.</summary>
 		public void Update(GameState state, MT19937Generator rnd)
 		{
-			this.HandOpp = state.Opp.Hand.Copy();
-
-			// if a hand was revealed, calculate the winning change.
-			if (this.HandOpp.Count > 0)
+			if (state.Opp.Hand.Count > 0)
 			{
-				this.WinningChance = 1.0 - PokerHandEvaluator.Calculate(this.HandOpp, this.Table, rnd, 200);
+				this.HandOpp = state.Opp.Hand.Copy();
+			}
+			Calculate(rnd);
+		}
+		public void Calculate(MT19937Generator rnd)
+		{
+			// if a hand was revealed, calculate the winning change.
+			if (this.HandOpp != null && this.HandOpp.Count > 0 && double.IsNaN(WinningChance))
+			{
+				this.WinningChance = 1.0 - PokerHandEvaluator.Calculate(this.HandOpp, this.Table ?? Cards.Empty, rnd, 200);
 			}
 		}
 
 		private string DebugToString()
 		{
 			return string.Format(
-				"[{0:00}] {1}, Blind: {2}, Pot: {3}(+{4}), Stack:{5}-{6}, Tbl: {7:f}, Hand: {8:f}, P: {9:0.0%}{10}",
+				"[{0:00}] {1}, Blind: {2}, Pot: {3}(+{4}), Stack:{5}-{6}, Tbl: {7:f}, Hand: {8:f}, P: {9:0.0%}",
 				this.Round, 
 				this.Action,
 				this.BigBlind,
@@ -85,9 +90,8 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				this.StackOwn,
 				this.Table,
 				this.HandOpp,
-				this.WinningChance,
-				this.Result == RoundResult.NoResult ? "" : ", Result: " + this.Result.ToString()
-				);
+				this.WinningChance
+			);
 		}
 
 		public static ActionDataRecord Create(GameState state, GameAction reaction)
@@ -99,7 +103,7 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				SmallBlind = state.SmallBlind,
 				Action = reaction,
 				HandOwn = state.Own.Hand.Copy(),
-				Table = state.Table.Copy(),
+				Table = state.Table.Count == 0 ? null : state.Table.Copy(),
 				StackOwn = state.Own.Stack,
 				StackOpp = state.Opp.Stack,
 				Pot = state.Own.Pot + state.Opp.Pot,
@@ -107,23 +111,6 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				MaxRaise = state.MaxinumRaise,
 				AmountToCall = state.AmountToCall,
 			};
-			return record;
-		}
-
-		public static ActionDataRecord Create(GameState state)
-		{
-			var record = Create(state, default(GameAction));
-			record.HandOpp = state.Opp.Hand.Copy();
-			record.Result = state.Result;
-
-			switch (record.Result)
-			{
-				case RoundResult.Player1Wins: record.WinningChance = state.YourBot == PlayerType.player1 ? 1.0 : 0.0; break;
-				case RoundResult.Player2Wins: record.WinningChance = state.YourBot == PlayerType.player2 ? 1.0 : 0.0; break;
-				case RoundResult.Draw: record.WinningChance = 0.5; break;
-				case RoundResult.NoResult: break;
-				default:break;
-			}
 			return record;
 		}
 	}

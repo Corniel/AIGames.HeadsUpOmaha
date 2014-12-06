@@ -8,7 +8,7 @@ using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.ACDC
 {
-	[Serializable]
+	[Serializable, XmlRoot("record")]
 	public class ActionData : List<ActionDataRecord>
 	{
 		/// <summary>Adds a new record.</summary>
@@ -125,7 +125,6 @@ namespace AIGames.HeadsUpOmaha.ACDC
 			var serializer = new XmlSerializer(typeof(ActionData));
 			return (ActionData)serializer.Deserialize(stream);
 		}
-
 		#endregion
 	}
 }

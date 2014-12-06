@@ -1,0 +1,2355 @@
+<?xml version="1.0"?>
+<record xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rec rnd="1" sub="1" blind="10" but="false" own="1990" opp="1980" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kd,6h,Js,6s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="1" blind="10" but="false" own="1990" opp="1980" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kd,6h,Js,6s]</HandOwn>
+    <HandOpp />
+    <Table>[Th,3h,Ah]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="1" blind="10" but="false" own="1990" opp="1970" max="60" add="20" pot="40" call="20" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Kd,6h,Js,6s]</HandOwn>
+    <HandOpp />
+    <Table>[Th,3h,Ah,Qs]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="2" blind="10" but="false" own="1990" opp="1970" max="60" add="20" pot="40" call="20" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Kd,6h,Js,6s]</HandOwn>
+    <HandOpp />
+    <Table>[Th,3h,Ah,Qs]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="1" blind="10" but="true" own="2020" opp="1940" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Qc,Js,Ts,7h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="1" blind="10" but="true" own="2020" opp="1940" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qc,Js,Ts,7h]</HandOwn>
+    <HandOpp />
+    <Table>[Jd,2c,Qh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="2" blind="10" but="true" own="2020" opp="1940" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Qc,Js,Ts,7h]</HandOwn>
+    <HandOpp />
+    <Table>[Jd,2c,Qh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="1" blind="10" but="true" own="2020" opp="1940" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qc,Js,Ts,7h]</HandOwn>
+    <HandOpp />
+    <Table>[Jd,2c,Qh,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="2" blind="10" but="true" own="2020" opp="1940" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Qc,Js,Ts,7h]</HandOwn>
+    <HandOpp />
+    <Table>[Jd,2c,Qh,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="1" blind="10" but="false" own="2070" opp="1900" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2s,6s,4d,Td]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="1" blind="10" but="false" own="2070" opp="1900" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2s,6s,4d,Td]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table>[2d,5d,Js]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="1" blind="10" but="false" own="2070" opp="1900" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[2s,6s,4d,Td]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table>[2d,5d,Js,9d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="4" sub="1" blind="10" but="true" own="2080" opp="1880" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[6h,7c,Td,9h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="4" sub="1" blind="10" but="true" own="2080" opp="1880" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6h,7c,Td,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,6s,Ts]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="4" sub="1" blind="10" but="true" own="2080" opp="1880" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6h,7c,Td,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,6s,Ts,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="4" sub="1" blind="10" but="true" own="2080" opp="1880" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6h,7c,Td,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,6s,Ts,3d,Jh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="1" blind="10" but="false" own="2070" opp="1900" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7c,Jc,Jd,8s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="1" blind="10" but="false" own="2070" opp="1850" max="140" add="100" pot="80" call="60" p="NaN">
+    <Action>raise 40</Action>
+    <HandOwn>[7c,Jc,Jd,8s]</HandOwn>
+    <HandOpp />
+    <Table>[8c,7d,6c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="2" blind="10" but="false" own="2070" opp="1790" max="260" add="120" pot="140" call="120" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7c,Jc,Jd,8s]</HandOwn>
+    <HandOpp />
+    <Table>[8c,7d,6c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="1" blind="10" but="false" own="2070" opp="1670" max="500" add="240" pot="260" call="240" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7c,Jc,Jd,8s]</HandOwn>
+    <HandOpp />
+    <Table>[8c,7d,6c,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="2" blind="10" but="false" own="2070" opp="1430" max="980" add="480" pot="500" call="480" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7c,Jc,Jd,8s]</HandOwn>
+    <HandOpp />
+    <Table>[8c,7d,6c,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="1" blind="10" but="false" own="2070" opp="1430" max="980" add="480" pot="500" call="480" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[7c,Jc,Jd,8s]</HandOwn>
+    <HandOpp />
+    <Table>[8c,7d,6c,8h,Td]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="6" sub="1" blind="10" but="true" own="2780" opp="1180" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Kh,Th,4c,As]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="6" sub="1" blind="10" but="true" own="2780" opp="1180" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Kh,Th,4c,As]</HandOwn>
+    <HandOpp />
+    <Table>[5h,Ah,5d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="7" sub="1" blind="10" but="false" own="2810" opp="1160" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5d,9h,Qs,6c]</HandOwn>
+    <HandOpp>[Jc,9d,Jh,Ac]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="7" sub="1" blind="10" but="false" own="2810" opp="1160" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5d,9h,Qs,6c]</HandOwn>
+    <HandOpp>[Jc,9d,Jh,Ac]</HandOpp>
+    <Table>[Ah,Kd,Qd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="7" sub="1" blind="10" but="false" own="2810" opp="1110" max="140" add="100" pot="80" call="60" p="NaN">
+    <Action>raise 40</Action>
+    <HandOwn>[5d,9h,Qs,6c]</HandOwn>
+    <HandOpp>[Jc,9d,Jh,Ac]</HandOpp>
+    <Table>[Ah,Kd,Qd,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="8" sub="1" blind="10" but="true" own="2740" opp="1230" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Qc,8s,9d,9h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="1" blind="10" but="false" own="2760" opp="1210" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6h,7d,7h,Ah]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="1" blind="10" but="false" own="2760" opp="1210" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6h,7d,7h,Ah]</HandOwn>
+    <HandOpp />
+    <Table>[2c,3h,Jd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="1" blind="10" but="false" own="2760" opp="1160" max="140" add="100" pot="80" call="60" p="NaN">
+    <Action>raise 40</Action>
+    <HandOwn>[6h,7d,7h,Ah]</HandOwn>
+    <HandOpp />
+    <Table>[2c,3h,Jd,As]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="1" blind="10" but="false" own="2760" opp="1060" max="340" add="200" pot="180" call="160" p="NaN">
+    <Action>raise 40</Action>
+    <HandOwn>[6h,7d,7h,Ah]</HandOwn>
+    <HandOpp />
+    <Table>[2c,3h,Jd,As,3c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="10" sub="1" blind="10" but="true" own="2650" opp="1310" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Ks,4d,9h,2h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="10" sub="1" blind="10" but="true" own="2650" opp="1310" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ks,4d,9h,2h]</HandOwn>
+    <HandOpp />
+    <Table>[Jh,9s,Js]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="10" sub="1" blind="10" but="true" own="2650" opp="1310" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ks,4d,9h,2h]</HandOwn>
+    <HandOpp />
+    <Table>[Jh,9s,Js,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="10" sub="1" blind="10" but="true" own="2650" opp="1310" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Ks,4d,9h,2h]</HandOwn>
+    <HandOpp />
+    <Table>[Jh,9s,Js,7d,Ah]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="11" sub="1" blind="15" but="false" own="2675" opp="1280" max="0" add="15" pot="45" call="15" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qs,Qd,5s,3s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="11" sub="1" blind="15" but="false" own="2675" opp="1280" max="0" add="15" pot="45" call="15" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qs,Qd,5s,3s]</HandOwn>
+    <HandOpp />
+    <Table>[Jd,8s,2d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="11" sub="1" blind="15" but="false" own="2675" opp="1205" max="210" add="150" pot="120" call="90" p="NaN">
+    <Action>raise 60</Action>
+    <HandOwn>[Qs,Qd,5s,3s]</HandOwn>
+    <HandOpp />
+    <Table>[Jd,8s,2d,2c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="11" sub="1" blind="15" but="false" own="2675" opp="1205" max="210" add="90" pot="120" call="90" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Qs,Qd,5s,3s]</HandOwn>
+    <HandOpp />
+    <Table>[Jd,8s,2d,2c,Qc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="12" sub="1" blind="15" but="true" own="2750" opp="1190" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Qh,8s,Js,Qd]</HandOwn>
+    <HandOpp>[Jc,8h,4s,4d]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="12" sub="1" blind="15" but="true" own="2750" opp="1190" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qh,8s,Js,Qd]</HandOwn>
+    <HandOpp>[Jc,8h,4s,4d]</HandOpp>
+    <Table>[Ah,9h,7s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="12" sub="1" blind="15" but="true" own="2750" opp="1190" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qh,8s,Js,Qd]</HandOwn>
+    <HandOpp>[Jc,8h,4s,4d]</HandOpp>
+    <Table>[Ah,9h,7s,Th]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="12" sub="2" blind="15" but="true" own="2750" opp="1190" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Qh,8s,Js,Qd]</HandOwn>
+    <HandOpp>[Jc,8h,4s,4d]</HandOpp>
+    <Table>[Ah,9h,7s,Th]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="12" sub="1" blind="15" but="true" own="2750" opp="1190" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qh,8s,Js,Qd]</HandOwn>
+    <HandOpp>[Jc,8h,4s,4d]</HandOpp>
+    <Table>[Ah,9h,7s,Th,Ad]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="12" sub="2" blind="15" but="true" own="2750" opp="1190" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Qh,8s,Js,Qd]</HandOwn>
+    <HandOpp>[Jc,8h,4s,4d]</HandOpp>
+    <Table>[Ah,9h,7s,Th,Ad]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="13" sub="1" blind="15" but="false" own="2765" opp="1190" max="0" add="15" pot="45" call="15" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ks,Ts,9d,5h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="14" sub="1" blind="15" but="true" own="2720" opp="1220" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3s,3d,Ah,9d]</HandOwn>
+    <HandOpp>[7d,As,Tc,Qh]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="14" sub="1" blind="15" but="true" own="2720" opp="1220" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3s,3d,Ah,9d]</HandOwn>
+    <HandOpp>[7d,As,Tc,Qh]</HandOpp>
+    <Table>[5s,8h,Qd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="14" sub="1" blind="15" but="true" own="2720" opp="1220" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3s,3d,Ah,9d]</HandOwn>
+    <HandOpp>[7d,As,Tc,Qh]</HandOpp>
+    <Table>[5s,8h,Qd,5d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="14" sub="1" blind="15" but="true" own="2720" opp="1220" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3s,3d,Ah,9d]</HandOwn>
+    <HandOpp>[7d,As,Tc,Qh]</HandOpp>
+    <Table>[5s,8h,Qd,5d,7h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="15" sub="1" blind="15" but="false" own="2705" opp="1250" max="0" add="15" pot="45" call="15" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5c,4c,5d,Ad]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="16" sub="1" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Td,6s,Qd,4d]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="16" sub="1" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Td,6s,Qd,4d]</HandOwn>
+    <HandOpp />
+    <Table>[Tc,Kc,6d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="16" sub="2" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Td,6s,Qd,4d]</HandOwn>
+    <HandOpp />
+    <Table>[Tc,Kc,6d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="16" sub="1" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Td,6s,Qd,4d]</HandOwn>
+    <HandOpp />
+    <Table>[Tc,Kc,6d,Qc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="17" sub="1" blind="15" but="false" own="2735" opp="1220" max="0" add="15" pot="45" call="15" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ad,Qh,7s,7c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="17" sub="1" blind="15" but="false" own="2735" opp="1175" max="150" add="90" pot="90" call="60" p="NaN">
+    <Action>raise 30</Action>
+    <HandOwn>[Ad,Qh,7s,7c]</HandOwn>
+    <HandOpp />
+    <Table>[6s,6d,2d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="18" sub="1" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[4s,Ac,Qc,5h]</HandOwn>
+    <HandOpp>[Qs,6c,As,8c]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="18" sub="1" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[4s,Ac,Qc,5h]</HandOwn>
+    <HandOpp>[Qs,6c,As,8c]</HandOpp>
+    <Table>[Js,6d,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="18" sub="1" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[4s,Ac,Qc,5h]</HandOwn>
+    <HandOpp>[Qs,6c,As,8c]</HandOpp>
+    <Table>[Js,6d,4c,Jd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="18" sub="1" blind="15" but="true" own="2660" opp="1280" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[4s,Ac,Qc,5h]</HandOwn>
+    <HandOpp>[Qs,6c,As,8c]</HandOpp>
+    <Table>[Js,6d,4c,Jd,Tc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="19" sub="1" blind="15" but="false" own="2645" opp="1310" max="0" add="15" pot="45" call="15" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5h,3s,Ks,4c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="19" sub="1" blind="15" but="false" own="2645" opp="1235" max="210" add="150" pot="120" call="90" p="NaN">
+    <Action>raise 60</Action>
+    <HandOwn>[5h,3s,Ks,4c]</HandOwn>
+    <HandOpp />
+    <Table>[4d,8s,Ad]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="19" sub="1" blind="15" but="false" own="2645" opp="1085" max="510" add="300" pot="270" call="240" p="NaN">
+    <Action>raise 60</Action>
+    <HandOwn>[5h,3s,Ks,4c]</HandOwn>
+    <HandOpp />
+    <Table>[4d,8s,Ad,9c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="20" sub="1" blind="15" but="true" own="2540" opp="1400" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8d,9c,Ts,7s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="20" sub="1" blind="15" but="true" own="2540" opp="1400" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8d,9c,Ts,7s]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,Th,5s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="20" sub="2" blind="15" but="true" own="2540" opp="1400" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8d,9c,Ts,7s]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,Th,5s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="20" sub="1" blind="15" but="true" own="2540" opp="1400" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8d,9c,Ts,7s]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,Th,5s,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="20" sub="2" blind="15" but="true" own="2540" opp="1400" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8d,9c,Ts,7s]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,Th,5s,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="20" sub="1" blind="15" but="true" own="2540" opp="1400" max="60" add="0" pot="60" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[8d,9c,Ts,7s]</HandOwn>
+    <HandOpp />
+    <Table>[Qs,Th,5s,8c,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="21" sub="1" blind="20" but="false" own="2640" opp="1300" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Td,4s,Ac,Ks]</HandOwn>
+    <HandOpp>[2c,Qh,Qc,2s]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="21" sub="1" blind="20" but="false" own="2640" opp="1200" max="280" add="200" pot="160" call="120" p="NaN">
+    <Action>raise 80</Action>
+    <HandOwn>[Td,4s,Ac,Ks]</HandOwn>
+    <HandOpp>[2c,Qh,Qc,2s]</HandOpp>
+    <Table>[5h,5c,Th]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="21" sub="1" blind="20" but="false" own="2640" opp="1000" max="680" add="400" pot="360" call="320" p="NaN">
+    <Action>raise 80</Action>
+    <HandOwn>[Td,4s,Ac,Ks]</HandOwn>
+    <HandOpp>[2c,Qh,Qc,2s]</HandOpp>
+    <Table>[5h,5c,Th,3h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="21" sub="1" blind="20" but="false" own="2640" opp="640" max="1400" add="720" pot="720" call="680" p="NaN">
+    <Action>raise 40</Action>
+    <HandOwn>[Td,4s,Ac,Ks]</HandOwn>
+    <HandOpp>[2c,Qh,Qc,2s]</HandOpp>
+    <Table>[5h,5c,Th,3h,Ah]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="22" sub="1" blind="20" but="true" own="2860" opp="1060" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,Kd,6d,Js]</HandOwn>
+    <HandOpp>[Th,9s,4c,Kh]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="22" sub="1" blind="20" but="true" own="2860" opp="1060" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,Kd,6d,Js]</HandOwn>
+    <HandOpp>[Th,9s,4c,Kh]</HandOpp>
+    <Table>[Tc,9h,2c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="22" sub="1" blind="20" but="true" own="2860" opp="1060" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,Kd,6d,Js]</HandOwn>
+    <HandOpp>[Th,9s,4c,Kh]</HandOpp>
+    <Table>[Tc,9h,2c,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="22" sub="1" blind="20" but="true" own="2860" opp="1060" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,Kd,6d,Js]</HandOwn>
+    <HandOpp>[Th,9s,4c,Kh]</HandOpp>
+    <Table>[Tc,9h,2c,3d,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="22" sub="2" blind="20" but="true" own="2860" opp="1060" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,Kd,6d,Js]</HandOwn>
+    <HandOpp>[Th,9s,4c,Kh]</HandOpp>
+    <Table>[Tc,9h,2c,3d,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="23" sub="1" blind="20" but="false" own="3000" opp="940" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3c,2s,Qc,6d]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="24" sub="1" blind="20" but="true" own="2940" opp="980" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7d,Jc,Kc,Js]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="24" sub="1" blind="20" but="true" own="2940" opp="980" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7d,Jc,Kc,Js]</HandOwn>
+    <HandOpp />
+    <Table>[Kd,Jd,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="24" sub="2" blind="20" but="true" own="2940" opp="980" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[7d,Jc,Kc,Js]</HandOwn>
+    <HandOpp />
+    <Table>[Kd,Jd,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="25" sub="1" blind="20" but="false" own="3000" opp="940" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2h,9c,3c,9h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="25" sub="1" blind="20" but="false" own="3000" opp="940" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2h,9c,3c,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Js,Kh,3s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="25" sub="1" blind="20" but="false" own="3000" opp="940" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2h,9c,3c,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Js,Kh,3s,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="26" sub="1" blind="20" but="true" own="2940" opp="1000" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Qd,9h,2s,Jd]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="27" sub="1" blind="20" but="false" own="2980" opp="960" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2c,2s,8d,Ah]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="28" sub="1" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Kh,9h,3c,Kd]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="28" sub="1" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Kh,9h,3c,Kd]</HandOwn>
+    <HandOpp />
+    <Table>[5s,Qd,8s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="29" sub="1" blind="20" but="false" own="2980" opp="960" max="0" add="20" pot="60" call="20" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2s,2d,5h,4h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="30" sub="1" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[As,Ah,8s,Qd]</HandOwn>
+    <HandOpp>[6c,4s,Th,5h]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="30" sub="1" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[As,Ah,8s,Qd]</HandOwn>
+    <HandOpp>[6c,4s,Th,5h]</HandOpp>
+    <Table>[5s,4h,Kd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="30" sub="2" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[As,Ah,8s,Qd]</HandOwn>
+    <HandOpp>[6c,4s,Th,5h]</HandOpp>
+    <Table>[5s,4h,Kd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="30" sub="1" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[As,Ah,8s,Qd]</HandOwn>
+    <HandOpp>[6c,4s,Th,5h]</HandOpp>
+    <Table>[5s,4h,Kd,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="30" sub="2" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[As,Ah,8s,Qd]</HandOwn>
+    <HandOpp>[6c,4s,Th,5h]</HandOpp>
+    <Table>[5s,4h,Kd,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="30" sub="1" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[As,Ah,8s,Qd]</HandOwn>
+    <HandOpp>[6c,4s,Th,5h]</HandOpp>
+    <Table>[5s,4h,Kd,4c,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="30" sub="2" blind="20" but="true" own="2920" opp="1000" max="80" add="0" pot="80" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[As,Ah,8s,Qd]</HandOwn>
+    <HandOpp>[6c,4s,Th,5h]</HandOpp>
+    <Table>[5s,4h,Kd,4c,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="31" sub="1" blind="25" but="false" own="2775" opp="1150" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5c,Qh,Kc,3h]</HandOwn>
+    <HandOpp>[Qc,Ac,Tc,Jd]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="31" sub="1" blind="25" but="false" own="2775" opp="1025" max="350" add="250" pot="200" call="150" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[5c,Qh,Kc,3h]</HandOwn>
+    <HandOpp>[Qc,Ac,Tc,Jd]</HandOpp>
+    <Table>[Ah,6d,Qd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="31" sub="1" blind="25" but="false" own="2775" opp="775" max="850" add="500" pot="450" call="400" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[5c,Qh,Kc,3h]</HandOwn>
+    <HandOpp>[Qc,Ac,Tc,Jd]</HandOpp>
+    <Table>[Ah,6d,Qd,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="31" sub="1" blind="25" but="false" own="2775" opp="275" max="1850" add="1000" pot="950" call="900" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[5c,Qh,Kc,3h]</HandOwn>
+    <HandOpp>[Qc,Ac,Tc,Jd]</HandOpp>
+    <Table>[Ah,6d,Qd,4d,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="32" sub="1" blind="25" but="true" own="2400" opp="1500" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Ts,6s,8h,Tc]</HandOwn>
+    <HandOpp>[2d,8d,Th,Ks]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="32" sub="1" blind="25" but="true" own="2400" opp="1500" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ts,6s,8h,Tc]</HandOwn>
+    <HandOpp>[2d,8d,Th,Ks]</HandOpp>
+    <Table>[Jh,Kh,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="32" sub="1" blind="25" but="true" own="2400" opp="1500" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ts,6s,8h,Tc]</HandOwn>
+    <HandOpp>[2d,8d,Th,Ks]</HandOpp>
+    <Table>[Jh,Kh,4h,5d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="32" sub="1" blind="25" but="true" own="2400" opp="1500" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ts,6s,8h,Tc]</HandOwn>
+    <HandOpp>[2d,8d,Th,Ks]</HandOpp>
+    <Table>[Jh,Kh,4h,5d,6d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="33" sub="1" blind="25" but="false" own="2375" opp="1550" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5h,Qh,As,4c]</HandOwn>
+    <HandOpp>[Jc,4s,8c,Th]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="33" sub="1" blind="25" but="false" own="2375" opp="1475" max="250" add="150" pot="150" call="100" p="NaN">
+    <Action>raise 50</Action>
+    <HandOwn>[5h,Qh,As,4c]</HandOwn>
+    <HandOpp>[Jc,4s,8c,Th]</HandOpp>
+    <Table>[6c,7d,2h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="33" sub="1" blind="25" but="false" own="2375" opp="1475" max="250" add="100" pot="150" call="100" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5h,Qh,As,4c]</HandOwn>
+    <HandOpp>[Jc,4s,8c,Th]</HandOpp>
+    <Table>[6c,7d,2h,Ad]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="33" sub="1" blind="25" but="false" own="2375" opp="1275" max="650" add="400" pot="350" call="300" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[5h,Qh,As,4c]</HandOwn>
+    <HandOpp>[Jc,4s,8c,Th]</HandOpp>
+    <Table>[6c,7d,2h,Ad,5s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="34" sub="1" blind="25" but="true" own="2150" opp="1775" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[4d,8d,9c,9s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="35" sub="1" blind="25" but="false" own="2200" opp="1725" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[9d,7c,Qc,9h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="35" sub="1" blind="25" but="false" own="2200" opp="1725" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[9d,7c,Qc,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Th,3d,2d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="35" sub="1" blind="25" but="false" own="2200" opp="1725" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[9d,7c,Qc,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Th,3d,2d,Js]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="35" sub="1" blind="25" but="false" own="2200" opp="1725" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[9d,7c,Qc,9h]</HandOwn>
+    <HandOpp />
+    <Table>[Th,3d,2d,Js,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="36" sub="1" blind="25" but="true" own="2225" opp="1675" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Td,Qd,6h,Ac]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="36" sub="1" blind="25" but="true" own="2225" opp="1675" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Td,Qd,6h,Ac]</HandOwn>
+    <HandOpp />
+    <Table>[Tc,8d,6c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="36" sub="2" blind="25" but="true" own="2225" opp="1675" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Td,Qd,6h,Ac]</HandOwn>
+    <HandOpp />
+    <Table>[Tc,8d,6c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="36" sub="1" blind="25" but="true" own="2225" opp="1675" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Td,Qd,6h,Ac]</HandOwn>
+    <HandOpp />
+    <Table>[Tc,8d,6c,Jh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="37" sub="1" blind="25" but="false" own="2350" opp="1575" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Th,4d,Ad,Td]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="37" sub="1" blind="25" but="false" own="2350" opp="1450" max="350" add="250" pot="200" call="150" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[Th,4d,Ad,Td]</HandOwn>
+    <HandOpp />
+    <Table>[6s,Js,Qs]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="38" sub="1" blind="25" but="true" own="2175" opp="1725" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[2c,7c,3d,8c]</HandOwn>
+    <HandOpp>[8s,4d,8h,5h]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="38" sub="1" blind="25" but="true" own="2175" opp="1725" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2c,7c,3d,8c]</HandOwn>
+    <HandOpp>[8s,4d,8h,5h]</HandOpp>
+    <Table>[Td,Qs,7h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="38" sub="1" blind="25" but="true" own="2175" opp="1725" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2c,7c,3d,8c]</HandOwn>
+    <HandOpp>[8s,4d,8h,5h]</HandOpp>
+    <Table>[Td,Qs,7h,3h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="38" sub="1" blind="25" but="true" own="2175" opp="1725" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2c,7c,3d,8c]</HandOwn>
+    <HandOpp>[8s,4d,8h,5h]</HandOpp>
+    <Table>[Td,Qs,7h,3h,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="39" sub="1" blind="25" but="false" own="2150" opp="1775" max="0" add="25" pot="75" call="25" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kh,9d,2c,5h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="40" sub="1" blind="25" but="true" own="2075" opp="1825" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Qc,Ah,8d,4s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="40" sub="1" blind="25" but="true" own="2075" opp="1825" max="100" add="0" pot="100" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Qc,Ah,8d,4s]</HandOwn>
+    <HandOpp />
+    <Table>[3s,As,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="41" sub="1" blind="30" but="false" own="2145" opp="1765" max="0" add="30" pot="90" call="30" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kd,Qs,Ts,Jc]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="41" sub="1" blind="30" but="false" own="2145" opp="1675" max="300" add="180" pot="180" call="120" p="NaN">
+    <Action>raise 60</Action>
+    <HandOwn>[Kd,Qs,Ts,Jc]</HandOwn>
+    <HandOpp />
+    <Table>[3c,Th,7s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="41" sub="1" blind="30" but="false" own="2145" opp="1435" max="780" add="480" pot="420" call="360" p="NaN">
+    <Action>raise 120</Action>
+    <HandOwn>[Kd,Qs,Ts,Jc]</HandOwn>
+    <HandOpp />
+    <Table>[3c,Th,7s,9c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="42" sub="1" blind="30" but="true" own="1875" opp="2035" max="0" add="30" pot="90" call="30" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Qd,6d,7d,Qs]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="43" sub="1" blind="30" but="false" own="1935" opp="1975" max="0" add="30" pot="90" call="30" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6d,Ks,As,6c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="43" sub="1" blind="30" but="false" own="1935" opp="1825" max="420" add="300" pot="240" call="180" p="NaN">
+    <Action>raise 120</Action>
+    <HandOwn>[6d,Ks,As,6c]</HandOwn>
+    <HandOpp />
+    <Table>[9c,5h,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="44" sub="1" blind="30" but="true" own="1725" opp="2155" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[5s,9d,5d,8d]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="44" sub="1" blind="30" but="true" own="1725" opp="2155" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[5s,9d,5d,8d]</HandOwn>
+    <HandOpp />
+    <Table>[3c,3d,Kd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="45" sub="1" blind="30" but="false" own="1815" opp="2095" max="0" add="30" pot="90" call="30" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2h,7d,Jh,Ts]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="46" sub="1" blind="30" but="true" own="1725" opp="2155" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Tc,Kc,5s,3d]</HandOwn>
+    <HandOpp>[Js,Ac,8d,3s]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="46" sub="1" blind="30" but="true" own="1725" opp="2155" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Tc,Kc,5s,3d]</HandOwn>
+    <HandOpp>[Js,Ac,8d,3s]</HandOpp>
+    <Table>[6d,9h,Qs]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="46" sub="1" blind="30" but="true" own="1725" opp="2155" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Tc,Kc,5s,3d]</HandOwn>
+    <HandOpp>[Js,Ac,8d,3s]</HandOpp>
+    <Table>[6d,9h,Qs,As]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="46" sub="1" blind="30" but="true" own="1725" opp="2155" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Tc,Kc,5s,3d]</HandOwn>
+    <HandOpp>[Js,Ac,8d,3s]</HandOpp>
+    <Table>[6d,9h,Qs,As,9s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="47" sub="1" blind="30" but="false" own="1695" opp="2215" max="0" add="30" pot="90" call="30" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3c,3s,4h,6h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="48" sub="1" blind="30" but="true" own="1605" opp="2305" max="0" add="30" pot="90" call="30" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[9h,2d,Qs,5c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="49" sub="1" blind="30" but="false" own="1665" opp="2245" max="0" add="30" pot="90" call="30" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5d,Td,5h,Jc]</HandOwn>
+    <HandOpp>[Kc,4s,2h,5s]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="49" sub="1" blind="30" but="false" own="1665" opp="2155" max="300" add="180" pot="180" call="120" p="NaN">
+    <Action>raise 60</Action>
+    <HandOwn>[5d,Td,5h,Jc]</HandOwn>
+    <HandOpp>[Kc,4s,2h,5s]</HandOpp>
+    <Table>[7c,7s,7h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="49" sub="1" blind="30" but="false" own="1665" opp="1975" max="660" add="360" pot="360" call="300" p="NaN">
+    <Action>raise 60</Action>
+    <HandOwn>[5d,Td,5h,Jc]</HandOwn>
+    <HandOpp>[Kc,4s,2h,5s]</HandOpp>
+    <Table>[7c,7s,7h,8s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="49" sub="1" blind="30" but="false" own="1665" opp="1615" max="1380" add="720" pot="720" call="660" p="NaN">
+    <Action>raise 60</Action>
+    <HandOwn>[5d,Td,5h,Jc]</HandOwn>
+    <HandOpp>[Kc,4s,2h,5s]</HandOpp>
+    <Table>[7c,7s,7h,8s,3c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="50" sub="1" blind="30" but="true" own="1875" opp="2005" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[6c,7s,Ac,4d]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="50" sub="1" blind="30" but="true" own="1875" opp="2005" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6c,7s,Ac,4d]</HandOwn>
+    <HandOpp />
+    <Table>[6h,5s,Jh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="50" sub="1" blind="30" but="true" own="1875" opp="2005" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6c,7s,Ac,4d]</HandOwn>
+    <HandOpp />
+    <Table>[6h,5s,Jh,Jd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="50" sub="1" blind="30" but="true" own="1875" opp="2005" max="120" add="0" pot="120" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[6c,7s,Ac,4d]</HandOwn>
+    <HandOpp />
+    <Table>[6h,5s,Jh,Jd,Kh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="51" sub="1" blind="35" but="false" own="1960" opp="1935" max="0" add="35" pot="105" call="35" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5s,Td,9d,6s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="51" sub="1" blind="35" but="false" own="1960" opp="1935" max="0" add="35" pot="105" call="35" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5s,Td,9d,6s]</HandOwn>
+    <HandOpp />
+    <Table>[9c,5d,Kh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="51" sub="1" blind="35" but="false" own="1960" opp="1830" max="350" add="210" pot="210" call="140" p="NaN">
+    <Action>raise 70</Action>
+    <HandOwn>[5s,Td,9d,6s]</HandOwn>
+    <HandOpp />
+    <Table>[9c,5d,Kh,Qd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="51" sub="2" blind="35" but="false" own="1960" opp="1690" max="630" add="280" pot="350" call="280" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[5s,Td,9d,6s]</HandOwn>
+    <HandOpp />
+    <Table>[9c,5d,Kh,Qd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="51" sub="1" blind="35" but="false" own="1960" opp="1690" max="630" add="280" pot="350" call="280" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[5s,Td,9d,6s]</HandOwn>
+    <HandOpp />
+    <Table>[9c,5d,Kh,Qd,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="52" sub="1" blind="35" but="true" own="2135" opp="1725" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[5c,Kc,5d,5s]</HandOwn>
+    <HandOpp>[6h,8c,2c,9c]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="52" sub="1" blind="35" but="true" own="2135" opp="1725" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5c,Kc,5d,5s]</HandOwn>
+    <HandOpp>[6h,8c,2c,9c]</HandOpp>
+    <Table>[3d,8d,9h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="52" sub="1" blind="35" but="true" own="2135" opp="1725" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5c,Kc,5d,5s]</HandOwn>
+    <HandOpp>[6h,8c,2c,9c]</HandOpp>
+    <Table>[3d,8d,9h,2h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="52" sub="1" blind="35" but="true" own="2135" opp="1725" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5c,Kc,5d,5s]</HandOwn>
+    <HandOpp>[6h,8c,2c,9c]</HandOpp>
+    <Table>[3d,8d,9h,2h,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="53" sub="1" blind="35" but="false" own="2100" opp="1795" max="0" add="35" pot="105" call="35" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ad,Tc,As,2c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="53" sub="1" blind="35" but="false" own="2100" opp="1620" max="490" add="350" pot="280" call="210" p="NaN">
+    <Action>raise 140</Action>
+    <HandOwn>[Ad,Tc,As,2c]</HandOwn>
+    <HandOpp />
+    <Table>[8h,7c,6h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="53" sub="1" blind="35" but="false" own="2100" opp="1270" max="1190" add="700" pot="630" call="560" p="NaN">
+    <Action>raise 140</Action>
+    <HandOwn>[Ad,Tc,As,2c]</HandOwn>
+    <HandOpp />
+    <Table>[8h,7c,6h,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="54" sub="1" blind="35" but="true" own="1715" opp="2145" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Ah,8c,4d,Qc]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="54" sub="1" blind="35" but="true" own="1715" opp="2145" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ah,8c,4d,Qc]</HandOwn>
+    <HandOpp />
+    <Table>[Kd,2s,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="54" sub="1" blind="35" but="true" own="1715" opp="2145" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ah,8c,4d,Qc]</HandOwn>
+    <HandOpp />
+    <Table>[Kd,2s,4c,8s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="54" sub="2" blind="35" but="true" own="1715" opp="2145" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Ah,8c,4d,Qc]</HandOwn>
+    <HandOpp />
+    <Table>[Kd,2s,4c,8s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="54" sub="1" blind="35" but="true" own="1715" opp="2145" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Ah,8c,4d,Qc]</HandOwn>
+    <HandOpp />
+    <Table>[Kd,2s,4c,8s,Qh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="55" sub="1" blind="35" but="false" own="1890" opp="2005" max="0" add="35" pot="105" call="35" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kc,8d,As,6c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="55" sub="1" blind="35" but="false" own="1890" opp="1970" max="210" add="70" pot="140" call="70" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Kc,8d,As,6c]</HandOwn>
+    <HandOpp />
+    <Table>[6s,9d,Ac]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="55" sub="2" blind="35" but="false" own="1890" opp="1900" max="350" add="140" pot="210" call="140" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Kc,8d,As,6c]</HandOwn>
+    <HandOpp />
+    <Table>[6s,9d,Ac]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="55" sub="1" blind="35" but="false" own="1890" opp="1900" max="350" add="140" pot="210" call="140" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Kc,8d,As,6c]</HandOwn>
+    <HandOpp />
+    <Table>[6s,9d,Ac,Tc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="56" sub="1" blind="35" but="true" own="2065" opp="1795" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[9s,9c,5h,Ts]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="56" sub="1" blind="35" but="true" own="2065" opp="1795" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[9s,9c,5h,Ts]</HandOwn>
+    <HandOpp />
+    <Table>[9d,7s,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="57" sub="1" blind="35" but="false" own="2170" opp="1725" max="0" add="35" pot="105" call="35" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Js,4c,9d,3c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="57" sub="1" blind="35" but="false" own="2170" opp="1620" max="350" add="210" pot="210" call="140" p="NaN">
+    <Action>raise 70</Action>
+    <HandOwn>[Js,4c,9d,3c]</HandOwn>
+    <HandOpp />
+    <Table>[6h,Jd,6d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="58" sub="1" blind="35" but="true" own="1995" opp="1865" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8h,5c,3s,Ac]</HandOwn>
+    <HandOpp>[6c,9c,3c,9d]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="58" sub="1" blind="35" but="true" own="1995" opp="1865" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8h,5c,3s,Ac]</HandOwn>
+    <HandOpp>[6c,9c,3c,9d]</HandOpp>
+    <Table>[6s,6h,9s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="58" sub="1" blind="35" but="true" own="1995" opp="1865" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8h,5c,3s,Ac]</HandOwn>
+    <HandOpp>[6c,9c,3c,9d]</HandOpp>
+    <Table>[6s,6h,9s,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="58" sub="2" blind="35" but="true" own="1995" opp="1865" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8h,5c,3s,Ac]</HandOwn>
+    <HandOpp>[6c,9c,3c,9d]</HandOpp>
+    <Table>[6s,6h,9s,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="58" sub="1" blind="35" but="true" own="1995" opp="1865" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8h,5c,3s,Ac]</HandOwn>
+    <HandOpp>[6c,9c,3c,9d]</HandOpp>
+    <Table>[6s,6h,9s,7d,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="58" sub="2" blind="35" but="true" own="1995" opp="1865" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8h,5c,3s,Ac]</HandOwn>
+    <HandOpp>[6c,9c,3c,9d]</HandOpp>
+    <Table>[6s,6h,9s,7d,8c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="59" sub="1" blind="35" but="false" own="1820" opp="2075" max="0" add="35" pot="105" call="35" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6c,3h,8d,Kd]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="59" sub="1" blind="35" but="false" own="1820" opp="1970" max="350" add="210" pot="210" call="140" p="NaN">
+    <Action>raise 70</Action>
+    <HandOwn>[6c,3h,8d,Kd]</HandOwn>
+    <HandOpp />
+    <Table>[9c,2h,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="60" sub="1" blind="35" but="true" own="1645" opp="2215" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Jc,6s,Ks,Qs]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="60" sub="1" blind="35" but="true" own="1645" opp="2215" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Jc,6s,Ks,Qs]</HandOwn>
+    <HandOpp />
+    <Table>[8s,Ah,7s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="60" sub="1" blind="35" but="true" own="1645" opp="2215" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Jc,6s,Ks,Qs]</HandOwn>
+    <HandOpp />
+    <Table>[8s,Ah,7s,3c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="60" sub="1" blind="35" but="true" own="1645" opp="2215" max="140" add="0" pot="140" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Jc,6s,Ks,Qs]</HandOwn>
+    <HandOpp />
+    <Table>[8s,Ah,7s,3c,2d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="61" sub="1" blind="40" but="false" own="1745" opp="2135" max="0" add="40" pot="120" call="40" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7s,6h,2s,5c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="62" sub="1" blind="40" but="true" own="1625" opp="2215" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,Qd,5c,Ks]</HandOwn>
+    <HandOpp>[3c,8c,9c,Kc]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="62" sub="1" blind="40" but="true" own="1625" opp="2215" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,Qd,5c,Ks]</HandOwn>
+    <HandOpp>[3c,8c,9c,Kc]</HandOpp>
+    <Table>[4s,Kd,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="62" sub="2" blind="40" but="true" own="1625" opp="2215" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,Qd,5c,Ks]</HandOwn>
+    <HandOpp>[3c,8c,9c,Kc]</HandOpp>
+    <Table>[4s,Kd,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="62" sub="1" blind="40" but="true" own="1625" opp="2215" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,Qd,5c,Ks]</HandOwn>
+    <HandOpp>[3c,8c,9c,Kc]</HandOpp>
+    <Table>[4s,Kd,8h,6s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="62" sub="2" blind="40" but="true" own="1625" opp="2215" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,Qd,5c,Ks]</HandOwn>
+    <HandOpp>[3c,8c,9c,Kc]</HandOpp>
+    <Table>[4s,Kd,8h,6s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="62" sub="1" blind="40" but="true" own="1625" opp="2215" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,Qd,5c,Ks]</HandOwn>
+    <HandOpp>[3c,8c,9c,Kc]</HandOpp>
+    <Table>[4s,Kd,8h,6s,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="62" sub="2" blind="40" but="true" own="1625" opp="2215" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,Qd,5c,Ks]</HandOwn>
+    <HandOpp>[3c,8c,9c,Kc]</HandOpp>
+    <Table>[4s,Kd,8h,6s,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="63" sub="1" blind="40" but="false" own="2145" opp="1735" max="0" add="40" pot="120" call="40" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qh,3d,6d,3c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="64" sub="1" blind="40" but="true" own="2025" opp="1815" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8s,Ks,7s,5h]</HandOwn>
+    <HandOpp>[4h,6h,Kd,Qh]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="64" sub="1" blind="40" but="true" own="2025" opp="1815" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,Ks,7s,5h]</HandOwn>
+    <HandOpp>[4h,6h,Kd,Qh]</HandOpp>
+    <Table>[2d,6s,Qs]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="64" sub="1" blind="40" but="true" own="2025" opp="1815" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,Ks,7s,5h]</HandOwn>
+    <HandOpp>[4h,6h,Kd,Qh]</HandOpp>
+    <Table>[2d,6s,Qs,6c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="64" sub="1" blind="40" but="true" own="2025" opp="1815" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,Ks,7s,5h]</HandOwn>
+    <HandOpp>[4h,6h,Kd,Qh]</HandOpp>
+    <Table>[2d,6s,Qs,6c,2c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="65" sub="1" blind="40" but="false" own="1985" opp="1895" max="0" add="40" pot="120" call="40" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ks,5s,5c,Kh]</HandOwn>
+    <HandOpp>[Qh,6c,2c,8s]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="65" sub="1" blind="40" but="false" own="1985" opp="1775" max="400" add="240" pot="240" call="160" p="NaN">
+    <Action>raise 80</Action>
+    <HandOwn>[Ks,5s,5c,Kh]</HandOwn>
+    <HandOpp>[Qh,6c,2c,8s]</HandOpp>
+    <Table>[Td,2d,Jc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="65" sub="1" blind="40" but="false" own="1985" opp="1455" max="1040" add="640" pot="560" call="480" p="NaN">
+    <Action>raise 160</Action>
+    <HandOwn>[Ks,5s,5c,Kh]</HandOwn>
+    <HandOpp>[Qh,6c,2c,8s]</HandOpp>
+    <Table>[Td,2d,Jc,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="65" sub="1" blind="40" but="false" own="1985" opp="895" max="2160" add="1120" pot="1120" call="1040" p="NaN">
+    <Action>raise 80</Action>
+    <HandOwn>[Ks,5s,5c,Kh]</HandOwn>
+    <HandOpp>[Qh,6c,2c,8s]</HandOpp>
+    <Table>[Td,2d,Jc,8h,5d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="66" sub="1" blind="40" but="true" own="2345" opp="1495" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8c,Td,Qs,5c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="66" sub="1" blind="40" but="true" own="2345" opp="1495" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8c,Td,Qs,5c]</HandOwn>
+    <HandOpp />
+    <Table>[Jc,9s,Ts]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="66" sub="2" blind="40" but="true" own="2345" opp="1495" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8c,Td,Qs,5c]</HandOwn>
+    <HandOpp />
+    <Table>[Jc,9s,Ts]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="66" sub="1" blind="40" but="true" own="2345" opp="1495" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8c,Td,Qs,5c]</HandOwn>
+    <HandOpp />
+    <Table>[Jc,9s,Ts,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="66" sub="2" blind="40" but="true" own="2345" opp="1495" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[8c,Td,Qs,5c]</HandOwn>
+    <HandOpp />
+    <Table>[Jc,9s,Ts,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="67" sub="1" blind="40" but="false" own="2545" opp="1335" max="0" add="40" pot="120" call="40" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[9c,8d,Th,7h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="68" sub="1" blind="40" but="true" own="2425" opp="1415" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[4c,Th,4h,2s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="68" sub="1" blind="40" but="true" own="2425" opp="1415" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[4c,Th,4h,2s]</HandOwn>
+    <HandOpp />
+    <Table>[Ts,3d,Tc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="68" sub="2" blind="40" but="true" own="2425" opp="1415" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[4c,Th,4h,2s]</HandOwn>
+    <HandOpp />
+    <Table>[Ts,3d,Tc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="69" sub="1" blind="40" but="false" own="2545" opp="1335" max="0" add="40" pot="120" call="40" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kc,As,5h,3s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="70" sub="1" blind="40" but="true" own="2425" opp="1415" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7d,Kd,5h,8c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="70" sub="1" blind="40" but="true" own="2425" opp="1415" max="160" add="0" pot="160" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[7d,Kd,5h,8c]</HandOwn>
+    <HandOpp />
+    <Table>[Tc,Ac,As]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="71" sub="1" blind="45" but="false" own="2540" opp="1325" max="0" add="45" pot="135" call="45" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[9s,5c,Js,Ac]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="71" sub="1" blind="45" but="false" own="2540" opp="1190" max="450" add="270" pot="270" call="180" p="NaN">
+    <Action>raise 90</Action>
+    <HandOwn>[9s,5c,Js,Ac]</HandOwn>
+    <HandOpp />
+    <Table>[6h,9h,Qd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="71" sub="1" blind="45" but="false" own="2540" opp="920" max="990" add="540" pot="540" call="450" p="NaN">
+    <Action>raise 90</Action>
+    <HandOwn>[9s,5c,Js,Ac]</HandOwn>
+    <HandOpp />
+    <Table>[6h,9h,Qd,2c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="72" sub="1" blind="45" but="true" own="2225" opp="1640" max="0" add="45" pot="135" call="45" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[6d,8c,8d,7h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="73" sub="1" blind="45" but="false" own="2315" opp="1550" max="0" add="45" pot="135" call="45" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ad,2c,7c,Qd]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="74" sub="1" blind="45" but="true" own="2180" opp="1640" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,9h,3d,8d]</HandOwn>
+    <HandOpp>[Jc,7d,Js,Ah]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="74" sub="1" blind="45" but="true" own="2180" opp="1640" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,9h,3d,8d]</HandOwn>
+    <HandOpp>[Jc,7d,Js,Ah]</HandOpp>
+    <Table>[4s,Qs,5s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="74" sub="1" blind="45" but="true" own="2180" opp="1640" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,9h,3d,8d]</HandOwn>
+    <HandOpp>[Jc,7d,Js,Ah]</HandOpp>
+    <Table>[4s,Qs,5s,Th]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="74" sub="1" blind="45" but="true" own="2180" opp="1640" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,9h,3d,8d]</HandOwn>
+    <HandOpp>[Jc,7d,Js,Ah]</HandOpp>
+    <Table>[4s,Qs,5s,Th,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="75" sub="1" blind="45" but="false" own="2135" opp="1730" max="0" add="45" pot="135" call="45" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ac,6h,7c,Jd]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="75" sub="1" blind="45" but="false" own="2135" opp="1505" max="630" add="450" pot="360" call="270" p="NaN">
+    <Action>raise 180</Action>
+    <HandOwn>[Ac,6h,7c,Jd]</HandOwn>
+    <HandOpp />
+    <Table>[Kc,3d,4s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="76" sub="1" blind="45" but="true" own="1820" opp="2000" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8s,2c,4c,4s]</HandOwn>
+    <HandOpp>[9d,5c,Ac,Qd]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="76" sub="1" blind="45" but="true" own="1820" opp="2000" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,2c,4c,4s]</HandOwn>
+    <HandOpp>[9d,5c,Ac,Qd]</HandOpp>
+    <Table>[Kc,5d,6s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="76" sub="1" blind="45" but="true" own="1820" opp="2000" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,2c,4c,4s]</HandOwn>
+    <HandOpp>[9d,5c,Ac,Qd]</HandOpp>
+    <Table>[Kc,5d,6s,Qc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="76" sub="1" blind="45" but="true" own="1820" opp="2000" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,2c,4c,4s]</HandOwn>
+    <HandOpp>[9d,5c,Ac,Qd]</HandOpp>
+    <Table>[Kc,5d,6s,Qc,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="76" sub="2" blind="45" but="true" own="1820" opp="2000" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8s,2c,4c,4s]</HandOwn>
+    <HandOpp>[9d,5c,Ac,Qd]</HandOpp>
+    <Table>[Kc,5d,6s,Qc,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="77" sub="1" blind="45" but="false" own="2135" opp="1730" max="0" add="45" pot="135" call="45" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[9s,4c,4h,Js]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="77" sub="1" blind="45" but="false" own="2135" opp="1595" max="450" add="270" pot="270" call="180" p="NaN">
+    <Action>raise 90</Action>
+    <HandOwn>[9s,4c,4h,Js]</HandOwn>
+    <HandOpp />
+    <Table>[Jc,Ad,Ac]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="77" sub="1" blind="45" but="false" own="2135" opp="1595" max="450" add="180" pot="270" call="180" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[9s,4c,4h,Js]</HandOwn>
+    <HandOpp />
+    <Table>[Jc,Ad,Ac,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="78" sub="1" blind="45" but="true" own="2270" opp="1550" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[5c,9c,2d,8h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="78" sub="1" blind="45" but="true" own="2270" opp="1550" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5c,9c,2d,8h]</HandOwn>
+    <HandOpp />
+    <Table>[Ad,Jd,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="78" sub="1" blind="45" but="true" own="2270" opp="1550" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[5c,9c,2d,8h]</HandOwn>
+    <HandOpp />
+    <Table>[Ad,Jd,7d,2h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="79" sub="1" blind="45" but="false" own="2405" opp="1460" max="0" add="45" pot="135" call="45" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qs,Jd,Tc,5c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="79" sub="1" blind="45" but="false" own="2405" opp="1235" max="630" add="450" pot="360" call="270" p="NaN">
+    <Action>raise 180</Action>
+    <HandOwn>[Qs,Jd,Tc,5c]</HandOwn>
+    <HandOpp />
+    <Table>[Kh,3d,9s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="80" sub="1" blind="45" but="true" own="2090" opp="1730" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,Qs,8d,8h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="80" sub="1" blind="45" but="true" own="2090" opp="1730" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,Qs,8d,8h]</HandOwn>
+    <HandOpp />
+    <Table>[9h,4h,3h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="80" sub="2" blind="45" but="true" own="2090" opp="1730" max="180" add="0" pot="180" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[7h,Qs,8d,8h]</HandOwn>
+    <HandOpp />
+    <Table>[9h,4h,3h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="81" sub="1" blind="50" but="false" own="2220" opp="1630" max="0" add="50" pot="150" call="50" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5h,Ah,Ts,3h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="81" sub="1" blind="50" but="false" own="2220" opp="1480" max="500" add="300" pot="300" call="200" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[5h,Ah,Ts,3h]</HandOwn>
+    <HandOpp />
+    <Table>[8c,Tc,7h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="81" sub="1" blind="50" but="false" own="2220" opp="1180" max="1100" add="600" pot="600" call="500" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[5h,Ah,Ts,3h]</HandOwn>
+    <HandOpp />
+    <Table>[8c,Tc,7h,Ks]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="82" sub="1" blind="50" but="true" own="1970" opp="1830" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3c,7c,Jh,4s]</HandOwn>
+    <HandOpp>[8c,6c,6h,9d]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="82" sub="1" blind="50" but="true" own="1970" opp="1830" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3c,7c,Jh,4s]</HandOwn>
+    <HandOpp>[8c,6c,6h,9d]</HandOpp>
+    <Table>[Qc,Qd,Qh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="82" sub="1" blind="50" but="true" own="1970" opp="1830" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3c,7c,Jh,4s]</HandOwn>
+    <HandOpp>[8c,6c,6h,9d]</HandOpp>
+    <Table>[Qc,Qd,Qh,2h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="82" sub="1" blind="50" but="true" own="1970" opp="1830" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3c,7c,Jh,4s]</HandOwn>
+    <HandOpp>[8c,6c,6h,9d]</HandOpp>
+    <Table>[Qc,Qd,Qh,2h,Ah]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="83" sub="1" blind="50" but="false" own="1920" opp="1930" max="0" add="50" pot="150" call="50" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,7s,Ad,Kd]</HandOwn>
+    <HandOpp>[Kc,8c,9s,3s]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="83" sub="1" blind="50" but="false" own="1920" opp="1680" max="700" add="500" pot="400" call="300" p="NaN">
+    <Action>raise 200</Action>
+    <HandOwn>[8s,7s,Ad,Kd]</HandOwn>
+    <HandOpp>[Kc,8c,9s,3s]</HandOpp>
+    <Table>[Ts,7d,9c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="83" sub="1" blind="50" but="false" own="1920" opp="1180" max="1700" add="1000" pot="900" call="800" p="NaN">
+    <Action>raise 200</Action>
+    <HandOwn>[8s,7s,Ad,Kd]</HandOwn>
+    <HandOpp>[Kc,8c,9s,3s]</HandOpp>
+    <Table>[Ts,7d,9c,9d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="83" sub="1" blind="50" but="false" own="1920" opp="180" max="3700" add="2000" pot="1900" call="1800" p="NaN">
+    <Action>raise 200</Action>
+    <HandOwn>[8s,7s,Ad,Kd]</HandOwn>
+    <HandOpp>[Kc,8c,9s,3s]</HandOpp>
+    <Table>[Ts,7d,9c,9d,Ac]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="84" sub="1" blind="50" but="true" own="1170" opp="2630" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3s,Qc,Th,6h]</HandOwn>
+    <HandOpp>[4d,2h,Js,Kh]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="84" sub="1" blind="50" but="true" own="1170" opp="2630" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3s,Qc,Th,6h]</HandOwn>
+    <HandOpp>[4d,2h,Js,Kh]</HandOpp>
+    <Table>[8s,Kc,3d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="84" sub="1" blind="50" but="true" own="1170" opp="2630" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3s,Qc,Th,6h]</HandOwn>
+    <HandOpp>[4d,2h,Js,Kh]</HandOpp>
+    <Table>[8s,Kc,3d,9s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="84" sub="1" blind="50" but="true" own="1170" opp="2630" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3s,Qc,Th,6h]</HandOwn>
+    <HandOpp>[4d,2h,Js,Kh]</HandOpp>
+    <Table>[8s,Kc,3d,9s,8d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="85" sub="1" blind="50" but="false" own="1120" opp="2730" max="0" add="50" pot="150" call="50" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Th,6d,Qh,7c]</HandOwn>
+    <HandOpp>[6s,7h,3d,8c]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="85" sub="1" blind="50" but="false" own="1120" opp="2480" max="700" add="500" pot="400" call="300" p="NaN">
+    <Action>raise 200</Action>
+    <HandOwn>[Th,6d,Qh,7c]</HandOwn>
+    <HandOpp>[6s,7h,3d,8c]</HandOpp>
+    <Table>[5h,2h,6c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="85" sub="1" blind="50" but="false" own="1120" opp="1980" max="1700" add="1000" pot="900" call="800" p="NaN">
+    <Action>raise 200</Action>
+    <HandOwn>[Th,6d,Qh,7c]</HandOwn>
+    <HandOpp>[6s,7h,3d,8c]</HandOpp>
+    <Table>[5h,2h,6c,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="85" sub="1" blind="50" but="false" own="1120" opp="1180" max="3300" add="1600" pot="1700" call="1600" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Th,6d,Qh,7c]</HandOwn>
+    <HandOpp>[6s,7h,3d,8c]</HandOpp>
+    <Table>[5h,2h,6c,7d,Kh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="86" sub="1" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3h,Jh,Tc,4c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="86" sub="1" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3h,Jh,Tc,4c]</HandOwn>
+    <HandOpp />
+    <Table>[6c,Td,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="86" sub="2" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3h,Jh,Tc,4c]</HandOwn>
+    <HandOpp />
+    <Table>[6c,Td,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="86" sub="1" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3h,Jh,Tc,4c]</HandOwn>
+    <HandOpp />
+    <Table>[6c,Td,4h,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="86" sub="2" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[3h,Jh,Tc,4c]</HandOwn>
+    <HandOpp />
+    <Table>[6c,Td,4h,8h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="87" sub="1" blind="50" but="false" own="2490" opp="1360" max="0" add="50" pot="150" call="50" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7d,Qh,5s,5d]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="87" sub="1" blind="50" but="false" own="2490" opp="1210" max="500" add="300" pot="300" call="200" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[7d,Qh,5s,5d]</HandOwn>
+    <HandOpp />
+    <Table>[Qc,Js,2h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="87" sub="1" blind="50" but="false" own="2490" opp="910" max="1100" add="600" pot="600" call="500" p="NaN">
+    <Action>raise 100</Action>
+    <HandOwn>[7d,Qh,5s,5d]</HandOwn>
+    <HandOpp />
+    <Table>[Qc,Js,2h,Tc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="88" sub="1" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Kh,7d,6d,3h]</HandOwn>
+    <HandOpp>[5d,4c,Th,7s]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="88" sub="1" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kh,7d,6d,3h]</HandOwn>
+    <HandOpp>[5d,4c,Th,7s]</HandOpp>
+    <Table>[Ts,Qs,7h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="88" sub="1" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kh,7d,6d,3h]</HandOwn>
+    <HandOpp>[5d,4c,Th,7s]</HandOpp>
+    <Table>[Ts,Qs,7h,Ks]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="88" sub="1" blind="50" but="true" own="2240" opp="1560" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Kh,7d,6d,3h]</HandOwn>
+    <HandOpp>[5d,4c,Th,7s]</HandOpp>
+    <Table>[Ts,Qs,7h,Ks,9h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="89" sub="1" blind="50" but="false" own="2390" opp="1460" max="0" add="50" pot="150" call="50" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ts,3d,5c,5s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="89" sub="1" blind="50" but="false" own="2390" opp="1210" max="700" add="500" pot="400" call="300" p="NaN">
+    <Action>raise 200</Action>
+    <HandOwn>[Ts,3d,5c,5s]</HandOwn>
+    <HandOpp />
+    <Table>[4h,Ks,2c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="89" sub="1" blind="50" but="false" own="2390" opp="710" max="1700" add="1000" pot="900" call="800" p="NaN">
+    <Action>raise 200</Action>
+    <HandOwn>[Ts,3d,5c,5s]</HandOwn>
+    <HandOpp />
+    <Table>[4h,Ks,2c,2s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="90" sub="1" blind="50" but="true" own="1840" opp="1960" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[2d,7s,Ac,6s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="90" sub="1" blind="50" but="true" own="1840" opp="1960" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[2d,7s,Ac,6s]</HandOwn>
+    <HandOpp />
+    <Table>[4s,As,3s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="90" sub="2" blind="50" but="true" own="1840" opp="1960" max="200" add="0" pot="200" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[2d,7s,Ac,6s]</HandOwn>
+    <HandOpp />
+    <Table>[4s,As,3s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="91" sub="1" blind="55" but="false" own="1985" opp="1850" max="0" add="55" pot="165" call="55" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8h,2d,Kc,9c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="92" sub="1" blind="55" but="true" own="1820" opp="1960" max="220" add="0" pot="220" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[9h,Jd,Kd,Ad]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="92" sub="1" blind="55" but="true" own="1820" opp="1960" max="220" add="0" pot="220" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[9h,Jd,Kd,Ad]</HandOwn>
+    <HandOpp />
+    <Table>[Kc,5d,As]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="92" sub="2" blind="55" but="true" own="1820" opp="1960" max="220" add="0" pot="220" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[9h,Jd,Kd,Ad]</HandOwn>
+    <HandOpp />
+    <Table>[Kc,5d,As]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="93" sub="1" blind="55" but="false" own="1985" opp="1850" max="0" add="55" pot="165" call="55" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Tc,2s,Jc,Kh]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="93" sub="1" blind="55" but="false" own="1985" opp="1850" max="0" add="55" pot="165" call="55" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Tc,2s,Jc,Kh]</HandOwn>
+    <HandOpp />
+    <Table>[2c,Qc,Js]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="94" sub="1" blind="55" but="true" own="2040" opp="1740" max="220" add="0" pot="220" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[6h,Ts,8s,Kc]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="94" sub="1" blind="55" but="true" own="2040" opp="1740" max="220" add="0" pot="220" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[6h,Ts,8s,Kc]</HandOwn>
+    <HandOpp />
+    <Table>[Ad,Qc,Ac]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="95" sub="1" blind="55" but="false" own="2205" opp="1630" max="0" add="55" pot="165" call="55" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Tc,Kh,Ad,8h]</HandOwn>
+    <HandOpp>[Qh,Ks,7s,Qd]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="95" sub="1" blind="55" but="false" own="2205" opp="1575" max="330" add="110" pot="220" call="110" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Tc,Kh,Ad,8h]</HandOwn>
+    <HandOpp>[Qh,Ks,7s,Qd]</HandOpp>
+    <Table>[8c,Kd,5h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="95" sub="2" blind="55" but="false" own="2205" opp="1465" max="550" add="220" pot="330" call="220" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Tc,Kh,Ad,8h]</HandOwn>
+    <HandOpp>[Qh,Ks,7s,Qd]</HandOpp>
+    <Table>[8c,Kd,5h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="95" sub="1" blind="55" but="false" own="2205" opp="1245" max="990" add="440" pot="550" call="440" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Tc,Kh,Ad,8h]</HandOwn>
+    <HandOpp>[Qh,Ks,7s,Qd]</HandOpp>
+    <Table>[8c,Kd,5h,Td]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="95" sub="2" blind="55" but="false" own="2205" opp="805" max="1870" add="880" pot="990" call="880" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Tc,Kh,Ad,8h]</HandOwn>
+    <HandOpp>[Qh,Ks,7s,Qd]</HandOpp>
+    <Table>[8c,Kd,5h,Td]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="95" sub="1" blind="55" but="false" own="2205" opp="-75" max="0" add="1760" pot="1870" call="1760" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Tc,Kh,Ad,8h]</HandOwn>
+    <HandOpp>[Qh,Ks,7s,Qd]</HandOpp>
+    <Table>[8c,Kd,5h,Td,8d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="2" blind="10" but="false" own="1990" opp="1980" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Jc,3s,Qs,9c]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="2" blind="10" but="true" own="1960" opp="2000" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[Ad,8c,5d,Jc]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="3" blind="10" but="true" own="1960" opp="2000" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ad,8c,5d,Jc]</HandOwn>
+    <HandOpp />
+    <Table>[7h,9h,7d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="3" blind="10" but="true" own="1960" opp="2000" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ad,8c,5d,Jc]</HandOwn>
+    <HandOpp />
+    <Table>[7h,9h,7d,2d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="1" blind="10" but="true" own="1960" opp="2000" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ad,8c,5d,Jc]</HandOwn>
+    <HandOpp />
+    <Table>[7h,9h,7d,2d,5s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="2" blind="10" but="false" own="1950" opp="2020" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[5s,3s,Jd,5h]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="3" blind="10" but="true" own="1980" opp="1980" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3h,5s,2h,4h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="2" blind="10" but="true" own="1980" opp="1980" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3h,5s,2h,4h]</HandOwn>
+    <HandOpp />
+    <Table>[Ah,Jh,Jc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="3" blind="10" but="true" own="1980" opp="1980" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3h,5s,2h,4h]</HandOwn>
+    <HandOpp />
+    <Table>[Ah,Jh,Jc,Kh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="4" blind="10" but="true" own="1980" opp="1980" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3h,5s,2h,4h]</HandOwn>
+    <HandOpp />
+    <Table>[Ah,Jh,Jc,Kh]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="1" blind="10" but="true" own="1980" opp="1980" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3h,5s,2h,4h]</HandOwn>
+    <HandOpp />
+    <Table>[Ah,Jh,Jc,Kh,2s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="2" blind="10" but="true" own="1980" opp="1980" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[3h,5s,2h,4h]</HandOwn>
+    <HandOpp />
+    <Table>[Ah,Jh,Jc,Kh,2s]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="3" blind="10" but="false" own="1930" opp="2040" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ah,8c,3h,7h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="4" blind="10" but="false" own="1930" opp="2040" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ah,8c,3h,7h]</HandOwn>
+    <HandOpp />
+    <Table>[3s,2h,4d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="2" sub="4" blind="10" but="false" own="1930" opp="2040" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Ah,8c,3h,7h]</HandOwn>
+    <HandOpp />
+    <Table>[3s,2h,4d,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="3" blind="10" but="true" own="1900" opp="2060" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[6s,Ts,3c,4c]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="2" blind="10" but="true" own="1900" opp="2060" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6s,Ts,3c,4c]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table>[Kd,Qh,9h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="2" blind="10" but="true" own="1900" opp="2060" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6s,Ts,3c,4c]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table>[Kd,Qh,9h,Jc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="3" sub="1" blind="10" but="true" own="1900" opp="2060" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[6s,Ts,3c,4c]</HandOwn>
+    <HandOpp>[Tc,5s,As,Jh]</HandOpp>
+    <Table>[Kd,Qh,9h,Jc,9c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="4" sub="2" blind="10" but="false" own="1890" opp="2080" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[4d,Ah,Ks,5h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="4" sub="2" blind="10" but="false" own="1890" opp="2050" max="100" add="60" pot="60" call="40" p="NaN">
+    <Action>raise 20</Action>
+    <HandOwn>[4d,Ah,Ks,5h]</HandOwn>
+    <HandOpp />
+    <Table>[Jc,Td,6c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="2" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7h,2h,Jc,Qc]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="3" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,2h,Jc,Qc]</HandOwn>
+    <HandOpp />
+    <Table>[6d,5c,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="3" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7h,2h,Jc,Qc]</HandOwn>
+    <HandOpp />
+    <Table>[6d,5c,4c,2c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="5" sub="4" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[7h,2h,Jc,Qc]</HandOwn>
+    <HandOpp />
+    <Table>[6d,5c,4c,2c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="6" sub="2" blind="10" but="false" own="1870" opp="2100" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[3d,9h,Td,Kh]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="7" sub="2" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[7c,Th,8d,Kd]</HandOwn>
+    <HandOpp>[Jc,9d,Jh,Ac]</HandOpp>
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="7" sub="2" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7c,Th,8d,Kd]</HandOwn>
+    <HandOpp>[Jc,9d,Jh,Ac]</HandOpp>
+    <Table>[8s,Qd,3c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="7" sub="2" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7c,Th,8d,Kd]</HandOwn>
+    <HandOpp>[Jc,9d,Jh,Ac]</HandOpp>
+    <Table>[8s,Qd,3c,4h]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="7" sub="1" blind="10" but="true" own="1840" opp="2120" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[7c,Th,8d,Kd]</HandOwn>
+    <HandOpp>[Jc,9d,Jh,Ac]</HandOpp>
+    <Table>[8s,Qd,3c,4h,4c]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="8" sub="2" blind="10" but="false" own="1830" opp="2140" max="0" add="10" pot="30" call="10" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[Qd,Qc,Ts,Qh]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="8" sub="1" blind="10" but="false" own="1830" opp="2110" max="100" add="60" pot="60" call="40" p="NaN">
+    <Action>raise 20</Action>
+    <HandOwn>[Qd,Qc,Ts,Qh]</HandOwn>
+    <HandOpp />
+    <Table>[7h,Td,Jc]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="8" sub="1" blind="10" but="false" own="1830" opp="2110" max="100" add="40" pot="60" call="40" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[Qd,Qc,Ts,Qh]</HandOwn>
+    <HandOpp />
+    <Table>[7h,Td,Jc,Qs]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="2" blind="10" but="true" own="1860" opp="2100" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8s,6d,9s,3s]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="2" blind="10" but="true" own="1860" opp="2100" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,6d,9s,3s]</HandOwn>
+    <HandOpp />
+    <Table>[8h,4h,Kd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="2" blind="10" but="true" own="1860" opp="2100" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>check 0</Action>
+    <HandOwn>[8s,6d,9s,3s]</HandOwn>
+    <HandOpp />
+    <Table>[8h,4h,Kd,8d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="3" blind="10" but="true" own="1860" opp="2100" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>call 0</Action>
+    <HandOwn>[8s,6d,9s,3s]</HandOwn>
+    <HandOpp />
+    <Table>[8h,4h,Kd,8d]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="9" sub="2" blind="10" but="true" own="1860" opp="2100" max="40" add="0" pot="40" call="0" p="NaN">
+    <Action>fold 0</Action>
+    <HandOwn>[8s,6d,9s,3s]</HandOwn>
+    <HandOpp />
+    <Table>[8h,4h,Kd,8d,Jd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="4" blind="10" but="false" own="1990" opp="1935" max="130" add="90" pot="75" call="55" p="NaN">
+    <Action>raise 35</Action>
+    <HandOwn>[Kh,2c,3h,7h]</HandOwn>
+    <HandOpp />
+    <Table />
+    <Result>NoResult</Result>
+  </rec>
+  <rec rnd="1" sub="3" blind="10" but="false" own="1990" opp="1845" max="310" add="180" pot="165" call="145" p="NaN">
+    <Action>raise 35</Action>
+    <HandOwn>[Kh,2c,3h,7h]</HandOwn>
+    <HandOpp />
+    <Table>[2s,8h,Qd]</Table>
+    <Result>NoResult</Result>
+  </rec>
+</record>
