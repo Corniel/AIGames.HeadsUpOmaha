@@ -7,7 +7,7 @@ using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Arena
 {
-    [Serializable]
+	[Serializable, XmlRoot("Bots")]
 	public class Bots : List<Bot>
 	{
 		public bool HasActive { get { return GetActive().Any(); } }
@@ -88,49 +88,49 @@ namespace AIGames.HeadsUpOmaha.Arena
 			return bot;
 		}
 		
-        #region Load & Save
+		#region Load & Save
 
-        public void Save(DirectoryInfo dir)
-        {
-            Save(new FileInfo(Path.Combine(dir.FullName, "bots.xml")));
-        }
-        public void Save(FileInfo file)
-        {
-            using (var stream = new FileStream(file.FullName, FileMode.Create, FileAccess.Write))
-            {
-                Save(stream);
-            }
-        }
-        public void Save(Stream stream)
-        {
+		public void Save(DirectoryInfo dir)
+		{
+			Save(new FileInfo(Path.Combine(dir.FullName, "bots.xml")));
+		}
+		public void Save(FileInfo file)
+		{
+			using (var stream = new FileStream(file.FullName, FileMode.Create, FileAccess.Write))
+			{
+				Save(stream);
+			}
+		}
+		public void Save(Stream stream)
+		{
 			this.Sort(ArenaConfig.SortType);
-            var serializer = new XmlSerializer(typeof(Bots));
-            serializer.Serialize(stream, this);
-        }
+			var serializer = new XmlSerializer(typeof(Bots));
+			serializer.Serialize(stream, this);
+		}
 
-        public static Bots Load(DirectoryInfo dir)
-        {
-            return Load(new FileInfo(Path.Combine(dir.FullName, "bots.xml")));
-        }
-        public static Bots Load(FileInfo file)
-        {
-            using (var stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
-            {
-                return Load(stream);
-            }
-        }
-        public static Bots Load(Stream stream)
-        {
-            var serializer = new XmlSerializer(typeof(Bots));
-            var data = (Bots)serializer.Deserialize(stream);
-            return data;
-        }
+		public static Bots Load(DirectoryInfo dir)
+		{
+			return Load(new FileInfo(Path.Combine(dir.FullName, "bots.xml")));
+		}
+		public static Bots Load(FileInfo file)
+		{
+			using (var stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
+			{
+				return Load(stream);
+			}
+		}
+		public static Bots Load(Stream stream)
+		{
+			var serializer = new XmlSerializer(typeof(Bots));
+			var data = (Bots)serializer.Deserialize(stream);
+			return data;
+		}
 
 		public void Sort(BotCompareType tp)
 		{
 			this.Sort(new BotComparer(tp));
 		}
 
-        #endregion
+		#endregion
 	}
 }

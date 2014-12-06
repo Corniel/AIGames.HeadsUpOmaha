@@ -9,12 +9,12 @@ namespace AIGames.HeadsUpOmaha.Arena
 		public static void Main(string[] args)
 		{
 			var dir = new DirectoryInfo(ConfigurationManager.AppSettings["Bots.Dir"]);
-            if (args != null && args.Length > 0)
-            {
-                dir = new DirectoryInfo(args[0]);
-            }
+			if (args != null && args.Length > 0)
+			{
+				dir = new DirectoryInfo(args[0]);
+			}
 
-            var arena = new CompetitionRunner(dir);
+			var arena = new CompetitionRunner(dir);
 
 			try
 			{
@@ -25,11 +25,11 @@ namespace AIGames.HeadsUpOmaha.Arena
 			{
 				arena.GameSettings.Save(dir);
 			}
-            try
-            {
-                arena.Bots = Bots.Load(dir);
-            }
-            catch { }
+			try
+			{
+				arena.Bots = Bots.Load(dir);
+			}
+			catch { }
 
 			while (arena.Run()) { }
 		}
