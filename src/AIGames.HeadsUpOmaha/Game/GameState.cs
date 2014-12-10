@@ -52,15 +52,6 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>The current size of the big blind.</summary>
 		public int BigBlind { get { return SmallBlind * 2; } }
 
-		/// <summary>Updates the blind when the number of hands per level is passed..</summary>
-		public void UpdateBlind(int round)
-		{
-			if (round % HandsPerLevel == 0)
-			{
-				this.SmallBlind += 5;
-			}
-		}
-
 		/// <summary>Get player based on the player type.</summary>
 		public PlayerState this[PlayerType tp]
 		{
@@ -104,7 +95,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Represents the sub round (equals the size of the table).</summary>
 		public int SubRound { get { return this.Table == null ? 0 : this.Table.Count; } }
 
-		/// <summary>Total amount of chips currently in the pot (plus sidepot).</summary>
+		/// <summary>Total amount of chips currently in the pot (+ side pot).</summary>
 		public int MaxWinPot
 		{
 			get
@@ -127,7 +118,8 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			get
 			{
-				return BigBlind;
+				var minStack = Math.Min(Own.Stack - AmountToCall, Opp.Stack);
+				return minStack < BigBlind ? 0 : BigBlind;
 			}
 		}
 		/// <summary>Test the maximum amount to raise.</summary>
@@ -135,10 +127,11 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			get
 			{
-				if (this.AmountToCall == SmallBlind) { return 0; }
-				var minStack = Math.Min(Own.Stack, Opp.Stack);
-				if (minStack < MinimumRaise) { return 0; };
-				return  MaxWinPot;
+				// Don't raise on small blind.
+				if (AmountToCall == SmallBlind) { return 0; }
+				var minStack = Math.Min(Own.Stack - AmountToCall, Opp.Stack);
+				if (minStack < BigBlind) { return 0; };
+				return Math.Min(minStack, MaxWinPot);
 			}
 		}
 
@@ -153,6 +146,19 @@ namespace AIGames.HeadsUpOmaha.Game
 			this.SmallBlind = settings.SmallBlind;
 			this.Player1.Update(settings);
 			this.Player2.Update(settings);
+		}
+
+		/// <summary>Updates a player based on the game action.</summary>
+		public void Update(PlayerType player, GameAction action)
+		{
+			if(action == GameAction.Call)
+			{
+				this[player].Call(this.AmountToCall);
+			}
+			else if (action.ActionType == GameActionType.raise)
+			{
+				this[player].Raise(action.Amount, this.AmountToCall);
+			}
 		}
 
 		/// <summary>Updates the state based on an action instruction.</summary>
@@ -245,13 +251,26 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <param name="rnd">
 		/// The randomizer to shuffle the deck.
 		/// </param>
-		public void StartNewRound(MT19937Generator rnd)
+		public bool StartNewRound(MT19937Generator rnd)
 		{
+			this.Round++;
 			var deck = Cards.GetShuffledDeck(rnd);
 			this.Player1.Hand = Cards.Create(deck.Take(4));
 			this.Player2.Hand = Cards.Create(deck.Skip(4).Take(4));
 			this.Table = Cards.Create(deck.Skip(8).Take(5));
 			this.OnButton = this.OnButton.Other();
+
+			if (this.Round > 1 && this.Round % HandsPerLevel == 1)
+			{
+				this.SmallBlind += 5;
+			}
+
+			if (Player1.Stack < BigBlind || Player2.Stack < BigBlind) { return false; }
+
+			Button.Post(this.SmallBlind);
+			Blind.Post(this.BigBlind);
+
+			return true;
 		}
 
 		/// <summary>Apply the round result.</summary>
@@ -292,6 +311,20 @@ namespace AIGames.HeadsUpOmaha.Game
 				this.Player1.Win(0);
 			}
 			return pot;
+		}
+
+		/// <summary>Copies the game state.</summary>
+		/// <remarks>
+		/// Uses the XML serialization.
+		/// </remarks>
+		public GameState Copy()
+		{
+			using (var stream = new MemoryStream())
+			{
+				Save(stream);
+				stream.Position = 0;
+				return Load(stream);
+			}
 		}
 
 		/// <summary>Makes a full copy of the settings for a specified player.</summary>

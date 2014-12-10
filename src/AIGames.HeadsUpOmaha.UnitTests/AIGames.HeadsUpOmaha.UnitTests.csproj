@@ -61,6 +61,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ACDC\ActionDataTest.cs" />
+    <Compile Include="ACDC\GameSimulationTest.cs" />
     <Compile Include="Analysis\PokerHandEvaluatorTest.cs" />
     <Compile Include="Analysis\UInt64CardsTest.cs" />
     <Compile Include="AppConfig.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Game\GameActionTest.cs" />
     <Compile Include="StatisticalMathTest.cs" />
     <Compile Include="BitsTest.cs" />
+    <Content Include="ACDC\data.xml" />
     <Content Include="Files\Input.001.txt" />
     <Compile Include="Deploy\DeployBot.cs" />
     <Compile Include="Game\CardTest.cs" />
@@ -82,6 +85,10 @@
     <Content Include="Files\Input.003.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AIGames.HeadsUpOmaha.ACDC\AIGames.HeadsUpOmaha.ACDC.csproj">
+      <Project>{1628d3ee-61ab-4c7e-bbb6-03e78fd8bc5f}</Project>
+      <Name>AIGames.HeadsUpOmaha.ACDC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AIGames.HeadsUpOmaha.AllIn\AIGames.HeadsUpOmaha.AllIn.csproj">
       <Project>{01743a97-abb2-4b4e-a468-adf30048a2f6}</Project>
       <Name>AIGames.HeadsUpOmaha.AllIn</Name>

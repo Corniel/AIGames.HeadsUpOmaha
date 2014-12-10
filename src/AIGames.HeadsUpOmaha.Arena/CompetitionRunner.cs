@@ -88,33 +88,33 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 			Console.Clear();
 			Console.Write(' ');
-			
+
 			Console.ForegroundColor = ConsoleColor.Red;
 			Console.Write('♦');
-			
+
 			Console.ForegroundColor = ConsoleColor.Gray;
 			Console.Write(" Omaha Arena ");
-			
+
 			Console.ForegroundColor = ConsoleColor.White;
 			Console.Write('♣');
-			
+
 			Console.ForegroundColor = ConsoleColor.Gray;
 			Console.Write(@" {0:h\:mm\:ss} ", sw.Elapsed);
-			
+
 			Console.ForegroundColor = ConsoleColor.Red;
 			Console.Write('♥');
 
 			Console.ForegroundColor = ConsoleColor.Gray;
 			Console.Write(@" {0:#,###0} ", this.Games);
-			
+
 			Console.ForegroundColor = ConsoleColor.White;
 			Console.Write('♠');
-			
+
 			Console.ForegroundColor = ConsoleColor.Gray;
 			Console.WriteLine(" {0:0.00}s/game", sw.ElapsedMilliseconds / 1000.0 / (double)this.Games);
 
 			Console.WriteLine("==============================================================");
-			Console.WriteLine("Pos   ELo  Score  Games Duriation  Bot");
+			Console.WriteLine("Pos   ELo  Score  Games Duration   Bot");
 			Console.WriteLine("==============================================================");
 			foreach (var bot in this.Bots)
 			{
@@ -175,49 +175,41 @@ namespace AIGames.HeadsUpOmaha.Arena
 					var state = CreateState();
 					ApplySettings(bots);
 
-					while (true)
+					while (state.StartNewRound(this.Rnd))
 					{
-						state.StartNewRound(this.Rnd);
-
 						StartNewRound(bots, state);
-						HandleBlinds(state);
 						var lastaction = RunSubRounds(bots, state, state.OnButton);
 						var pot = state.ApplyRoundResult(lastaction.GetResult());
 						SendResult(bots, state, pot, lastaction);
 
-						// upates the blind.
-						state.UpdateBlind(state.Round++);
-
-						if (state.Player1.Stack - state.BigBlind < 0 || state.Player2.Stack - state.BigBlind < 0 || bot1.TimedOut || bot2.TimedOut)
-						{
-							if (bot1.TimedOut)
-							{
-								state.Player2.Stack = state.Chips;
-								state.Player1.Stack = 0;
-								log.ErrorFormat("{0} timed out.", bot1.Bot.FullName);
-							}
-							else if (bot2.TimedOut)
-							{
-								state.Player1.Stack = state.Chips;
-								state.Player2.Stack = 0;
-								log.ErrorFormat("{0} timed out.", bot2.Bot.FullName);
-							}
-
-							var winner = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
-
-							var first = Instruction.CreateFinished(winner.GetFirst(), 1);
-							var second = Instruction.CreateFinished(winner.GetSecond(), 2);
-
-							bot1.WriteLine(second);
-							bot2.WriteLine(second);
-							bot1.WriteLine(first);
-							bot2.WriteLine(first);
-
-							bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
-							bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
-							return winner;
-						}
+						if (bot1.TimedOut || bot2.TimedOut) { break; }
 					}
+					if (bot1.TimedOut)
+					{
+						state.Player2.Stack = state.Chips;
+						state.Player1.Stack = 0;
+						log.ErrorFormat("{0} timed out.", bot1.Bot.FullName);
+					}
+					else if (bot2.TimedOut)
+					{
+						state.Player1.Stack = state.Chips;
+						state.Player2.Stack = 0;
+						log.ErrorFormat("{0} timed out.", bot2.Bot.FullName);
+					}
+
+					var winner = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+
+					var first = Instruction.CreateFinished(winner.GetFirst(), 1);
+					var second = Instruction.CreateFinished(winner.GetSecond(), 2);
+
+					bot1.WriteLine(second);
+					bot2.WriteLine(second);
+					bot1.WriteLine(first);
+					bot2.WriteLine(first);
+
+					bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
+					bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
+					return winner;
 				}
 			}
 		}
@@ -304,8 +296,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 				var sw = new Stopwatch();
 				sw.Start();
 				var action = bots[playerToMove].Action(state.Personalize(playerToMove));
-				sw.Stop(); 
-				
+				sw.Stop();
+
 				state[playerToMove].TimeBank = state[playerToMove].TimeBank.Add(-sw.Elapsed);
 
 				switch (action.ActionType)
@@ -362,12 +354,12 @@ namespace AIGames.HeadsUpOmaha.Arena
 			{
 				if (state.AmountToCall > 0)
 				{
-					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
+					log.WarnFormat("Raise of '{0}' would potentially lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
 					return RunCall(state, playerToMove);
 				}
 				else
 				{
-					log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
+					log.WarnFormat("Raise of '{0}' would potentially lead to a negative stack, raise action changed to 'check'.", this[playerToMove].FullName);
 					return RunCheck(state, playerToMove);
 				}
 			}
@@ -377,7 +369,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			// If we raise but don't have te money.
 			if (raise > minStack)
 			{
-				log.WarnFormat("Raise of '{0}' would potentialy lead to a negative stack, raise action changed to a smaller 'raise'.", this[playerToMove].FullName);
+				log.WarnFormat("Raise of '{0}' would potentially lead to a negative stack, raise action changed to a smaller 'raise'.", this[playerToMove].FullName);
 				return RunRaise(state, playerToMove, Math.Min(state.MaxinumRaise, minStack));
 			}
 			// In fact, we don't raise.
@@ -391,7 +383,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 				log.WarnFormat("Raise of '{0}' is above maximum amount, automatically changed to maximum.", this[playerToMove].FullName);
 				return RunRaise(state, playerToMove, state.MaxinumRaise);
 			}
-			
+
 			state[playerToMove].Raise(raise, state.AmountToCall);
 			return GameAction.Raise(raise);
 		}
@@ -402,11 +394,6 @@ namespace AIGames.HeadsUpOmaha.Arena
 			return GameAction.Fold;
 		}
 
-		private static void HandleBlinds(GameState state)
-		{
-			state.Button.Post(state.SmallBlind);
-			state.Blind.Post(state.BigBlind);
-		}
 		private static void StartNewRound(Dictionary<PlayerType, ConsoleBot> bots, GameState state)
 		{
 			foreach (var kvp in bots)
@@ -419,7 +406,6 @@ namespace AIGames.HeadsUpOmaha.Arena
 		{
 			var state = new GameState(this.GameSettings)
 			{
-				Round = 1,
 				OnButton = (PlayerType)Rnd.Next(0, 2),
 			};
 			return state;

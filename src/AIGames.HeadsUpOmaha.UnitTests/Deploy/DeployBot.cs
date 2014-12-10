@@ -20,10 +20,16 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 			Deployer.Run(collectDir, "AllIn", "0003", IsDebugDeploy);
 		}
 		[Test]
+		public void Deploy_AntiPasta_Successful()
+		{
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.AntiPasta"));
+			Deployer.Run(collectDir, "AntiPasta", "007", IsDebugDeploy);
+		}
+		[Test]
 		public void Deploy_BluntAxe_Successful()
 		{
 			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.BluntAxe"));
-			Deployer.Run(collectDir, "BluntAxe", "0012", IsDebugDeploy);
+			Deployer.Run(collectDir, "BluntAxe", "0013", IsDebugDeploy);
 		}
 		[Test]
 		public void Deploy_Checkers_Successful()
@@ -68,6 +74,12 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 		{
 			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.Rnd"));
 			Deployer.Run(collectDir, "RandomBot", "0002", IsDebugDeploy);
+		}
+		[Test]
+		public void Deploy_ACDC_Successful()
+		{
+			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.ACDC"));
+			Deployer.Run(collectDir, "ACDC", "00201", IsDebugDeploy);
 		}
 	}
 }

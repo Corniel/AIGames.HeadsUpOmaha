@@ -154,7 +154,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			return this.Player + ": " + this.Bot.DebugToString();
 		}
 
-		/// <summary>Writes a line to the logfile if the writer is set.</summary>
+		/// <summary>Writes a line to the log file if the writer is set.</summary>
 		public void WriteLine(string format, params object[] args)
 		{
 			if (this.Writer != null)

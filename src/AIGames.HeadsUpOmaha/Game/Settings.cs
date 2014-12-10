@@ -15,8 +15,8 @@ namespace AIGames.HeadsUpOmaha.Game
 			this.TimeBank = 5000;
 			this.TimePerMove = 500;
 			this.HandsPerLevel = 10;
-			this.StartingStack = 1000;
-			this.SmallBlind = 15;
+			this.StartingStack = 2000;
+			this.SmallBlind = 10;
 			this.YourBot = PlayerType.player1;
 		}
 

@@ -2,6 +2,7 @@
 using AIGames.HeadsUpOmaha.Game;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Troschuetz.Random.Generators;
@@ -11,6 +12,44 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 	[TestFixture]
 	public class PokerHandEvaluatorTest
 	{
+		[Test, Ignore]
+		public void Caculate_StartHands_50PercentOnAverage()
+		{
+			var runs = 100000;
+			var rnd = new MT19937Generator(17);
+
+			var results = new List<double>();
+
+			var distribution = new Dictionary<decimal, int>();
+
+			for (var i = 0.1m; i < 0.9m;i+= 0.005m)
+			{
+				distribution[i] = 0;
+
+			}
+				for (var run = 0; run < runs; run++)
+				{
+					var shuffled = Cards.GetShuffledDeck(rnd);
+
+					var own = Cards.Create(shuffled.Take(4));
+					var p = PokerHandEvaluator.Calculate(own, Cards.Empty, rnd, 1000);
+					results.Add(p);
+
+					decimal per = (decimal)Math.Round(p * 2, 2) / 2.0m;
+					distribution[per]++;
+				}
+
+			var avg = results.Average();
+			Console.WriteLine(avg);
+			Assert.IsTrue(avg > 0.48, "Avg min {0}", avg);
+			Assert.IsTrue(avg < 0.52, "Avg max {0}", avg);
+
+			foreach (var kvp in distribution)
+			{
+				Console.WriteLine("{0:0.0%}\t{1}", kvp.Key, kvp.Value);
+			}
+			
+		}
 		[Test]
 		public void Calculate_SpeedTable0_IsDoable()
 		{
