@@ -222,3 +222,5 @@ pip-log.txt
 /src/packages
 /bots.off
 App.config
+*.jmconfig
+*.xlsx
