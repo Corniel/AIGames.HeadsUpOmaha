@@ -18,21 +18,19 @@ namespace AIGames.HeadsUpOmaha.KingKong
 
 		public GameAction Action(GameState state)
 		{
-			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 1000);
+			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 5000);
 
-			// Only play doable small blinds.
-			if (state.IsPreFlop && pWin < 0.4 && state.AmountToCall == state.SmallBlind)
+			if (state.IsPreFlop && pWin < 0.40 && state.AmountToCall > 0)
 			{
 				return GameAction.Fold;
 			}
-			// Don't play bad hands on pre flop if we have to call.
-			if (state.IsPreFlop && pWin < 0.3 && state.AmountToCall >= state.BigBlind)
+			if (pWin > 0.65 && state.AmountToCall == 0)
 			{
-				return GameAction.Fold;
+				return GameAction.Raise(state.MaxinumRaise);
 			}
 			if (pWin > 0.55 && state.AmountToCall == 0)
 			{
-				return GameAction.Raise(state.MaxinumRaise);
+				return GameAction.Raise(state.MinimumRaise);
 			}
 			if (pWin > 0.7)
 			{
