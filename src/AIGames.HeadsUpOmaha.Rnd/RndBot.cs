@@ -22,21 +22,10 @@ namespace AIGames.HeadsUpOmaha.Rnd
 				case 1:
 				case 2:
 				case 3: return RaiseIfPossible(state);
-				default: return CallOrCheck(state);
+				default: return GameAction.CheckOrCall(state);
 			}
 		}
 
-		private GameAction CallOrCheck(GameState state)
-		{
-			if (state.AmountToCall > 0)
-			{
-				return GameAction.Call;
-			}
-			else
-			{
-				return GameAction.Check;
-			}
-		}
 		private GameAction RaiseIfPossible(GameState state)
 		{
 			var min = state.AmountToCall + state.BigBlind;
@@ -50,11 +39,7 @@ namespace AIGames.HeadsUpOmaha.Rnd
 					return GameAction.Raise(raise);
 				}
 			}
-			if (state.AmountToCall > 0)
-			{
-				return GameAction.Call;
-			}
-			return GameAction.Check;
+			return GameAction.CheckOrCall(state);
 		}
 		private GameAction FoldOnRequiredCall(GameState state)
 		{

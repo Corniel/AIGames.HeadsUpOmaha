@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -229,7 +225,6 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <param name="suit">
 		/// The suit of the card.
 		/// </param>
-		/// <returns></returns>
 		public static Card Create(int height, CardSuit suit)
 		{
 			if (height < 2 || height > 14) { throw new ArgumentOutOfRangeException("The height should be in the range [2, 14].", "height"); }
@@ -265,7 +260,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// </returns>
 		/// <remarks>
 		/// A card is always represented by two characters:
-		/// The first represents the card height and can be any number 2-9.
+		/// The first represents the card height and can be any number 2-9,
 		/// T, J, Q, K, A are 10, Jack, Queen, King and Ace respectively.
 		/// 
 		/// The second character represents the suit and can be d, c, h or s.

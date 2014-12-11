@@ -1,6 +1,7 @@
 ﻿using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
 using log4net;
+using System;
 
 namespace AIGames.HeadsUpOmaha.Logger
 {
@@ -10,11 +11,19 @@ namespace AIGames.HeadsUpOmaha.Logger
 
 		public GameAction Action(GameState state)
 		{
-			var action = state.AmountToCall > 0 ? GameAction.Call : GameAction.Check;
+			try
+			{
+				var action = state.AmountToCall > 0 ? GameAction.Call : GameAction.Check;
 
-			log.InfoFormat("Action[{0}]: {1}", state.Round, action);
+				log.InfoFormat("Action[{0}]: {1}", state.Round, action);
 
-			return action;
+				return action;
+			}
+			catch (Exception x)
+			{
+				log.Error(x);
+				return GameAction.Fold;
+			}
 		}
 		public void Reaction(GameState state, GameAction reaction)
 		{

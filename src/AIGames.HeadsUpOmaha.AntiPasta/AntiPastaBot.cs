@@ -34,14 +34,7 @@ namespace AIGames.HeadsUpOmaha.AntiPasta
 				return GameAction.Fold;
 			}
 
-			if (state.AmountToCall > 0)
-			{
-				return GameAction.Call;
-			}
-			else
-			{
-				return GameAction.Check;
-			}
+			return GameAction.CheckOrCall(state);
 		}
 
 		public void Reaction(GameState state, GameAction reaction) { }

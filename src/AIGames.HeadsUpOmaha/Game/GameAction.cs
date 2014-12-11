@@ -25,6 +25,14 @@ namespace AIGames.HeadsUpOmaha.Game
 			return new GameAction() { m_Value = (amount << 2) + (int)GameActionType.raise };
 		}
 
+		/// <summary>Returns a call if there is an amount to call, otherwise check.</summary>
+		public static GameAction CheckOrCall(GameState state)
+		{
+			if (state == null) { throw new ArgumentNullException("state"); }
+
+			return state.AmountToCall > 0 ? Call : Check;
+		}
+
 		#region (XML) (De)serialization
 
 		/// <summary>Initializes a new instance of action based on the serialization info.</summary>
@@ -155,14 +163,6 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <returns>
 		/// True, if the parsing succeeded, otherwise false.
 		/// </returns>
-		/// <remarks>
-		/// A action is always represented by two characters:
-		/// The first represents the action height and can be any number 2-9.
-		/// T, J, Q, K, A are 10, Jack, Queen, King and Ace respectively.
-		/// 
-		/// The second character represents the suit and can be d, c, h or s.
-		/// For Diamonds, Clubs, Hearts and Spades respectively.
-		/// </remarks>
 		public static bool TryParse(string str, out GameAction action)
 		{
 			action = GameAction.Check;
@@ -182,9 +182,9 @@ namespace AIGames.HeadsUpOmaha.Game
 					return true;
 				}
 				int amount;
-				if (Int32.TryParse(splitted[1], out amount) && amount > -1)
+				if (Int32.TryParse(splitted[1], out amount))
 				{
-					action = Raise(amount);
+					action = Raise(amount < 0 ? 0 : amount);
 					return true;
 				}
 			}

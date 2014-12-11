@@ -85,14 +85,7 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				return GameAction.Fold;
 			}
 
-			if (state.AmountToCall > 0)
-			{
-				return GameAction.Call;
-			}
-			else
-			{
-				return GameAction.Check;
-			}
+			return GameAction.CheckOrCall(state);
 		}
 	}
 }

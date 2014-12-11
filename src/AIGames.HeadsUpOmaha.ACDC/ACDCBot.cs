@@ -46,7 +46,7 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				return PreFlopAction(state);
 			}
 
-			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 1000);
+			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 2000);
 
 			if (pWin > 0.8)
 			{
@@ -66,16 +66,12 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				return GameAction.Fold;
 			}
 
-			if (state.AmountToCall > 0)
-			{
-				return GameAction.Call;
-			}
-			return GameAction.Check;
+			return GameAction.CheckOrCall(state);
 		}
 
 		public GameAction PreFlopAction(GameState state)
 		{
-			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 5000);
+			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 500);
 
 			// Only play doable small blinds. This value counts for roughly 70% of the hands. 0.465
 			if (pWin < 0.40 && state.AmountToCall == state.SmallBlind)

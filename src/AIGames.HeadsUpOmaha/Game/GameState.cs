@@ -109,7 +109,14 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			get
 			{
-				return Math.Abs(Player1.Pot - Player2.Pot);
+				var amount = Opp.Pot - Own.Pot;
+#if DEBUG
+				if (amount < 0)
+				{
+					throw new Exception(string.Format("Amount to call should not be negative: {0}. Opp: {1}, Own: {2}", amount, Opp.Pot , Own.Pot));
+				}
+#endif
+				return amount < 0 ? 0 : amount;
 			}
 		}
 
