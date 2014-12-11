@@ -197,19 +197,13 @@ namespace AIGames.HeadsUpOmaha.Arena
 						log.ErrorFormat("{0} timed out.", bot2.Bot.FullName);
 					}
 
-					var winner = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
-
-					var first = Instruction.CreateFinished(winner.GetFirst(), 1);
-					var second = Instruction.CreateFinished(winner.GetSecond(), 2);
-
-					bot1.WriteLine(second);
-					bot2.WriteLine(second);
-					bot1.WriteLine(first);
-					bot2.WriteLine(first);
+					var finalResult = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+					bot1.SetFinalResult(finalResult);
+					bot2.SetFinalResult(finalResult);
 
 					bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
 					bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
-					return winner;
+					return finalResult;
 				}
 			}
 		}
@@ -310,7 +304,8 @@ namespace AIGames.HeadsUpOmaha.Arena
 					default:
 						action = RunFold(state, playerToMove); break;
 				}
-				bots[playerToMove.Other()].Reaction(state.Personalize(playerToMove.Other()), action);
+				bots[playerToMove].Reaction(action, playerToMove);
+				bots[playerToMove.Other()].Reaction(action, playerToMove);
 
 				// on fold return direct.
 				if (action == GameAction.Fold) { return new LastGameAction(playerToMove, action); }

@@ -11,6 +11,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		public PlayerState()
 		{
 			this.Hand = Cards.Empty;
+			Stack = 2000;
 		}
 
 		/// <summary>Creates a new player state based on the settings.</summary>

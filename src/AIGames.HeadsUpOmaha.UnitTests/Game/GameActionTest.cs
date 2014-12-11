@@ -61,5 +61,51 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 			var exp = GameAction.Check;
 			Assert.AreEqual(exp, act);
 		}
+
+
+		[Test]
+		public void CheckOrCall_StateWithAmountToCall_Call()
+		{
+			var state = new GameState()
+			{
+				YourBot = PlayerType.player1,
+				Player1 = new PlayerState()
+				{
+					Stack = 1990,
+					Pot = 10,
+				},
+				Player2 = new PlayerState()
+				{
+					Stack = 1980,
+					Pot = 20,
+				},
+			};
+
+			var act = GameAction.CheckOrCall(state);
+			var exp = GameAction.Call;
+			Assert.AreEqual(exp, act);
+		}
+		[Test]
+		public void CheckOrCall_StateWithNoAmountToCall_Check()
+		{
+			var state = new GameState()
+			{
+				YourBot = PlayerType.player1,
+				Player1 = new PlayerState()
+				{
+					Stack = 1980,
+					Pot = 20,
+				},
+				Player2 = new PlayerState()
+				{
+					Stack = 1980,
+					Pot = 20,
+				},
+			};
+
+			var act = GameAction.CheckOrCall(state);
+			var exp = GameAction.Check;
+			Assert.AreEqual(exp, act);
+		}
 	}
 }

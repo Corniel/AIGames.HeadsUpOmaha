@@ -74,9 +74,8 @@ namespace AIGames.HeadsUpOmaha.Platform
 						break;
 
 					case InstructionType.Output:
-						if (instruction.IsFinished)
+						if (match.SetFinalResult(instruction.FinalResult))
 						{
-							match.Finalize(instruction);
 							bot.FinalResult(match);
 						}
 						break;

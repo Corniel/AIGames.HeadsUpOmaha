@@ -12,7 +12,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 	[TestFixture]
 	public class ConsolePlatformTest
 	{
-		[Test]
+		[Test, Ignore]
 		public void DoRun_Input001Txt_AreEqual()
 		{
 			var sb = new StringBuilder();
@@ -27,7 +27,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 
 			Assert.AreEqual(58, actions.Length);
 		}
-		[Test]
+		[Test, Ignore]
 		public void DoRun_Input003Txt_AreEqual()
 		{
 			var sb = new StringBuilder();

@@ -113,10 +113,12 @@ namespace AIGames.HeadsUpOmaha.Game
 #if DEBUG
 				if (amount < 0)
 				{
-					throw new Exception(string.Format("Amount to call should not be negative: {0}. Opp: {1}, Own: {2}", amount, Opp.Pot , Own.Pot));
+					throw new InvalidStateException(string.Format("Amount to call should not be negative: {0}. Opp: {1}, Own: {2}", amount, Opp.Pot , Own.Pot));
 				}
-#endif
+				return amount;
+#else
 				return amount < 0 ? 0 : amount;
+#endif
 			}
 		}
 
@@ -237,23 +239,6 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 		}
 
-		/// <summary>Updates the state based on a player instruction.</summary>
-		public void Finalize(Instruction instruction)
-		{
-			if (instruction.ToString().Contains("player1"))
-			{
-				this.Result = RoundResult.Player1Wins;
-				this.Player1.Stack = this.Chips;
-				this.Player2.Stack = 0;
-			}
-			else
-			{
-				this.Result = RoundResult.Player2Wins;
-				this.Player2.Stack = this.Chips;
-				this.Player1.Stack = 0;
-			}
-		}
-
 		/// <summary>Starts a new round.</summary>
 		/// <param name="rnd">
 		/// The randomizer to shuffle the deck.
@@ -318,6 +303,29 @@ namespace AIGames.HeadsUpOmaha.Game
 				this.Player1.Win(0);
 			}
 			return pot;
+		}
+
+		/// <summary>Sets the final result.</summary>
+		public bool SetFinalResult(RoundResult roundResult)
+		{
+			switch (roundResult)
+			{
+				case RoundResult.Player1Wins:
+					this.Result = RoundResult.Player1Wins;
+					this.Player1.Stack = this.Chips;
+					this.Player2.Stack = 0;
+					return true;
+
+				case RoundResult.Player2Wins:
+					this.Result = RoundResult.Player2Wins;
+					this.Player2.Stack = this.Chips;
+					this.Player1.Stack = 0;
+					return true;
+
+				case RoundResult.NoResult:
+				case RoundResult.Draw:
+				default: return false;
+			}
 		}
 
 		/// <summary>Copies the game state.</summary>

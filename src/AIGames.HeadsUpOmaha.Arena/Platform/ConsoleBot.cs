@@ -113,9 +113,9 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		}
 
 		/// <summary>The reaction of the opponent.</summary>
-		public void Reaction(GameState state, GameAction reaction)
+		public void Reaction(GameAction reaction, PlayerType playerToMove)
 		{
-			var instruction = Instruction.Create(this.Player.Other(), reaction.ActionType.ToString(), reaction.Amount);
+			var instruction = Instruction.Create(playerToMove, reaction.ActionType.ToString(), reaction.Amount);
 			WriteInstructions(instruction);
 		}
 
@@ -145,6 +145,28 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 					break;
 				default:
 					throw new NotSupportedException("The game state is not final.");
+			}
+		}
+
+		/// <summary>Sets the final result.</summary>
+		public void SetFinalResult(RoundResult finalResult)
+		{
+			if (finalResult == RoundResult.Player1Wins)
+			{
+				WriteInstructions(new Instruction[]
+				{
+					Instruction.Player2Finished2,
+					Instruction.Player1Finished1,
+							
+				});
+			}
+			else if (finalResult == RoundResult.Player2Wins)
+			{
+				WriteInstructions( new Instruction[]
+				{
+					Instruction.Player1Finished2,
+					Instruction.Player2Finished1,
+				});
 			}
 		}
 

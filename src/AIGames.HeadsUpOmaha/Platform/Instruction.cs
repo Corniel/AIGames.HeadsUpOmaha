@@ -16,7 +16,16 @@ namespace AIGames.HeadsUpOmaha.Platform
 	{
 		/// <summary>Represents an empty instruction.</summary>
 		public static readonly Instruction Empty = default(Instruction);
-				
+
+		/// <summary>Instruction 'Engine says: "player1 finished 1"'.</summary>
+		public static readonly Instruction Player1Finished1 = Parse("Engine says: \"player1 finished 1\"");
+		/// <summary>Instruction 'Engine says: "player2 finished 1"'.</summary>
+		public static readonly Instruction Player2Finished1 = Parse("Engine says: \"player2 finished 1\"");
+		/// <summary>Instruction 'Engine says: "player1 finished 2"'.</summary>
+		public static readonly Instruction Player1Finished2 = Parse("Engine says: \"player1 finished 2\"");
+		/// <summary>Instruction 'Engine says: "player2 finished 2"'.</summary>
+		public static readonly Instruction Player2Finished2 = Parse("Engine says: \"player2 finished 2\"");
+
 		#region (XML) (De)serialization
 
 		/// <summary>Initializes a new instance of card based on the serialization info.</summary>
@@ -132,17 +141,18 @@ namespace AIGames.HeadsUpOmaha.Platform
 		/// </remarks>
 		public PlayerType PlayerTypeValue { get { return (PlayerType)token2; } }
 
-		/// <summary>Returns true if an player[12] finished 1 instruction, otherwise false.</summary>
+		/// <summary>Gets the final result according to the instruction.</summary>
 		/// <remarks>
-		/// Only check first, otherwise, we would send final result two times.
+		/// If the instruction is of the type "Player[12] finished [12]", the result
+		/// is returned, otherwise NoResult.
 		/// </remarks>
-		public bool IsFinished
+		public RoundResult FinalResult
 		{
 			get
 			{
-				return 
-					this.InstructionType == Platform.InstructionType.Output &&
-					Regex.IsMatch(token2.ToString(), "player[12] finished 1", RegexOptions.IgnoreCase);
+				if (this == Player1Finished1 || this == Player2Finished2) { return RoundResult.Player1Wins; }
+				if (this == Player1Finished2 || this == Player2Finished1) { return RoundResult.Player2Wins; }
+				return RoundResult.NoResult;
 			}
 		}
 
@@ -154,6 +164,21 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 		/// <summary>Returs true if instruction represent the empty value, otherwise false.</summary>
 		public bool IsEmpty() { return token0 == default(String) && token1 == default(String) && token2 == default(Object); }
+
+		/// <summary>Returns true if the object equals the instruction, otherwise false.</summary>
+		public override bool Equals(object obj)
+		{
+			return base.Equals(obj);
+		}
+		/// <summary>Returns the hash code for the instruction.</summary>
+		public override int GetHashCode()
+		{
+			return ToString().GetHashCode();
+		}
+		/// <summary>Returns true if both instruction are equal, otherwise false.</summary>
+		public static bool operator ==(Instruction l, Instruction r) { return l.Equals(r); }
+		/// <summary>Returns true if both instruction are not equal, otherwise false.</summary>
+		public static bool operator !=(Instruction l, Instruction r) { return !(l == r); }
 
 		/// <summary>Reprents the instruction a string.</summary>
 		public override string ToString()

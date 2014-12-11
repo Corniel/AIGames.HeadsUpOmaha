@@ -67,6 +67,7 @@
     <Compile Include="Analysis\UInt64CardsTest.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="Game\CardsTest.cs" />
+    <Compile Include="Game\GameStateTest.cs" />
     <Compile Include="Game\StartHandGenerator.cs" />
     <Compile Include="Game\PlayerTypeTest.cs" />
     <Compile Include="Game\GameActionTest.cs" />

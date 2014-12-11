@@ -13,7 +13,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.ACDC
 	[TestFixture]
 	public class GameSimulationTest
 	{
-		[Test]
+		[Test, Ignore]
 		public void Simulate_Starting_Result()
 		{
 			var subScore = new Dictionary<int, double>();
@@ -23,7 +23,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.ACDC
 			var rnd = new MT19937Generator(17);
 
 			var score = 0.0;
-			var runs = 200000;
+			var runs = 2000;
 
 			var len = 0.0;
 
