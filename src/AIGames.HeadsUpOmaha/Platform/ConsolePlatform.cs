@@ -82,10 +82,13 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 		private static void HandleOpponentReaction(IBot bot, GameState state, Instruction instruction)
 		{
-			var action = instruction.ToGameAction();
-			if (action != GameAction.Invalid)
+			if (state.YourBot != instruction.Player)
 			{
-				bot.Reaction(state, action);
+				var action = instruction.ToGameAction();
+				if (action != GameAction.Invalid)
+				{
+					bot.Reaction(state, action);
+				}
 			}
 		}
 
