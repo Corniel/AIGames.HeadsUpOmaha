@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using AIGames.HeadsUpOmaha.Platform;
 
 namespace AIGames.HeadsUpOmaha.Game
 {
@@ -35,6 +36,12 @@ namespace AIGames.HeadsUpOmaha.Game
 			if (state == null) { throw new ArgumentNullException("state"); }
 
 			return state.AmountToCall > 0 ? Call : Check;
+		}
+
+		/// <summary>Converts the action to an instruction.</summary>
+		public Instruction ToInstruction(PlayerType player)
+		{
+			return Instruction.Parse(String.Format("{0} {1}", player, this));
 		}
 
 		#region (XML) (De)serialization

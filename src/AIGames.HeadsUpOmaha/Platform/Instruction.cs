@@ -382,8 +382,10 @@ namespace AIGames.HeadsUpOmaha.Platform
 		#endregion
 	}
 
+	/// <summary>Extensions on instructions.</summary>
 	public static class InstructionExtensions
 	{
+		/// <summary>Converts the instructions for the player to game actions.</summary>
 		public static IEnumerable<GameAction> ToGameActions(this IEnumerable<Instruction> instructions, PlayerType player)
 		{
 			foreach (var instruction in instructions.Where(inst => inst.InstructionType == InstructionType.Player && inst.Player == player))

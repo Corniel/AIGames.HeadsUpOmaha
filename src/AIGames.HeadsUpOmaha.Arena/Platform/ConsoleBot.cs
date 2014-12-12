@@ -3,6 +3,7 @@ using AIGames.HeadsUpOmaha.Platform;
 using log4net;
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AIGames.HeadsUpOmaha.Arena.Platform
 {
-	[DebuggerDisplay("{DebugToString()}")]
+	[DebuggerDisplay("{DebuggerDisplay}")]
 	public class ConsoleBot : IDisposable
 	{
 		private static readonly ILog log = LogManager.GetLogger(typeof(ConsoleBot));
@@ -45,7 +46,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		}
 
 		/// <summary>updates the bot for the new round.</summary>
-		public void UpdateNewRound(GameState state)
+		public virtual void UpdateNewRound(GameState state)
 		{
 			if (state == null) { throw new ArgumentNullException("state"); }
 
@@ -93,7 +94,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		}
 
 		/// <summary>The action of the the bot.</summary>
-		public GameAction Action(GameState state)
+		public virtual GameAction Action(GameState state)
 		{
 			var time = (int)state[this.Player].TimeBank.TotalMilliseconds;
 			if (time < 0) { time = 0; }
@@ -113,14 +114,14 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		}
 
 		/// <summary>The reaction of the opponent.</summary>
-		public void Reaction(GameAction reaction, PlayerType playerToMove)
+		public virtual void Reaction(GameAction reaction, PlayerType playerToMove)
 		{
-			var instruction = Instruction.Create(playerToMove, reaction.ActionType.ToString(), reaction.Amount);
+			var instruction = reaction.ToInstruction(playerToMove);
 			WriteInstructions(instruction);
 		}
 
 		/// <summary>Communicate the result with the bot.</summary>
-		public void Result(GameState state, int pot, LastGameAction lastaction)
+		public virtual void Result(GameState state, int pot, LastGameAction lastaction)
 		{
 			if (lastaction.Action != GameAction.Fold)
 			{
@@ -170,11 +171,8 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			}
 		}
 
-		[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-		public string DebugToString()
-		{
-			return this.Player + ": " + this.Bot.DebugToString();
-		}
+		[ExcludeFromCodeCoverage, DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public string DebuggerDisplay { get { return this.Player + ": " + this.Bot.DebugToString(); } }
 
 		/// <summary>Writes a line to the log file if the writer is set.</summary>
 		public void WriteLine(string format, params object[] args)
@@ -258,14 +256,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			}
 			if (exe == null) { throw new FileNotFoundException("Could not find an executable.", "*.exe|run.bat"); }
 
-			var p = new Process();
-			p.StartInfo.WorkingDirectory = location.FullName;
-			p.StartInfo.FileName = exe.FullName;
-			p.StartInfo.UseShellExecute = false;
-			p.StartInfo.CreateNoWindow = true;
-			p.StartInfo.RedirectStandardInput = true;
-			p.StartInfo.RedirectStandardOutput = true;
-			p.Start();
+			var p = CreateProcess(location, exe);
 
 			var cb = new ConsoleBot()
 			{
@@ -275,6 +266,19 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 			};
 
 			return cb;
+		}
+
+		protected static Process CreateProcess(DirectoryInfo location, FileInfo exe)
+		{
+			var p = new Process();
+			p.StartInfo.WorkingDirectory = location.FullName;
+			p.StartInfo.FileName = exe.FullName;
+			p.StartInfo.UseShellExecute = false;
+			p.StartInfo.CreateNoWindow = true;
+			p.StartInfo.RedirectStandardInput = true;
+			p.StartInfo.RedirectStandardOutput = true;
+			p.Start();
+			return p;
 		}
 
 		#region IDisposable

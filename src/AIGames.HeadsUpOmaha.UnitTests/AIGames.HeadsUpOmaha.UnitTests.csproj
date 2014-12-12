@@ -66,6 +66,7 @@
     <Compile Include="Analysis\PokerHandEvaluatorTest.cs" />
     <Compile Include="Analysis\UInt64CardsTest.cs" />
     <Compile Include="AppConfig.cs" />
+    <Compile Include="Arena\ArenaTest.cs" />
     <Compile Include="Game\CardsTest.cs" />
     <Compile Include="Game\GameStateTest.cs" />
     <Compile Include="Game\StartHandGenerator.cs" />
@@ -94,6 +95,10 @@
     <ProjectReference Include="..\AIGames.HeadsUpOmaha.AllIn\AIGames.HeadsUpOmaha.AllIn.csproj">
       <Project>{01743a97-abb2-4b4e-a468-adf30048a2f6}</Project>
       <Name>AIGames.HeadsUpOmaha.AllIn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIGames.HeadsUpOmaha.Arena\AIGames.HeadsUpOmaha.Arena.csproj">
+      <Project>{a69d498c-a26b-475d-ab4d-36c7bb5cd26d}</Project>
+      <Name>AIGames.HeadsUpOmaha.Arena</Name>
     </ProjectReference>
     <ProjectReference Include="..\AIGames.HeadsUpOmaha.BluntAxe\AIGames.HeadsUpOmaha.BluntAxe.csproj">
       <Project>{dff6d870-749a-4d77-8558-fee9f0fe8cfd}</Project>

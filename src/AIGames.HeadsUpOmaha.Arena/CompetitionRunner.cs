@@ -1,12 +1,10 @@
 ﻿using AIGames.HeadsUpOmaha.Arena.Platform;
 using AIGames.HeadsUpOmaha.Game;
-using AIGames.HeadsUpOmaha.Platform;
 using log4net;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using Troschuetz.Random.Generators;
@@ -29,13 +27,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			this.Rnd = new MT19937Generator(seed);
 			this.BotLocations = new Dictionary<BotInfo, DirectoryInfo>();
 
-			this.GameSettings = new Settings()
-			{
-				HandsPerLevel = 10,
-				StartingStack = 1000,
-				TimeBank = 5000,
-				TimePerMove = 500,
-			};
+			this.GameSettings = new Settings();
 			sw.Start();
 			ScanDirectory();
 		}
@@ -166,46 +158,58 @@ namespace AIGames.HeadsUpOmaha.Arena
 			{
 				using (var bot2 = ConsoleBot.Create(player2, BotLocations[player2.Info], CreateWriter(player2, player1)))
 				{
-					var bots = new Dictionary<PlayerType, ConsoleBot>()
-					{
-						{ PlayerType.player1, bot1 },
-						{ PlayerType.player2, bot2 },
-					};
-
-					var state = CreateState();
-					ApplySettings(bots);
-
-					while (state.StartNewRound(this.Rnd))
-					{
-						StartNewRound(bots, state);
-						var lastaction = RunSubRounds(bots, state, state.OnButton);
-						var pot = state.ApplyRoundResult(lastaction.GetResult());
-						SendResult(bots, state, pot, lastaction);
-
-						if (bot1.TimedOut || bot2.TimedOut) { break; }
-					}
-					if (bot1.TimedOut)
-					{
-						state.Player2.Stack = state.Chips;
-						state.Player1.Stack = 0;
-						log.ErrorFormat("{0} timed out.", bot1.Bot.FullName);
-					}
-					else if (bot2.TimedOut)
-					{
-						state.Player1.Stack = state.Chips;
-						state.Player2.Stack = 0;
-						log.ErrorFormat("{0} timed out.", bot2.Bot.FullName);
-					}
-
-					var finalResult = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
-					bot1.SetFinalResult(finalResult);
-					bot2.SetFinalResult(finalResult);
-
-					bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
-					bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
-					return finalResult;
+					return PlayMatch(bot1, bot2);
 				}
 			}
+		}
+
+		/// <summary>Play the match.</summary>
+		/// <param name="player1">
+		/// Player 1.
+		/// </param>
+		/// <param name="player2">
+		/// Player 2.
+		/// </param>
+		public RoundResult PlayMatch(ConsoleBot bot1, ConsoleBot bot2)
+		{
+			var bots = new Dictionary<PlayerType, ConsoleBot>()
+			{
+				{ PlayerType.player1, bot1 },
+				{ PlayerType.player2, bot2 },
+			};
+
+			var state = CreateState();
+			ApplySettings(bots);
+
+			while (state.StartNewRound(this.Rnd))
+			{
+				StartNewRound(bots, state);
+				var lastaction = RunSubRounds(bots, state, state.OnButton);
+				var pot = state.ApplyRoundResult(lastaction.GetResult());
+				SendResult(bots, state, pot, lastaction);
+
+				if (bot1.TimedOut || bot2.TimedOut) { break; }
+			}
+			if (bot1.TimedOut)
+			{
+				state.Player2.Stack = state.Chips;
+				state.Player1.Stack = 0;
+				log.ErrorFormat("{0} timed out.", bot1.Bot.FullName);
+			}
+			else if (bot2.TimedOut)
+			{
+				state.Player1.Stack = state.Chips;
+				state.Player2.Stack = 0;
+				log.ErrorFormat("{0} timed out.", bot2.Bot.FullName);
+			}
+
+			var finalResult = state.Player1.Stack - state.Player2.Stack - state.BigBlind > 0 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+			bot1.SetFinalResult(finalResult);
+			bot2.SetFinalResult(finalResult);
+
+			bot1.Bot.ElapsedMilliseconds += bot1.ElapsedMilliseconds;
+			bot2.Bot.ElapsedMilliseconds += bot2.ElapsedMilliseconds;
+			return finalResult;
 		}
 
 		private static StreamWriter CreateWriter(Bot player, Bot opponent)

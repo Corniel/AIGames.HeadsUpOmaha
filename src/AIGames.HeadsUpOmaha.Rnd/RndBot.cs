@@ -1,6 +1,5 @@
 ﻿using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
-using System;
 using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Rnd
@@ -16,7 +15,7 @@ namespace AIGames.HeadsUpOmaha.Rnd
 
 		public GameAction Action(GameState state)
 		{
-			switch (Rnd.Next(0, 16))
+			switch (Rnd.Next(0, 8))
 			{
 				case 0: return FoldOnRequiredCall(state);
 				case 1:
@@ -28,16 +27,10 @@ namespace AIGames.HeadsUpOmaha.Rnd
 
 		private GameAction RaiseIfPossible(GameState state)
 		{
-			var min = state.AmountToCall + state.BigBlind;
-			var max = Math.Max(state.Own.Stack, state.MaxWinPot + state.AmountToCall);
-			// Don't raise on the small blind.
-			if (max >= min && (state.AmountToCall == 0 || state.AmountToCall >= state.BigBlind))
+			if (state.MaxinumRaise > 0)
 			{
-				var raise = Rnd.Next(min, max);
-				if (raise > 0)
-				{
-					return GameAction.Raise(raise);
-				}
+				var raise = Rnd.Next(state.MinimumRaise, state.MaxinumRaise + 1);
+				return GameAction.Raise(raise);
 			}
 			return GameAction.CheckOrCall(state);
 		}
