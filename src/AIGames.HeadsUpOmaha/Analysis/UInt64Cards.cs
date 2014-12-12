@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Analysis
 {
+	/// <summary>Represents an unsorted deck of cards as UInt64.</summary>
 	[DebuggerDisplay("{DebugToString()}")]
 	public partial struct UInt64Cards
 	{
@@ -23,6 +21,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 
 		private static readonly int[] SuitShift = new int[] { 0, 13, 26, 39 };
 
+		/// <summary>Constructor.</summary>
 		public UInt64Cards(ulong m) { mask = m; }
 
 		private ulong mask;
@@ -176,6 +175,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 			}
 		}
 
+		/// <summary>Gets a sub set of hands of the deck.</summary>
 		public UInt64Cards[] GetHandSubsets()
 		{
 			var subsets = new UInt64Cards[6];
@@ -196,6 +196,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 			return subsets;
 		}
 
+		/// <summary>Gets a sub set of tables of the deck.</summary>
 		public UInt64Cards[] GetTableSubsets()
 		{
 			var subsets = new UInt64Cards[10];
@@ -249,6 +250,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 			return (uint)((cards >> SuitShift[(int)suit]) & Bits.Mask13);
 		}
 
+		/// <summary>Creates UInt64Cards from a set of cards.</summary>
 		public static UInt64Cards Create(IEnumerable<Card> cards)
 		{
 			ulong m = 0;
@@ -261,6 +263,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 			return new UInt64Cards(m);
 		}
 
+		/// <summary>Parses a set cards and returns UInt64Cards.</summary>
 		public static UInt64Cards Parse(string str)
 		{
 			var cards = Cards.Parse(str);
@@ -272,7 +275,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 		/// </summary>
 		/// <param name="dead">Mask for the cards that must not be returned.</param>
 		/// <param name="ncards">The number of cards to return in this hand.</param>
-		/// <param name="rand">An instance of the Random class.</param>
+		/// <param name="rnd">An instance of the Random class.</param>
 		/// <returns>A randomly chosen hand containing the number of cards requested.</returns>
 		public static UInt64Cards GetRandom(UInt64Cards dead, int ncards, MT19937Generator rnd)
 		{
@@ -293,6 +296,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 			return new UInt64Cards(mask);
 		}
 
+		/// <summary>Creates sub hands.</summary>
 		public static UInt64Cards[] CreateSubHands(Cards hand)
 		{
 			var supHands = new UInt64Cards[6];

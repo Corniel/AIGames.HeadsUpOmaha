@@ -79,6 +79,7 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		#region I/O operations
 
+		/// <summary>Saves the settings to settings.xml in a directory.</summary>
 		public void Save(DirectoryInfo dir)
 		{
 			Save(new FileInfo(Path.Combine(dir.FullName, "settings.xml")));
@@ -118,6 +119,7 @@ namespace AIGames.HeadsUpOmaha.Game
 			serializer.Serialize(stream, this);
 		}
 
+		/// <summary>Loads the settings from settings.xml in a directory.</summary>
 		public static Settings Load(DirectoryInfo dir)
 		{
 			return Load(new FileInfo(Path.Combine(dir.FullName, "settings.xml")));

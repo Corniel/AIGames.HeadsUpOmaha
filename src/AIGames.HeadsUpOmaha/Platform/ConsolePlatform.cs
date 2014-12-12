@@ -1,6 +1,7 @@
 ﻿using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace AIGames.HeadsUpOmaha.Platform
@@ -37,30 +38,32 @@ namespace AIGames.HeadsUpOmaha.Platform
 		public void DoRun(IBot bot)
 		{
 			if (bot == null) { throw new ArgumentNullException("bot"); }
+			DoRun(bot, Instruction.Read(this.Reader));
+		}
+
+		/// <summary>Runs it all.</summary>
+		public void DoRun(IBot bot, IEnumerable<Instruction> instructions)
+		{
+			if (bot == null) { throw new ArgumentNullException("bot"); }
+			if (instructions == null) { throw new ArgumentNullException("instructions"); }
 
 			var settings = new Settings();
 			var match = new GameState(settings);
 
-			string line;
-			while ((line = this.Reader.ReadLine()) != null)
+			foreach (var instruction in instructions)
 			{
-#if !DEBUG
-				try
-				{
-#endif
-				var instruction = Instruction.Parse(line);
+				match.Update(instruction);
 
 				switch (instruction.InstructionType)
 				{
 					case InstructionType.Player:
-						match.UpdatePlayer(instruction);
+
 						HandleOpponentReaction(bot, match, instruction);
 						if (match.Result != RoundResult.NoResult)
 						{
 							bot.Result(match);
 						}
 						break;
-					case InstructionType.Match: match.UpdateMatch(instruction); break;
 
 					case InstructionType.Settings:
 						settings.Update(instruction);
@@ -68,30 +71,15 @@ namespace AIGames.HeadsUpOmaha.Platform
 						break;
 
 					case InstructionType.Action:
-						match.UpdateAction(instruction);
 						var action = bot.Action(match);
 						Writer.WriteLine(action);
 						break;
 
+					case InstructionType.Match:
 					case InstructionType.Output:
-						if (match.SetFinalResult(instruction.FinalResult))
-						{
-							bot.FinalResult(match);
-						}
-						break;
-
 					case InstructionType.None:
-					default:
-						break;
+					default: break;
 				}
-#if !DEBUG
-				}
-				catch (Exception x)
-				{
-					Console.Error.WriteLine(line);
-					Console.Error.WriteLine(x);
-				}
-#endif
 			}
 		}
 

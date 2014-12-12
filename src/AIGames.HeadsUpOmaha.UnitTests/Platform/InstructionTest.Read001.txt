@@ -1,0 +1,2951 @@
+﻿Settings timeBank 10000
+
+Settings timePerMove 500
+
+Settings handsPerLevel 10
+
+Settings startingStack 2000
+
+Settings yourBot player2
+
+Match round 1
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player2
+
+player1 stack 2000
+
+player2 stack 2000
+
+player2 post 10
+
+player1 post 20
+
+player2 hand [9s,Td,3d,Ac]
+
+Match maxWinPot 30
+
+Match amountToCall 10
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 10
+
+player1 check 0
+
+Match table [8s,9d,Js]
+
+player1 raise 40
+
+Match maxWinPot 80
+
+Match amountToCall 40
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 40
+
+Match table [8s,9d,Js,3s]
+
+player1 raise 40
+
+Match maxWinPot 160
+
+Match amountToCall 40
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 40
+
+Match table [8s,9d,Js,3s,5d]
+
+player1 raise 40
+
+Match maxWinPot 240
+
+Match amountToCall 40
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 40
+
+player1 hand [4c,Ts,7d,2d]
+
+player2 hand [9s,Td,3d,Ac]
+
+player1 wins 280
+
+Match round 2
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player1
+
+player1 stack 2140
+
+player2 stack 1860
+
+player1 post 10
+
+player2 post 20
+
+player2 hand [2c,Tc,9h,Ah]
+
+player1 call 10
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 20"
+
+player2 raise 20
+
+player1 call 20
+
+Match table [3h,6h,Ts]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 50"
+
+player2 raise 50
+
+player1 fold 0
+
+player2 wins 130
+
+Match round 3
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player2
+
+player1 stack 2100
+
+player2 stack 1900
+
+player2 post 10
+
+player1 post 20
+
+player2 hand [2d,8d,Jc,5d]
+
+Match maxWinPot 30
+
+Match amountToCall 10
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 10
+
+player1 check 0
+
+Match table [3h,Ah,4d]
+
+player1 raise 40
+
+Match maxWinPot 80
+
+Match amountToCall 40
+
+Action player2 10000
+
+Output from your bot: "raise 120"
+
+player2 raise 120
+
+player1 raise 120
+
+Match maxWinPot 480
+
+Match amountToCall 120
+
+Action player2 10000
+
+Output from your bot: "raise 360"
+
+player2 raise 360
+
+player1 raise 360
+
+Match maxWinPot 1680
+
+Match amountToCall 360
+
+Action player2 10000
+
+Output from your bot: "raise 1080"
+
+player2 raise 880
+
+player1 call 880
+
+Match table [3h,Ah,4d,2s]
+
+Match table [3h,Ah,4d,2s,7d]
+
+player1 hand [Ac,6c,Kd,As]
+
+player2 hand [2d,8d,Jc,5d]
+
+player2 wins 3800
+
+Match round 4
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player1
+
+player1 stack 200
+
+player2 stack 3800
+
+player1 post 10
+
+player2 post 20
+
+player2 hand [Ad,Ts,8h,Qh]
+
+player1 call 10
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 20"
+
+player2 raise 20
+
+player1 call 20
+
+Match table [7c,5c,Kc]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 40
+
+Match maxWinPot 120
+
+Match amountToCall 40
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 120
+
+Match round 5
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player2
+
+player1 stack 240
+
+player2 stack 3760
+
+player2 post 10
+
+player1 post 20
+
+player2 hand [6h,5c,Ad,7c]
+
+Match maxWinPot 30
+
+Match amountToCall 10
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 10
+
+player1 check 0
+
+Match table [5s,6c,Qs]
+
+player1 check 0
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 20"
+
+player2 raise 20
+
+player1 fold 0
+
+player2 wins 60
+
+Match round 6
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player1
+
+player1 stack 220
+
+player2 stack 3780
+
+player1 post 10
+
+player2 post 20
+
+player2 hand [9h,Ts,6h,Kd]
+
+player1 call 10
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [8d,Jd,Qs]
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 30"
+
+player2 raise 30
+
+player1 fold 0
+
+player2 wins 70
+
+Match round 7
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player2
+
+player1 stack 200
+
+player2 stack 3800
+
+player2 post 10
+
+player1 post 20
+
+player2 hand [2d,4s,2h,Jh]
+
+Match maxWinPot 30
+
+Match amountToCall 10
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 10
+
+player1 check 0
+
+Match table [2s,Tc,6c]
+
+player1 check 0
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 40"
+
+player2 raise 40
+
+player1 fold 0
+
+player2 wins 80
+
+Match round 8
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player1
+
+player1 stack 180
+
+player2 stack 3820
+
+player1 post 10
+
+player2 post 20
+
+player2 hand [8d,7h,6c,Ah]
+
+player1 call 10
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Th,Ts,Kd]
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Th,Ts,Kd,8c]
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Th,Ts,Kd,8c,4d]
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+player1 hand [8s,Qc,2c,9s]
+
+player2 hand [8d,7h,6c,Ah]
+
+player2 wins 40
+
+Match round 9
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player2
+
+player1 stack 160
+
+player2 stack 3840
+
+player2 post 10
+
+player1 post 20
+
+player2 hand [5c,9s,8h,9h]
+
+Match maxWinPot 30
+
+Match amountToCall 10
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 10
+
+player1 check 0
+
+Match table [7h,9c,Qh]
+
+player1 check 0
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 40"
+
+player2 raise 40
+
+player1 fold 0
+
+player2 wins 80
+
+Match round 10
+
+Match smallBlind 10
+
+Match bigBlind 20
+
+Match onButton player1
+
+player1 stack 140
+
+player2 stack 3860
+
+player1 post 10
+
+player2 post 20
+
+player2 hand [3h,8s,3d,Kc]
+
+player1 call 10
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [6s,6h,5d]
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [6s,6h,5d,4c]
+
+Match maxWinPot 40
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 40
+
+Match maxWinPot 80
+
+Match amountToCall 40
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 80
+
+Match round 11
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 160
+
+player2 stack 3840
+
+player2 post 15
+
+player1 post 30
+
+player2 hand [Kc,2h,3h,Ad]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 15
+
+player1 check 0
+
+Match table [Kd,6d,5c]
+
+player1 check 0
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 30"
+
+player2 raise 30
+
+player1 fold 0
+
+player2 wins 90
+
+Match round 12
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 130
+
+player2 stack 3870
+
+player1 post 15
+
+player2 post 30
+
+player2 hand [Qs,5s,3s,Ac]
+
+player1 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [9d,7c,As]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 30"
+
+player2 raise 30
+
+player1 fold 0
+
+player2 wins 90
+
+Match round 13
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 100
+
+player2 stack 3900
+
+player2 post 15
+
+player1 post 30
+
+player2 hand [Qs,7d,As,2s]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 15
+
+player1 check 0
+
+Match table [5c,Jc,Js]
+
+player1 check 0
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [5c,Jc,Js,8h]
+
+player1 check 0
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [5c,Jc,Js,8h,Tc]
+
+player1 raise 60
+
+Match maxWinPot 120
+
+Match amountToCall 60
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 120
+
+Match round 14
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 130
+
+player2 stack 3870
+
+player1 post 15
+
+player2 post 30
+
+player2 hand [5h,Th,6c,Kc]
+
+player1 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 30"
+
+player2 raise 30
+
+player1 call 30
+
+Match table [5c,Jc,Jh]
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 30"
+
+player2 raise 30
+
+player1 fold 0
+
+player2 wins 150
+
+Match round 15
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 70
+
+player2 stack 3930
+
+player2 post 15
+
+player1 post 30
+
+player2 hand [Js,4s,2s,5s]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 45
+
+Match round 16
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 85
+
+player2 stack 3915
+
+player1 post 15
+
+player2 post 30
+
+player2 hand [5c,Kd,6s,4c]
+
+player1 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [6h,8c,Jd]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [6h,8c,Jd,2s]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [6h,8c,Jd,2s,3d]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 45"
+
+player2 raise 45
+
+player1 raise 10
+
+Match maxWinPot 160
+
+Match amountToCall 10
+
+Action player2 10000
+
+Output from your bot: "raise 60"
+
+Engine says: "Other involved players are already all-in, raise action changed to 'call'"
+
+player2 call 10
+
+player1 hand [4d,5d,Qs,6c]
+
+player2 hand [5c,Kd,6s,4c]
+
+player1 wins 85
+
+player2 wins 85
+
+Match round 17
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 85
+
+player2 stack 3915
+
+player2 post 15
+
+player1 post 30
+
+player2 hand [8d,2c,4d,Td]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 15
+
+player1 check 0
+
+Match table [4h,5c,Jc]
+
+player1 raise 55
+
+Match maxWinPot 115
+
+Match amountToCall 55
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 55
+
+Match table [4h,5c,Jc,Kc]
+
+Match table [4h,5c,Jc,Kc,7d]
+
+player1 hand [Jh,Ah,6d,Jd]
+
+player2 hand [8d,2c,4d,Td]
+
+player1 wins 170
+
+Match round 18
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 170
+
+player2 stack 3830
+
+player1 post 15
+
+player2 post 30
+
+player2 hand [Jh,5c,3s,7c]
+
+player1 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [2h,3h,2d]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [2h,3h,2d,Ac]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [2h,3h,2d,Ac,2c]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 60
+
+Match maxWinPot 120
+
+Match amountToCall 60
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 120
+
+Match round 19
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player2
+
+player1 stack 200
+
+player2 stack 3800
+
+player2 post 15
+
+player1 post 30
+
+player2 hand [9c,2d,2s,2h]
+
+Match maxWinPot 45
+
+Match amountToCall 15
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 45
+
+Match round 20
+
+Match smallBlind 15
+
+Match bigBlind 30
+
+Match onButton player1
+
+player1 stack 215
+
+player2 stack 3785
+
+player1 post 15
+
+player2 post 30
+
+player2 hand [Jc,5c,7s,2c]
+
+player1 call 15
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Ad,2d,6d]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Ad,2d,6d,8c]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Ad,2d,6d,8c,5s]
+
+Match maxWinPot 60
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+player1 hand [4s,2s,Kh,8s]
+
+player2 hand [Jc,5c,7s,2c]
+
+player1 wins 60
+
+Match round 21
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player2
+
+player1 stack 245
+
+player2 stack 3755
+
+player2 post 20
+
+player1 post 40
+
+player2 hand [9d,Qh,6h,9h]
+
+Match maxWinPot 60
+
+Match amountToCall 20
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 20
+
+player1 check 0
+
+Match table [7c,7h,3d]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [7c,7h,3d,Ts]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [7c,7h,3d,Ts,6d]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 hand [5d,8h,Ad,Ac]
+
+player2 hand [9d,Qh,6h,9h]
+
+player1 wins 80
+
+Match round 22
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player1
+
+player1 stack 285
+
+player2 stack 3715
+
+player1 post 20
+
+player2 post 40
+
+player2 hand [6d,5s,7s,Ts]
+
+player1 call 20
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Kd,Qd,Jc]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Kd,Qd,Jc,Ad]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Kd,Qd,Jc,Ad,Td]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+player1 hand [4s,Qh,2s,5c]
+
+player2 hand [6d,5s,7s,Ts]
+
+player1 wins 80
+
+Match round 23
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player2
+
+player1 stack 325
+
+player2 stack 3675
+
+player2 post 20
+
+player1 post 40
+
+player2 hand [2d,Jd,6s,9s]
+
+Match maxWinPot 60
+
+Match amountToCall 20
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 20
+
+player1 check 0
+
+Match table [3s,Qd,3c]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [3s,Qd,3c,Qc]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [3s,Qd,3c,Qc,Qh]
+
+player1 raise 80
+
+Match maxWinPot 160
+
+Match amountToCall 80
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 160
+
+Match round 24
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player1
+
+player1 stack 365
+
+player2 stack 3635
+
+player1 post 20
+
+player2 post 40
+
+player2 hand [2d,9c,Kh,Ad]
+
+player1 call 20
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Ks,4d,5d]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 60"
+
+player2 raise 60
+
+player1 fold 0
+
+player2 wins 140
+
+Match round 25
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player2
+
+player1 stack 325
+
+player2 stack 3675
+
+player2 post 20
+
+player1 post 40
+
+player2 hand [Td,Kd,Ks,6d]
+
+Match maxWinPot 60
+
+Match amountToCall 20
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 20
+
+player1 check 0
+
+Match table [5d,9s,Jd]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 80"
+
+player2 raise 80
+
+player1 fold 0
+
+player2 wins 160
+
+Match round 26
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player1
+
+player1 stack 285
+
+player2 stack 3715
+
+player1 post 20
+
+player2 post 40
+
+player2 hand [2s,9s,Qc,8h]
+
+player1 call 20
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Tc,Kh,Js]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 60"
+
+player2 raise 60
+
+player1 fold 0
+
+player2 wins 140
+
+Match round 27
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player2
+
+player1 stack 245
+
+player2 stack 3755
+
+player2 post 20
+
+player1 post 40
+
+player2 hand [6h,5d,2h,Ah]
+
+Match maxWinPot 60
+
+Match amountToCall 20
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 20
+
+player1 check 0
+
+Match table [6c,Td,5h]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 40"
+
+player2 raise 40
+
+player1 fold 0
+
+player2 wins 120
+
+Match round 28
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player1
+
+player1 stack 205
+
+player2 stack 3795
+
+player1 post 20
+
+player2 post 40
+
+player2 hand [7d,6h,Jc,6c]
+
+player1 call 20
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [2c,Kc,5d]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 40"
+
+player2 raise 40
+
+player1 fold 0
+
+player2 wins 120
+
+Match round 29
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player2
+
+player1 stack 165
+
+player2 stack 3835
+
+player2 post 20
+
+player1 post 40
+
+player2 hand [2h,7d,Ah,8c]
+
+Match maxWinPot 60
+
+Match amountToCall 20
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 20
+
+player1 check 0
+
+Match table [2c,8h,Tc]
+
+player1 check 0
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 40"
+
+player2 raise 40
+
+player1 fold 0
+
+player2 wins 120
+
+Match round 30
+
+Match smallBlind 20
+
+Match bigBlind 40
+
+Match onButton player1
+
+player1 stack 125
+
+player2 stack 3875
+
+player1 post 20
+
+player2 post 40
+
+player2 hand [3s,Jh,Kc,2c]
+
+player1 call 20
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [8c,As,Ts]
+
+Match maxWinPot 80
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 80
+
+Match maxWinPot 160
+
+Match amountToCall 80
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 160
+
+Match round 31
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player2
+
+player1 stack 165
+
+player2 stack 3835
+
+player2 post 25
+
+player1 post 50
+
+player2 hand [As,2d,Kc,4c]
+
+Match maxWinPot 75
+
+Match amountToCall 25
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 25
+
+player1 check 0
+
+Match table [8h,Ah,8c]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 50"
+
+player2 raise 50
+
+player1 fold 0
+
+player2 wins 150
+
+Match round 32
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player1
+
+player1 stack 115
+
+player2 stack 3885
+
+player1 post 25
+
+player2 post 50
+
+player2 hand [3d,9c,5c,Js]
+
+player1 call 25
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [4d,As,5d]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 65
+
+Match maxWinPot 165
+
+Match amountToCall 65
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 65
+
+Match table [4d,As,5d,6c]
+
+Match table [4d,As,5d,6c,Kd]
+
+player1 hand [4s,Ad,9d,4c]
+
+player2 hand [3d,9c,5c,Js]
+
+player1 wins 230
+
+Match round 33
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player2
+
+player1 stack 230
+
+player2 stack 3770
+
+player2 post 25
+
+player1 post 50
+
+player2 hand [Jd,Qd,6c,2s]
+
+Match maxWinPot 75
+
+Match amountToCall 25
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 25
+
+player1 check 0
+
+Match table [Jc,3d,7c]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Jc,3d,7c,7h]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Jc,3d,7c,7h,Tc]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 hand [4c,Qs,4s,3s]
+
+player2 hand [Jd,Qd,6c,2s]
+
+player2 wins 100
+
+Match round 34
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player1
+
+player1 stack 180
+
+player2 stack 3820
+
+player1 post 25
+
+player2 post 50
+
+player2 hand [8s,9c,7c,Kh]
+
+player1 call 25
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Jd,Qs,2d]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Jd,Qs,2d,7h]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Jd,Qs,2d,7h,Jc]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+player1 hand [9h,6d,8d,Qd]
+
+player2 hand [8s,9c,7c,Kh]
+
+player1 wins 100
+
+Match round 35
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player2
+
+player1 stack 230
+
+player2 stack 3770
+
+player2 post 25
+
+player1 post 50
+
+player2 hand [3s,2d,Jc,Kc]
+
+Match maxWinPot 75
+
+Match amountToCall 25
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 25
+
+player1 check 0
+
+Match table [4s,4h,Jh]
+
+player1 raise 100
+
+Match maxWinPot 200
+
+Match amountToCall 100
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 100
+
+Match table [4s,4h,Jh,9s]
+
+player1 raise 80
+
+Match maxWinPot 380
+
+Match amountToCall 80
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 80
+
+Match table [4s,4h,Jh,9s,2c]
+
+player1 hand [Ts,4c,6c,8c]
+
+player2 hand [3s,2d,Jc,Kc]
+
+player1 wins 460
+
+Match round 36
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player1
+
+player1 stack 460
+
+player2 stack 3540
+
+player1 post 25
+
+player2 post 50
+
+player2 hand [4s,8d,3c,8h]
+
+player1 call 25
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [3d,9s,Qc]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [3d,9s,Qc,5s]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [3d,9s,Qc,5s,9d]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+player1 hand [Ts,6c,Tc,6d]
+
+player2 hand [4s,8d,3c,8h]
+
+player1 wins 100
+
+Match round 37
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player2
+
+player1 stack 510
+
+player2 stack 3490
+
+player2 post 25
+
+player1 post 50
+
+player2 hand [8s,9s,3h,2h]
+
+Match maxWinPot 75
+
+Match amountToCall 25
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 25
+
+player1 check 0
+
+Match table [Jc,Tc,4s]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Jc,Tc,4s,Th]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Jc,Tc,4s,Th,Kd]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 hand [2s,9d,2c,4h]
+
+player2 hand [8s,9s,3h,2h]
+
+player1 wins 100
+
+Match round 38
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player1
+
+player1 stack 560
+
+player2 stack 3440
+
+player1 post 25
+
+player2 post 50
+
+player2 hand [8h,4c,6s,3h]
+
+player1 call 25
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Tc,2c,Ts]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Tc,2c,Ts,Td]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 100
+
+Match maxWinPot 200
+
+Match amountToCall 100
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 200
+
+Match round 39
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player2
+
+player1 stack 610
+
+player2 stack 3390
+
+player2 post 25
+
+player1 post 50
+
+player2 hand [9s,2d,Qd,9d]
+
+Match maxWinPot 75
+
+Match amountToCall 25
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 25
+
+player1 check 0
+
+Match table [8h,Kc,4s]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [8h,Kc,4s,9c]
+
+player1 check 0
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 100"
+
+player2 raise 100
+
+player1 fold 0
+
+player2 wins 200
+
+Match round 40
+
+Match smallBlind 25
+
+Match bigBlind 50
+
+Match onButton player1
+
+player1 stack 560
+
+player2 stack 3440
+
+player1 post 25
+
+player2 post 50
+
+player2 hand [4s,5d,9h,6d]
+
+player1 call 25
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Kd,Js,Th]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Kd,Js,Th,8h]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Kd,Js,Th,8h,Ks]
+
+Match maxWinPot 100
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+player1 hand [4c,9c,8d,2d]
+
+player2 hand [4s,5d,9h,6d]
+
+player1 wins 100
+
+Match round 41
+
+Match smallBlind 30
+
+Match bigBlind 60
+
+Match onButton player2
+
+player1 stack 610
+
+player2 stack 3390
+
+player2 post 30
+
+player1 post 60
+
+player2 hand [Ac,5h,6h,Jc]
+
+Match maxWinPot 90
+
+Match amountToCall 30
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 30
+
+player1 check 0
+
+Match table [Ks,9d,3d]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Ks,9d,3d,Qc]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Ks,9d,3d,Qc,2s]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 hand [Qh,Ad,Th,2d]
+
+player2 hand [Ac,5h,6h,Jc]
+
+player1 wins 120
+
+Match round 42
+
+Match smallBlind 30
+
+Match bigBlind 60
+
+Match onButton player1
+
+player1 stack 670
+
+player2 stack 3330
+
+player1 post 30
+
+player2 post 60
+
+player2 hand [2s,Ac,7s,Tc]
+
+player1 call 30
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [4s,8h,6s]
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [4s,8h,6s,Qd]
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [4s,8h,6s,Qd,4c]
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 120
+
+Match maxWinPot 240
+
+Match amountToCall 120
+
+Action player2 10000
+
+Output from your bot: "fold 0"
+
+player2 fold 0
+
+player1 wins 240
+
+Match round 43
+
+Match smallBlind 30
+
+Match bigBlind 60
+
+Match onButton player2
+
+player1 stack 730
+
+player2 stack 3270
+
+player2 post 30
+
+player1 post 60
+
+player2 hand [6d,Ad,Ks,2s]
+
+Match maxWinPot 90
+
+Match amountToCall 30
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 30
+
+player1 check 0
+
+Match table [4h,4s,5h]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [4h,4s,5h,Js]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [4h,4s,5h,Js,8s]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 120"
+
+player2 raise 120
+
+player1 fold 0
+
+player2 wins 240
+
+Match round 44
+
+Match smallBlind 30
+
+Match bigBlind 60
+
+Match onButton player1
+
+player1 stack 670
+
+player2 stack 3330
+
+player1 post 30
+
+player2 post 60
+
+player2 hand [7h,Qh,Qc,7d]
+
+player1 call 30
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 60"
+
+player2 raise 60
+
+player1 call 60
+
+Match table [Jc,2c,3d]
+
+Match maxWinPot 240
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Jc,2c,3d,4s]
+
+Match maxWinPot 240
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+Match table [Jc,2c,3d,4s,9h]
+
+Match maxWinPot 240
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 check 0
+
+player1 hand [8s,5d,Ks,Td]
+
+player2 hand [7h,Qh,Qc,7d]
+
+player2 wins 240
+
+Match round 45
+
+Match smallBlind 30
+
+Match bigBlind 60
+
+Match onButton player2
+
+player1 stack 550
+
+player2 stack 3450
+
+player2 post 30
+
+player1 post 60
+
+player2 hand [2d,9d,4c,Jh]
+
+Match maxWinPot 90
+
+Match amountToCall 30
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 30
+
+player1 check 0
+
+Match table [6c,Kd,8d]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [6c,Kd,8d,2c]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [6c,Kd,8d,2c,7s]
+
+player1 check 0
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 hand [2s,3c,3s,Jd]
+
+player2 hand [2d,9d,4c,Jh]
+
+player1 wins 120
+
+Match round 46
+
+Match smallBlind 30
+
+Match bigBlind 60
+
+Match onButton player1
+
+player1 stack 610
+
+player2 stack 3390
+
+player1 post 30
+
+player2 post 60
+
+player2 hand [6d,9d,3d,7c]
+
+player1 call 30
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+Match table [Ad,2d,5s]
+
+Match maxWinPot 120
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "check 0"
+
+player2 check 0
+
+player1 raise 120
+
+Match maxWinPot 240
+
+Match amountToCall 120
+
+Action player2 10000
+
+Output from your bot: "call 0"
+
+player2 call 120
+
+Match table [Ad,2d,5s,4s]
+
+Match maxWinPot 360
+
+Match amountToCall 0
+
+Action player2 10000
+
+Output from your bot: "raise 300"
+
+player2 raise 300
+
+player1 raise 130
+
+Match maxWinPot 1090
+
+Match amountToCall 130
+
+Action player2 10000
+
+Output from your bot: "raise 330"
+
+Engine says: "Other involved players are already all-in, raise action changed to 'call'"
+
+player2 call 130
+
+Match table [Ad,2d,5s,4s,Kd]
+
+player1 hand [Ac,As,Ks,7d]
+
+player2 hand [6d,9d,3d,7c]
+
+player2 wins 1220
+
+Engine says: "player1 finished 2"
+
+Engine says: "player2 finished 1"

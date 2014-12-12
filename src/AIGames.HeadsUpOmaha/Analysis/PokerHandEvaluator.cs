@@ -3,8 +3,10 @@ using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Analysis
 {
+	/// <summary>Evaluates pokerhands.</summary>
 	public class PokerHandEvaluator
 	{
+		/// <summary>Calculates the winning change of a hand.</summary>
 		public static double Calculate(Cards hand, Cards table, MT19937Generator rnd, int runs = 4000)
 		{
 			UInt64Cards[] tblSub = null;

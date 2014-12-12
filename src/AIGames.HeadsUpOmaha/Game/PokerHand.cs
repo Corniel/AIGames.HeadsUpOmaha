@@ -190,7 +190,9 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		/// <summary>Creates a poker hand score from 5 cards.</summary>
 		/// <param name="cards">The 5 cards to get a poker hand from.</param>
-		/// <see cref="http://en.wikipedia.org/wiki/List_of_poker_hands"/>
+		/// <remarks>
+		/// See: http://en.wikipedia.org/wiki/List_of_poker_hands
+		/// </remarks>
 		public static PokerHand CreateFrom5(IEnumerable<Card> cards)
 		{
 			if (cards == null || cards.Count() != 5 || cards.Any(c => c.IsEmpty()))

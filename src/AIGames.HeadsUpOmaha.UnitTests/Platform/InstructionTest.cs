@@ -24,23 +24,15 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 			Assert.AreEqual(RoundResult.Player1Wins, Instruction.Player2Finished2.FinalResult, "Player2Finished2.FinalResult");
 		}
 
-		[Test, Ignore]
-		public void Parse_Input001Txt_AreEqual()
+		[Test]
+		public void Read_Read001Txt_HasInstructions()
 		{
-			var instruction = new List<Instruction>();
-			using (var reader = new StreamReader(AppConfig.GetTestFile("Input.001.txt").FullName))
+			using (var reader = new StreamReader(GetType().Assembly.GetManifestResourceStream("AIGames.HeadsUpOmaha.UnitTests.Platform.InstructionTest.Read001.txt")))
 			{
-				string line;
+				var act = Instruction.Read(reader).ToList();
 
-				while ((line = reader.ReadLine()) != null)
-				{
-					instruction.Add(Instruction.Parse(line));
-				}
+				Assert.AreEqual(1476, act.Count);
 			}
-
-			var nonNull = instruction.Where(t => t.InstructionType != InstructionType.None).ToList();
-
-			Assert.AreEqual(622, nonNull.Count);
 		}
 	}
 }

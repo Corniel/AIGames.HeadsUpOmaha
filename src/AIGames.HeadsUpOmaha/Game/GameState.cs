@@ -89,8 +89,11 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Gets the total of chips of the game.</summary>
 		public int Chips { get { return this.Player1.Chips + this.Player2.Chips; } }
 
-		/// <summary>The result of the match.</summary>
+		/// <summary>The result of the round.</summary>
 		public RoundResult Result { get; set; }
+
+		/// <summary>The result of the match.</summary>
+		public RoundResult FinalResult { get; set; }
 
 		/// <summary>Represents the sub round (equals the size of the table).</summary>
 		public int SubRound { get { return this.Table == null ? 0 : this.Table.Count; } }
@@ -160,7 +163,7 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Updates a player based on the game action.</summary>
 		public void Update(PlayerType player, GameAction action)
 		{
-			if(action == GameAction.Call)
+			if (action == GameAction.Call)
 			{
 				this[player].Call(this.AmountToCall);
 			}
@@ -170,8 +173,23 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 		}
 
+		/// <summary>Updates the state based on the instruction.</summary>
+		public void Update(Instruction instruction)
+		{
+			switch (instruction.InstructionType)
+			{
+				case InstructionType.Action: UpdateAction(instruction); break;
+				case InstructionType.Match: UpdateMatch(instruction); break;
+				case InstructionType.Player: UpdatePlayer(instruction); break;
+				case InstructionType.Output: UpdateOutput(instruction); break;
+				case InstructionType.Settings: break;
+				case InstructionType.None:
+				default: break;
+			}
+		}
+
 		/// <summary>Updates the state based on an action instruction.</summary>
-		public void UpdateAction(Instruction instruction)
+		private void UpdateAction(Instruction instruction)
 		{
 			switch (instruction.Action)
 			{
@@ -179,9 +197,8 @@ namespace AIGames.HeadsUpOmaha.Game
 				case "player2": this.Player2.TimeBank = TimeSpan.FromMilliseconds(instruction.Int32Value); break;
 			}
 		}
-
 		/// <summary>Updates the state based on a match instruction.</summary>
-		public void UpdateMatch(Instruction instruction)
+		private void UpdateMatch(Instruction instruction)
 		{
 			switch (instruction.Action)
 			{
@@ -208,9 +225,8 @@ namespace AIGames.HeadsUpOmaha.Game
 					break;
 			}
 		}
-
 		/// <summary>Updates the state based on a player instruction.</summary>
-		public void UpdatePlayer(Instruction instruction)
+		private void UpdatePlayer(Instruction instruction)
 		{
 			var player = instruction.Player;
 
@@ -238,6 +254,31 @@ namespace AIGames.HeadsUpOmaha.Game
 					break;
 			}
 		}
+		/// <summary>Updates the state based on a output instruction.</summary>
+		private void UpdateOutput(Instruction instruction)
+		{
+			switch (instruction.FinalResult)
+			{
+				case RoundResult.Player1Wins:
+					this.Result = RoundResult.Player1Wins;
+					this.FinalResult = RoundResult.Player1Wins;
+					this.Player1.Stack = this.Chips;
+					this.Player2.Stack = 0;
+					break;
+
+				case RoundResult.Player2Wins:
+					this.Result = RoundResult.Player2Wins;
+					this.FinalResult = RoundResult.Player2Wins;
+					this.Player2.Stack = this.Chips;
+					this.Player1.Stack = 0;
+					break;
+
+				case RoundResult.NoResult:
+				case RoundResult.Draw:
+				default: break;
+			}
+		}
+
 
 		/// <summary>Starts a new round.</summary>
 		/// <param name="rnd">
@@ -312,12 +353,14 @@ namespace AIGames.HeadsUpOmaha.Game
 			{
 				case RoundResult.Player1Wins:
 					this.Result = RoundResult.Player1Wins;
+					this.FinalResult = RoundResult.Player1Wins;
 					this.Player1.Stack = this.Chips;
 					this.Player2.Stack = 0;
 					return true;
 
 				case RoundResult.Player2Wins:
 					this.Result = RoundResult.Player2Wins;
+					this.FinalResult = RoundResult.Player2Wins;
 					this.Player2.Stack = this.Chips;
 					this.Player1.Stack = 0;
 					return true;

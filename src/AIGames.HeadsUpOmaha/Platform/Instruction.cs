@@ -1,9 +1,9 @@
 ﻿using AIGames.HeadsUpOmaha.Game;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -122,13 +122,13 @@ namespace AIGames.HeadsUpOmaha.Platform
 		/// The value is token2.
 		/// </remarks>
 		public Object Value { get { return token2; } }
-		
+
 		/// <summary>The value of the instruction as Int32.</summary>
 		/// <remarks>
 		/// The value is token2.
 		/// </remarks>
 		public Int32 Int32Value { get { return (Int32)token2; } }
-		
+
 		/// <summary>The value of the instruction as cards.</summary>
 		/// <remarks>
 		/// The value is token2.
@@ -189,6 +189,34 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 		#region Factory methods
 
+		/// <summary>Reads the instructions from the reader.</summary>
+		public static IEnumerable<Instruction> Read(TextReader reader)
+		{
+			if (reader == null) { throw new ArgumentNullException("reader"); }
+
+			string line;
+			while ((line = reader.ReadLine()) != null)
+			{
+#if !DEBUG
+				try
+				{
+#endif
+				var instruction = Instruction.Parse(line);
+				if (!instruction.IsEmpty())
+				{
+					yield return instruction;
+				}
+#if !DEBUG
+				}
+				catch (Exception x)
+				{
+					Console.Error.WriteLine(line);
+					Console.Error.WriteLine(x);
+				}
+#endif
+			}
+		}
+
 		/// <summary>Parses a line representing an instruction.</summary>
 		public static Instruction Parse(string line)
 		{
@@ -214,7 +242,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 			var splited = line.Split(' ');
 			if (splited.Length != 3) { throw new ArgumentException("The line should contain 3 tokens.", "line"); }
 
-			if (!ValidToken0.Contains(splited[0])) 
+			if (!ValidToken0.Contains(splited[0]))
 			{
 				throw new ArgumentException("The first token is not valid.", "line");
 			}
@@ -254,7 +282,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 		/// <summary>Creates an instruction.</summary>
 		public static Instruction Create(InstructionType type, string action, object value)
 		{
-			var line = String.Format("{0} {1} {2}", type,  action, value);
+			var line = String.Format("{0} {1} {2}", type, action, value);
 			return Instruction.Parse(line);
 		}
 
@@ -301,7 +329,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 			try
 			{
 				return Cards.Parse(token2);
-				
+
 			}
 			catch (Exception x)
 			{
@@ -320,7 +348,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 				throw new ArgumentException("The thrid token should be player1 or player2.", "line");
 			}
 		}
-	
+
 		private static readonly string[] ValidToken0 = new string[] { "player1", "player2", "Action", "Match", "Settings" };
 
 		private static readonly Dictionary<InstructionType, string[]> ValidToken1 = new Dictionary<InstructionType, string[]>()

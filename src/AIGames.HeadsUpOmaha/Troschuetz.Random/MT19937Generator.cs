@@ -33,16 +33,16 @@
    modification, are permitted provided that the following conditions
    are met:
 
-     1. Redistributions of source code must retain the above copyright
-        notice, this list of conditions and the following disclaimer.
+	 1. Redistributions of source code must retain the above copyright
+		notice, this list of conditions and the following disclaimer.
 
-     2. Redistributions in binary form must reproduce the above copyright
-        notice, this list of conditions and the following disclaimer in the
-        documentation and/or other materials provided with the distribution.
+	 2. Redistributions in binary form must reproduce the above copyright
+		notice, this list of conditions and the following disclaimer in the
+		documentation and/or other materials provided with the distribution.
 
-     3. The names of its contributors may not be used to endorse or promote 
-        products derived from this software without specific prior written 
-        permission.
+	 3. The names of its contributors may not be used to endorse or promote 
+		products derived from this software without specific prior written 
+		permission.
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -193,7 +193,6 @@ namespace Troschuetz.Random.Generators
 		/// <param name="seed">
 		///   An unsigned number used to calculate a starting value for the pseudo-random number sequence.
 		/// </param>
-		[CLSCompliant(false)]
 		public MT19937Generator(uint seed)
 		{
 			_seed = seed;
@@ -235,7 +234,6 @@ namespace Troschuetz.Random.Generators
 		/// <exception cref="ArgumentNullException">
 		/// <paramref name="seedArray"/> is NULL (<see langword="Nothing"/> in Visual Basic).
 		/// </exception>
-		[CLSCompliant(false)]
 		public MT19937Generator(uint[] seedArray)
 		{
 			Contract.Requires<ArgumentNullException>(seedArray != null);
@@ -351,7 +349,6 @@ namespace Troschuetz.Random.Generators
 		///   A 32-bit unsigned integer greater than or equal to <see cref="UInt32.MinValue"/> and 
 		///   less than or equal to <see cref="UInt32.MaxValue"/>.
 		/// </returns>
-		[CLSCompliant(false)]
 		public uint NextUInt()
 		{
 			if (_mti >= N)
@@ -397,23 +394,26 @@ namespace Troschuetz.Random.Generators
 
 		#region IGenerator Members
 
-		[CLSCompliant(false)]
+		/// <summary>Gets the seed.</summary>
 		public uint Seed
 		{
 			get { return _seed; }
 		}
 
+		/// <summary>Gets the can reset.</summary>
 		public bool CanReset
 		{
 			get { return true; }
 		}
 
+		/// <summary>Resets the generator.</summary>
 		public bool Reset()
 		{
 			ResetGenerator();
 			return true;
 		}
 
+		/// <summary>Gets the next.</summary>
 		public int Next()
 		{
 			// Its faster to explicitly calculate the unsigned random number than simply call NextUInt().
@@ -434,6 +434,7 @@ namespace Troschuetz.Random.Generators
 			return result == Int32.MaxValue ? Next() : result;
 		}
 
+		/// <summary>Gets the next.</summary>
 		public int Next(int maxValue)
 		{
 			// Its faster to explicitly calculate the unsigned random number than simply call NextUInt().
@@ -454,6 +455,7 @@ namespace Troschuetz.Random.Generators
 			return (int)((int)(y >> 1) * IntToDoubleMultiplier * maxValue);
 		}
 
+		/// <summary>Gets the next.</summary>
 		public int Next(int minValue, int maxValue)
 		{
 			// Its faster to explicitly calculate the unsigned random number than simply call NextUInt().
@@ -483,6 +485,7 @@ namespace Troschuetz.Random.Generators
 			return minValue + (int)((int)(y >> 1) * IntToDoubleMultiplier * range);
 		}
 
+		/// <summary>Gets the next.</summary>
 		public double NextDouble()
 		{
 			// Its faster to explicitly calculate the unsigned random number than simply call NextUInt().
@@ -506,6 +509,7 @@ namespace Troschuetz.Random.Generators
 			return (int)(y >> 1) * IntToDoubleMultiplier;
 		}
 
+		/// <summary>Gets the next.</summary>
 		public double NextDouble(double maxValue)
 		{
 			// Its faster to explicitly calculate the unsigned random number than simply call NextUInt().
@@ -526,6 +530,7 @@ namespace Troschuetz.Random.Generators
 			return (int)(y >> 1) * IntToDoubleMultiplier * maxValue;
 		}
 
+		/// <summary>Gets the next.</summary>
 		public double NextDouble(double minValue, double maxValue)
 		{
 			// Its faster to explicitly calculate the unsigned random number than simply call NextUInt().
@@ -546,6 +551,7 @@ namespace Troschuetz.Random.Generators
 			return minValue + (int)(y >> 1) * IntToDoubleMultiplier * (maxValue - minValue);
 		}
 
+		/// <summary>Gets the next.</summary>
 		public bool NextBoolean()
 		{
 			if (_bitCount == 32)
@@ -574,6 +580,7 @@ namespace Troschuetz.Random.Generators
 			return ((_bitBuffer >>= 1) & 0x1) == 1;
 		}
 
+		/// <summary>Gets the next.</summary>
 		public void NextBytes(byte[] buffer)
 		{
 			// Fill the buffer with 4 bytes (1 uint) at a time.
