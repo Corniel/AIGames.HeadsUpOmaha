@@ -162,8 +162,29 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 		#endregion
 
-		/// <summary>Returs true if instruction represent the empty value, otherwise false.</summary>
+		/// <summary>Returns true if instruction represent the empty value, otherwise false.</summary>
 		public bool IsEmpty() { return token0 == default(String) && token1 == default(String) && token2 == default(Object); }
+
+		/// <summary>Gets the game action of the instruction.</summary>
+		public GameAction ToGameAction()
+		{
+			GameActionType tp;
+			if (this.InstructionType == InstructionType.Player && Enum.TryParse<GameActionType>(Action, out tp))
+			{
+				GameAction action;
+
+				switch (tp)
+				{
+					case GameActionType.raise: action = GameAction.Raise(Int32Value); break;
+					case GameActionType.check: action = GameAction.Check; break;
+					case GameActionType.call: action = GameAction.Call; break;
+					case GameActionType.fold:
+					default: action = GameAction.Fold; break;
+				}
+				return action;
+			}
+			return GameAction.Invalid;
+		}
 
 		/// <summary>Returns true if the object equals the instruction, otherwise false.</summary>
 		public override bool Equals(object obj)
@@ -180,7 +201,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 		/// <summary>Returns true if both instruction are not equal, otherwise false.</summary>
 		public static bool operator !=(Instruction l, Instruction r) { return !(l == r); }
 
-		/// <summary>Reprents the instruction a string.</summary>
+		/// <summary>Represents the instruction a string.</summary>
 		public override string ToString()
 		{
 			if (IsEmpty()) { return String.Empty; }
@@ -197,23 +218,23 @@ namespace AIGames.HeadsUpOmaha.Platform
 			string line;
 			while ((line = reader.ReadLine()) != null)
 			{
+				var instruction = Instruction.Empty;
 #if !DEBUG
 				try
 				{
 #endif
-				var instruction = Instruction.Parse(line);
-				if (!instruction.IsEmpty())
-				{
-					yield return instruction;
-				}
+					instruction = Instruction.Parse(line);
 #if !DEBUG
 				}
 				catch (Exception x)
 				{
-					Console.Error.WriteLine(line);
-					Console.Error.WriteLine(x);
+					Console.WriteLine(x);
 				}
 #endif
+				if (!instruction.IsEmpty())
+				{
+					yield return instruction;
+				}
 			}
 		}
 
@@ -286,20 +307,6 @@ namespace AIGames.HeadsUpOmaha.Platform
 			return Instruction.Parse(line);
 		}
 
-		/// <summary>Creates a player1|2 finished 1|2 instruction.</summary>
-		/// <remarks>
-		/// This is logged as engines says instruction unfortunatly.
-		/// </remarks>
-		public static Instruction CreateFinished(PlayerType player, int rank)
-		{
-			return new Instruction()
-			{
-				token0 = "Engine",
-				token1 = "says:",
-				token2 = string.Format("{0} finished {1}", '"', player, rank)
-			};
-		}
-
 		private static int ParseInt32(string token2)
 		{
 			int number;
@@ -310,14 +317,14 @@ namespace AIGames.HeadsUpOmaha.Platform
 			}
 			else
 			{
-				throw new ArgumentException("The thrid token is not a valid number.", "line");
+				throw new ArgumentException("The third token is not a valid number.", "line");
 			}
 		}
 		private static int ParseZero(string token2)
 		{
 			if (token2 != "0")
 			{
-				throw new ArgumentException("The thrid token should be zero.", "line");
+				throw new ArgumentException("The third token should be zero.", "line");
 			}
 			else
 			{
@@ -333,7 +340,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 			}
 			catch (Exception x)
 			{
-				throw new ArgumentException("The thrid token should be a set of cards", "line", x);
+				throw new ArgumentException("The third token should be a set of cards", "line", x);
 			}
 		}
 		private static PlayerType ParsePlayerType(string token2)
@@ -345,7 +352,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 			}
 			else
 			{
-				throw new ArgumentException("The thrid token should be player1 or player2.", "line");
+				throw new ArgumentException("The third token should be player1 or player2.", "line");
 			}
 		}
 
@@ -373,5 +380,20 @@ namespace AIGames.HeadsUpOmaha.Platform
 		};
 
 		#endregion
+	}
+
+	public static class InstructionExtensions
+	{
+		public static IEnumerable<GameAction> ToGameActions(this IEnumerable<Instruction> instructions, PlayerType player)
+		{
+			foreach (var instruction in instructions.Where(inst => inst.InstructionType == InstructionType.Player && inst.Player == player))
+			{
+				var action = instruction.ToGameAction();
+				if (action != GameAction.Invalid)
+				{
+					yield return action;
+				}
+			}
+		}
 	}
 }

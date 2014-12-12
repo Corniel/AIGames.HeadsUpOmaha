@@ -7,7 +7,7 @@ namespace AIGames.HeadsUpOmaha.Analysis
 	public class PokerHandEvaluator
 	{
 		/// <summary>Calculates the winning change of a hand.</summary>
-		public static double Calculate(Cards hand, Cards table, MT19937Generator rnd, int runs = 4000)
+		public static double Calculate(Cards hand, Cards table, MT19937Generator rnd, int runs = 1000)
 		{
 			UInt64Cards[] tblSub = null;
 

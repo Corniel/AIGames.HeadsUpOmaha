@@ -24,17 +24,20 @@ namespace AIGames.HeadsUpOmaha.KingKong
 			{
 				return GameAction.Fold;
 			}
-			if (pWin > 0.65 && state.AmountToCall == 0)
+			if (state.MaxinumRaise > 0)
 			{
-				return GameAction.Raise(state.MaxinumRaise);
-			}
-			if (pWin > 0.55 && state.AmountToCall == 0)
-			{
-				return GameAction.Raise(state.MinimumRaise);
-			}
-			if (pWin > 0.7)
-			{
-				return GameAction.Raise(state.MaxinumRaise);
+				if (pWin > 0.65 && state.AmountToCall == 0)
+				{
+					return GameAction.Raise(state.MaxinumRaise);
+				}
+				if (pWin > 0.55 && state.AmountToCall == 0)
+				{
+					return GameAction.Raise(state.MinimumRaise);
+				}
+				if (pWin > 0.7)
+				{
+					return GameAction.Raise(state.MaxinumRaise);
+				}
 			}
 			if (pWin < 0.35 && state.AmountToCall > 0)
 			{

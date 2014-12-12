@@ -10,6 +10,8 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 	[TestFixture]
 	public class InstructionTest
 	{
+		public static Instruction[] Read001Txt = Instruction.Read(new StreamReader(typeof(InstructionTest).Assembly.GetManifestResourceStream("AIGames.HeadsUpOmaha.UnitTests.Platform.InstructionTest.Read001.txt"))).ToArray();
+
 		[Test]
 		public void Finished_All4Statics_Matches()
 		{

@@ -12,7 +12,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.ACDC
 	[TestFixture]
 	public class ActionDataTest
 	{
-		[Test]
+		[Test, Ignore]
 		public void Update_()
 		{
 			var rnd = new MT19937Generator(17);

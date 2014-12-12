@@ -8,15 +8,11 @@ namespace AIGames.HeadsUpOmaha.AllIn
 	{
 		public GameAction Action(GameState state)
 		{
-			var raise = Math.Max(state.Own.Stack, state.MaxWinPot + state.AmountToCall);
-			if (raise > 0)
+			if (state.MaxinumRaise > 0)
 			{
-				return GameAction.Raise(raise);
+				return GameAction.Raise(state.MaxinumRaise);
 			}
-			else
-			{
-				return GameAction.Check;
-			}
+			return GameAction.CheckOrCall(state);
 		}
 		public void Reaction(GameState state, GameAction reaction) { }
 		public void Result(GameState state) { }

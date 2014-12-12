@@ -48,30 +48,27 @@ namespace AIGames.HeadsUpOmaha.Platform
 			if (instructions == null) { throw new ArgumentNullException("instructions"); }
 
 			var settings = new Settings();
-			var match = new GameState(settings);
+			var state = new GameState(settings);
 
 			foreach (var instruction in instructions)
 			{
-				match.Update(instruction);
+				state.Update(instruction);
 
 				switch (instruction.InstructionType)
 				{
 					case InstructionType.Player:
 
-						HandleOpponentReaction(bot, match, instruction);
-						if (match.Result != RoundResult.NoResult)
-						{
-							bot.Result(match);
-						}
+						HandleOpponentReaction(bot, state, instruction);
+						if (state.Result != RoundResult.NoResult) { bot.Result(state); }
 						break;
 
 					case InstructionType.Settings:
 						settings.Update(instruction);
-						match.Update(settings);
+						state.Update(settings);
 						break;
 
 					case InstructionType.Action:
-						var action = bot.Action(match);
+						var action = bot.Action(state);
 						Writer.WriteLine(action);
 						break;
 
@@ -85,23 +82,10 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 		private static void HandleOpponentReaction(IBot bot, GameState state, Instruction instruction)
 		{
-			if (instruction.Player != state.YourBot)
+			var action = instruction.ToGameAction();
+			if (action != GameAction.Invalid)
 			{
-				GameActionType tp;
-				if (Enum.TryParse<GameActionType>(instruction.Action, out tp))
-				{
-					GameAction action;
-
-					switch (tp)
-					{
-						case GameActionType.raise: action = GameAction.Raise(instruction.Int32Value); break;
-						case GameActionType.check: action = GameAction.Check; break;
-						case GameActionType.call: action = GameAction.Call; break;
-						case GameActionType.fold:
-						default: action = GameAction.Fold; break;
-					}
-					bot.Reaction(state, action);
-				}
+				bot.Reaction(state, action);
 			}
 		}
 

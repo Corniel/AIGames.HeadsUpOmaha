@@ -99,30 +99,31 @@ namespace AIGames.HeadsUpOmaha.Game
 		public int SubRound { get { return this.Table == null ? 0 : this.Table.Count; } }
 
 		/// <summary>Total amount of chips currently in the pot (+ side pot).</summary>
-		public int MaxWinPot
+		public int MaxWinPot { get { return GetMaxWinPot(YourBot); } }
+
+		/// <summary>Total amount of chips currently in the pot (+ side pot).</summary>
+		public int GetMaxWinPot(PlayerType player)
 		{
-			get
-			{
-				return Player1.Pot + Player2.Pot + AmountToCall;
-			}
+			return Player1.Pot + Player2.Pot + GetAmountToCall(player);
 		}
 
-		/// <summary>amountToCall i	The amount of chips your bot has to put in to call.</summary>
-		public int AmountToCall
+		/// <summary>The amount of chips your bot has to put in to call.</summary>
+		public int AmountToCall { get { return GetAmountToCall(YourBot); } }
+
+		/// <summary>Get the amount of chips the player has to put in to call.</summary>
+		public int GetAmountToCall(PlayerType player)
 		{
-			get
-			{
-				var amount = Opp.Pot - Own.Pot;
+			var amount = player == PlayerType.player1 ? Player2.Pot - Player1.Pot : Player1.Pot - Player2.Pot;
+
 #if DEBUG
-				if (amount < 0)
-				{
-					throw new InvalidStateException(string.Format("Amount to call should not be negative: {0}. Opp: {1}, Own: {2}", amount, Opp.Pot , Own.Pot));
-				}
-				return amount;
+			if (amount < 0)
+			{
+				throw new InvalidStateException(string.Format("Amount to call should not be negative: {0}. Player1: {1}, Player2: {2}", amount, Player1.Pot, Player2.Pot));
+			}
+			return amount;
 #else
 				return amount < 0 ? 0 : amount;
 #endif
-			}
 		}
 
 		/// <summary>Test the minimum amount to raise.</summary>
@@ -228,23 +229,24 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Updates the state based on a player instruction.</summary>
 		private void UpdatePlayer(Instruction instruction)
 		{
-			var player = instruction.Player;
-
+			var pt = instruction.Player;
+			var player = this[pt];
+			
 			switch (instruction.Action)
 			{
 				// Nothing need to be done.
 				case "fold":
 				// Nothing need to be done.
 				case "check": break;
-				case "hand": this[player].Hand = instruction.CardsValue; break;
-				case "call": this[player].Call(this.AmountToCall); break;
-				case "raise": this[player].Raise(instruction.Int32Value, this.AmountToCall); break;
-				case "stack": this[player].SetStack(instruction.Int32Value); break;
-				case "post": this[player].Post(player == this.OnButton ? this.SmallBlind : this.BigBlind); break;
+				case "hand": player.Hand = instruction.CardsValue; break;
+				case "call": player.Call(GetAmountToCall(pt)); break;
+				case "post": player.Post(instruction.Player == this.OnButton ? this.SmallBlind : this.BigBlind); break;
+				case "raise": player.Raise(instruction.Int32Value, GetAmountToCall(pt)); break;
+				case "stack": player.SetStack(instruction.Int32Value); break;
 				case "wins":
 					if (this.Result == RoundResult.NoResult)
 					{
-						this.Result = player == PlayerType.player1 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
+						this.Result = pt == PlayerType.player1 ? RoundResult.Player1Wins : RoundResult.Player2Wins;
 					}
 					// if set, and another results follows, its a draw.
 					else
@@ -476,7 +478,10 @@ namespace AIGames.HeadsUpOmaha.Game
 			get
 			{
 				var sb = new StringBuilder();
-				sb.AppendFormat("State[{0}.{1}], Pot: {2}", Round, SubRound, Pot);
+				sb.AppendFormat("State[{0}.{1}], P1: {2}, P2: {3} ({4}+{5}={6})",
+					Round, SubRound,
+					Player1.Stack, Player2.Stack,
+					Player1.Pot, Player2.Pot, Pot);
 
 
 				return sb.ToString();

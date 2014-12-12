@@ -4,11 +4,12 @@ using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace AIGames.HeadsUpOmaha.Game
 {
-	/// <summary>Reperesents an action.</summary>
-	[Serializable, DebuggerDisplay("{DebugToString()}")]
+	/// <summary>Represents an action.</summary>
+	[Serializable]
 	public struct GameAction : ISerializable, IXmlSerializable
 	{
 		/// <summary>Represents a check.</summary>
@@ -17,6 +18,9 @@ namespace AIGames.HeadsUpOmaha.Game
 		public static readonly GameAction Call = new GameAction() { m_Value = (int)GameActionType.call };
 		/// <summary>Represents a fold.</summary>
 		public static readonly GameAction Fold = new GameAction() { m_Value = (int)GameActionType.fold };
+
+		/// <summary>Invalid game action.</summary>
+		public static readonly GameAction Invalid = new GameAction() { m_Value = int.MaxValue };
 
 		/// <summary>Creates a raise.</summary>
 		public static GameAction Raise(int amount)
@@ -101,16 +105,8 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>Represents an action as a string.</summary>
 		public override string ToString()
 		{
+			if (m_Value == Invalid.m_Value) { return "INVALID"; }
 			return String.Format("{0} {1}", this.ActionType, this.Amount);
-		}
-
-		/// <summary>Represents an action as a debug string.</summary>
-		[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-		private string DebugToString()
-		{
-			return String.Format("{0}{1}",
-				this.ActionType,
-				this.Amount > 0 ? " " + this.Amount.ToString() : "");
 		}
 
 		#endregion
@@ -190,6 +186,7 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 			return false;
 		}
+		
 		#endregion
 	}
 }

@@ -319,7 +319,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 		private GameAction RunCheck(GameState state, PlayerType playerToMove)
 		{
-			if (state.AmountToCall != 0)
+			if (state.GetAmountToCall(playerToMove) != 0)
 			{
 				log.WarnFormat("{0} checked, while calling was required.", this[playerToMove].FullName);
 				return RunCall(state, playerToMove);
@@ -328,18 +328,18 @@ namespace AIGames.HeadsUpOmaha.Arena
 		}
 		private GameAction RunCall(GameState state, PlayerType playerToMove)
 		{
-			if (state.AmountToCall == 0)
+			if (state.GetAmountToCall(playerToMove) == 0)
 			{
 				log.WarnFormat("{0} called, while the amount to call was 0. Check was done.", this[playerToMove].FullName);
 				return RunCheck(state, playerToMove);
 			}
-			state[playerToMove].Call(state.AmountToCall);
+			state[playerToMove].Call(state.GetAmountToCall(playerToMove));
 			return GameAction.Call;
 		}
 		private GameAction RunRaise(GameState state, PlayerType playerToMove, int raise)
 		{
 			// We only may call, if we have the small blind.
-			if (state.AmountToCall == state.SmallBlind)
+			if (state.GetAmountToCall(playerToMove) == state.SmallBlind)
 			{
 				log.WarnFormat("The action is not re-opened to '{0}', raise action changed to 'call'.", this[playerToMove].FullName);
 				return RunCall(state, playerToMove);
@@ -379,7 +379,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 				return RunRaise(state, playerToMove, state.MaxinumRaise);
 			}
 
-			state[playerToMove].Raise(raise, state.AmountToCall);
+			state[playerToMove].Raise(raise, state.GetAmountToCall(playerToMove));
 			return GameAction.Raise(raise);
 		}
 		private GameAction RunFold(GameState state, PlayerType playerToMove)
@@ -414,7 +414,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			}
 		}
 
-		/// <summary>Calculate the new elos for the players.</summary>
+		/// <summary>Calculate the new elo for the players.</summary>
 		private static void CalculateNewElos(Bot player1, Bot player2, RoundResult result)
 		{
 			var score1 = 0.0;
@@ -442,7 +442,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 					break;
 				case RoundResult.NoResult:
 				default:
-					throw new ArgumentException("There should be a final rersult", "result");
+					throw new ArgumentException("There should be a final result", "result");
 			}
 			var score2 = 1.0 - score1;
 

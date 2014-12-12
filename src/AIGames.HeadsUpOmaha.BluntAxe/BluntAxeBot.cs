@@ -31,15 +31,18 @@ namespace AIGames.HeadsUpOmaha.BluntAxe
 				return GameAction.Fold;
 			}
 
-			// It's look like we're winning, use brute force.
-			if (state.Own.Chips / state.Opp.Chips > 2.5 && change > 0.7 && state.MaxinumRaise > 0)
+			if (state.MaxinumRaise > 0)
 			{
-				return GameAction.Raise(state.MaxinumRaise);
-			}
-			if (change > 0.75 && state.MaxinumRaise > 0)
-			{
-				var raise = state.AmountToCall + state.BigBlind + this.Rnd.Next(state.MaxWinPot - state.BigBlind) * change * change;
-				return GameAction.Raise((int)raise);
+				// It's look like we're winning, use brute force.
+				if (state.Own.Chips / state.Opp.Chips > 2.5 && change > 0.7 && state.MaxinumRaise > 0)
+				{
+					return GameAction.Raise(state.MaxinumRaise);
+				}
+				if (change > 0.75 && state.MaxinumRaise > 0)
+				{
+					var raise = state.MaxinumRaise * change * change;
+					return GameAction.Raise((int)raise);
+				}
 			}
 			if (change < 0.35 && state.AmountToCall > 0)
 			{
@@ -52,7 +55,6 @@ namespace AIGames.HeadsUpOmaha.BluntAxe
 					return GameAction.Fold;
 				}
 			}
-
 			return GameAction.CheckOrCall(state);
 		}
 		public void Reaction(GameState state, GameAction reaction) { }

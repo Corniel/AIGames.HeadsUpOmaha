@@ -86,8 +86,8 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		{
 			var instructions = new Instruction[]
 			{
-				Instruction.Create(InstructionType.Match, "maxWinPot", state.MaxWinPot),
-				Instruction.Create(InstructionType.Match, "amountToCall", state.AmountToCall),
+				Instruction.Create(InstructionType.Match, "maxWinPot", state.GetMaxWinPot(Player)),
+				Instruction.Create(InstructionType.Match, "amountToCall", state.GetAmountToCall(Player)),
 			};
 			WriteInstructions(instructions);
 		}
@@ -184,7 +184,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 				this.Writer.WriteLine(format, args);
 			}
 		}
-		/// <summary>Writes a line to the logfile if the writer is set.</summary>
+		/// <summary>Writes a line to the log file if the writer is set.</summary>
 		public void WriteLine(object obj)
 		{
 			if (this.Writer != null)

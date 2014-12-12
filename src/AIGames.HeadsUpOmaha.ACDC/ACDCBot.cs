@@ -46,26 +46,27 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				return PreFlopAction(state);
 			}
 
-			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 2000);
+			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd);
 
-			if (pWin > 0.8)
+			if (state.MaxinumRaise > 0)
 			{
-				return GameAction.Raise(state.MaxinumRaise);
+				if (pWin > 0.8)
+				{
+					return GameAction.Raise(state.MaxinumRaise);
+				}
+				if (pWin > 0.7)
+				{
+					return GameAction.Raise(state.MinimumRaise);
+				}
+				if (pWin > 0.55 && state.AmountToCall == 0)
+				{
+					return GameAction.Raise(state.MinimumRaise);
+				}
 			}
-			if (pWin > 0.7)
-			{
-				return GameAction.Raise(state.MinimumRaise);
-			}
-			if (pWin > 0.55 && state.AmountToCall == 0)
-			{
-				return GameAction.Raise(state.MinimumRaise);
-			}
-
 			if (pWin < 0.35 && state.AmountToCall > 0)
 			{
 				return GameAction.Fold;
 			}
-
 			return GameAction.CheckOrCall(state);
 		}
 
@@ -85,12 +86,8 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				{
 					return GameAction.Fold;
 				}
-				return GameAction.Call;
 			}
-			else
-			{
-				return GameAction.Check;
-			}
+			return GameAction.CheckOrCall(state);
 		}
 
 		/// <summary>The reaction of the opponent.</summary>
