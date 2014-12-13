@@ -2,6 +2,8 @@
 using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
 using AIGames.HeadsUpOmaha.Platform;
+using AIGames.HeadsUpOmaha.UnitTests.Arena;
+using AIGames.HeadsUpOmaha.UnitTests.Mocking;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,11 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 			var act = mock.Reactions;
 			var exp = InstructionTest.Read001Txt.ToGameActions(PlayerType.player1).ToList();
 
+			foreach (var state in mock.States)
+			{
+				Console.WriteLine(state);
+			}
+
 			CollectionAssert.AreEqual(exp, act);
 		}
 	}
@@ -44,6 +51,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 		{
 			this.Reactions = new List<GameAction>();
 			this.Actions = new List<GameAction>();
+			this.States = new List<FlattenState>();
 		}
 
 		public GameAction Action(GameState state)
@@ -52,14 +60,22 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Platform
 			{
 				return GameAction.Fold;
 			}
-			return Actions[Current++];
+			var action = Actions[Current++];
+			this.States.Add(FlattenState.Create(state, action, state.YourBot));
+			return action;
 		}
-		public void Reaction(GameState state, GameAction reaction) { Reactions.Add(reaction); }
+		public void Reaction(GameState state, GameAction reaction) 
+		{
+			this.States.Add(FlattenState.Create(state, reaction, state.YourBot.Other()));
+			Reactions.Add(reaction); 
+		}
 		public void Result(GameState state) { }
 		public void FinalResult(GameState state) { }
 
 		public List<GameAction> Actions { get; private set; }
 		public int Current { get; set; }
 		public List<GameAction> Reactions { get; private set; }
+
+		public List<FlattenState> States { get; private set; }
 	}
 }

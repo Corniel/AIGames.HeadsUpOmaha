@@ -95,6 +95,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 20,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
 
 			var act = state.AmountToCall;
 			var exp = 10;
@@ -118,6 +119,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 10,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player2);
 
 			var act = state.AmountToCall;
 			var exp = 30;
@@ -143,7 +145,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 20,
 				},
 			};
-			var act = state.AmountToCall;
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player2);
 		}
 		[Test, ExpectedException(typeof(InvalidStateException), UserMessage = "Amount to call should not be negative: -30, Opp: 10, Own: 40")]
 		public void AmountToCall_Pot40VsPot10Player1_ThrowsInvalidStateException()
@@ -162,8 +164,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 10,
 				},
 			};
-
-			var act = state.AmountToCall;
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
 		}
 #else
 		[Test]
@@ -183,6 +184,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 20,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player2);
 
 			var act = state.AmountToCall;
 			var exp = 0;
@@ -207,6 +209,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 10,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
 
 			var act = state.AmountToCall;
 			var exp = 0;
@@ -277,6 +280,8 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 140,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
+			state.MaxWinPot = state.GetMaxWinPot();
 
 			var act = state.MinimumRaise;
 			var exp = 0;
@@ -370,6 +375,8 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 100,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
+			state.MaxWinPot = state.GetMaxWinPot();
 
 			var act = state.MaxinumRaise;
 			var exp = 200;
@@ -393,6 +400,8 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 100,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
+			state.MaxWinPot = state.GetMaxWinPot();
 
 			var act = state.MaxinumRaise;
 			var exp = 200;
@@ -416,6 +425,8 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 100,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
+			state.MaxWinPot = state.GetMaxWinPot();
 
 			var act = state.MaxinumRaise;
 			var exp = 100;

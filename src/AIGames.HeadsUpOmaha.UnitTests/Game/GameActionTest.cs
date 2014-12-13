@@ -80,6 +80,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 20,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
 
 			var act = GameAction.CheckOrCall(state);
 			var exp = GameAction.Call;
@@ -102,6 +103,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Game
 					Pot = 20,
 				},
 			};
+			state.AmountToCall = state.GetAmountToCall(PlayerType.player1);
 
 			var act = GameAction.CheckOrCall(state);
 			var exp = GameAction.Check;

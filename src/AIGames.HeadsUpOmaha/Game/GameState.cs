@@ -68,13 +68,11 @@ namespace AIGames.HeadsUpOmaha.Game
 
 		/// <summary>Gets own player.</summary>
 		public PlayerState Own { get { return this[this.YourBot]; } }
-		
 		/// <summary>Gets other player.</summary>
 		public PlayerState Opp { get { return this[this.YourBot.Other()]; } }
 
 		/// <summary>Gets the player with the button (small blind).</summary>
 		public PlayerState Button { get { return this[this.OnButton]; } }
-
 		/// <summary>Gets the player with the big blind.</summary>
 		public PlayerState Blind { get { return this[this.OnButton.Other()]; } }
 
@@ -99,16 +97,16 @@ namespace AIGames.HeadsUpOmaha.Game
 		public int SubRound { get { return this.Table == null ? 0 : this.Table.Count; } }
 
 		/// <summary>Total amount of chips currently in the pot (+ side pot).</summary>
-		public int MaxWinPot { get { return GetMaxWinPot(YourBot); } }
+		public int MaxWinPot { get; set; }
 
-		/// <summary>Total amount of chips currently in the pot (+ side pot).</summary>
-		public int GetMaxWinPot(PlayerType player)
+		/// <summary>Get the amount of chips the player has to put in to call.</summary>
+		public int GetMaxWinPot()
 		{
-			return Player1.Pot + Player2.Pot + GetAmountToCall(player);
+			return Player2.Pot + Player1.Pot;
 		}
 
 		/// <summary>The amount of chips your bot has to put in to call.</summary>
-		public int AmountToCall { get { return GetAmountToCall(YourBot); } }
+		public int AmountToCall { get; set; }
 
 		/// <summary>Get the amount of chips the player has to put in to call.</summary>
 		public int GetAmountToCall(PlayerType player)
@@ -144,7 +142,7 @@ namespace AIGames.HeadsUpOmaha.Game
 				if (AmountToCall == SmallBlind) { return 0; }
 				var minStack = Math.Min(Own.Stack - AmountToCall, Opp.Stack);
 				if (minStack < BigBlind) { return 0; };
-				return Math.Min(minStack, MaxWinPot);
+				return Math.Min(minStack, MaxWinPot + AmountToCall);
 			}
 		}
 
@@ -166,11 +164,11 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			if (action == GameAction.Call)
 			{
-				this[player].Call(this.AmountToCall);
+				this[player].Call(AmountToCall);
 			}
 			else if (action.ActionType == GameActionType.raise)
 			{
-				this[player].Raise(action.Amount, this.AmountToCall);
+				this[player].Raise(action.Amount, AmountToCall);
 			}
 		}
 
@@ -203,27 +201,19 @@ namespace AIGames.HeadsUpOmaha.Game
 		{
 			switch (instruction.Action)
 			{
-				case "round":
-					this.Round = instruction.Int32Value;
-					Reset();
-					break;
-				case "smallBlind":
-					this.SmallBlind = instruction.Int32Value;
-					break;
 				// ignore, should be two times the small blind.
-				case "bigBlind": break;
-				// ignore, is the sum of the pot of player1 and player2.
-				case "maxWinPot": break;
-				// ignore, is difference of the pot of player1 and player2.
-				case "amountToCall": break;
-
-				case "onButton":
-					this.OnButton = instruction.PlayerTypeValue;
+				case "bigBlind":
+#if DEBUG
+					if (instruction.Int32Value != this.SmallBlind * 2) { throw new InvalidStateException("Big blind is not two times the small blind."); }
+#endif
 					break;
 
-				case "table":
-					this.Table = instruction.CardsValue;
-					break;
+				case "round": UpdateRound(instruction); break;
+				case "smallBlind": this.SmallBlind = instruction.Int32Value; break;
+				case "maxWinPot": this.MaxWinPot = instruction.Int32Value; break;
+				case "amountToCall": this.AmountToCall = instruction.Int32Value; break;
+				case "onButton": this.OnButton = instruction.PlayerTypeValue; break;
+				case "table": this.Table = instruction.CardsValue;break;
 			}
 		}
 		/// <summary>Updates the state based on a player instruction.</summary>
@@ -239,9 +229,9 @@ namespace AIGames.HeadsUpOmaha.Game
 				// Nothing need to be done.
 				case "check": break;
 				case "hand": player.Hand = instruction.CardsValue; break;
-				case "call": player.Call(GetAmountToCall(pt)); break;
+				case "call": player.Call(AmountToCall); break;
 				case "post": player.Post(instruction.Player == this.OnButton ? this.SmallBlind : this.BigBlind); break;
-				case "raise": player.Raise(instruction.Int32Value, GetAmountToCall(pt)); break;
+				case "raise": player.Raise(instruction.Int32Value, AmountToCall); break;
 				case "stack": player.SetStack(instruction.Int32Value); break;
 				case "wins":
 					if (this.Result == RoundResult.NoResult)
@@ -281,6 +271,14 @@ namespace AIGames.HeadsUpOmaha.Game
 			}
 		}
 
+		private void UpdateRound(Instruction instruction)
+		{
+#if DEBUG
+			if (instruction.Int32Value != this.Round + 1) { throw new InvalidStateException("The round is not updated properly."); }
+#endif
+			this.Round = instruction.Int32Value;
+			Reset();
+		}
 
 		/// <summary>Starts a new round.</summary>
 		/// <param name="rnd">

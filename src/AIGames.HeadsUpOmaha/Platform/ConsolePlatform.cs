@@ -52,21 +52,20 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 			foreach (var instruction in instructions)
 			{
+				HandleOpponentReaction(bot, state, instruction);
 				state.Update(instruction);
 
 				switch (instruction.InstructionType)
 				{
-					case InstructionType.Player:
-
-						HandleOpponentReaction(bot, state, instruction);
-						if (state.Result != RoundResult.NoResult) { bot.Result(state); }
-						break;
-
 					case InstructionType.Settings:
 						settings.Update(instruction);
 						state.Update(settings);
 						break;
 
+					case InstructionType.Player:
+						if (state.Result != RoundResult.NoResult) { bot.Result(state); }
+						break;
+					
 					case InstructionType.Action:
 						var action = bot.Action(state);
 						Writer.WriteLine(action);
@@ -82,7 +81,7 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 		private static void HandleOpponentReaction(IBot bot, GameState state, Instruction instruction)
 		{
-			if (state.YourBot != instruction.Player)
+			if (instruction.InstructionType == InstructionType.Player && state.YourBot != instruction.Player)
 			{
 				var action = instruction.ToGameAction();
 				if (action != GameAction.Invalid)

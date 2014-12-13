@@ -87,7 +87,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		{
 			var instructions = new Instruction[]
 			{
-				Instruction.Create(InstructionType.Match, "maxWinPot", state.GetMaxWinPot(Player)),
+				Instruction.Create(InstructionType.Match, "maxWinPot", state.MaxWinPot),
 				Instruction.Create(InstructionType.Match, "amountToCall", state.GetAmountToCall(Player)),
 			};
 			WriteInstructions(instructions);
@@ -121,7 +121,7 @@ namespace AIGames.HeadsUpOmaha.Arena.Platform
 		}
 
 		/// <summary>Communicate the result with the bot.</summary>
-		public virtual void Result(GameState state, int pot, LastGameAction lastaction)
+		public void Result(GameState state, int pot, LastGameAction lastaction)
 		{
 			if (lastaction.Action != GameAction.Fold)
 			{

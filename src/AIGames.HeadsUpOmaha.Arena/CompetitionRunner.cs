@@ -293,7 +293,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 				}
 				var sw = new Stopwatch();
 				sw.Start();
-				var action = bots[playerToMove].Action(state.Personalize(playerToMove));
+				var action = GetAction(bots, state, playerToMove);
 				sw.Stop();
 
 				state[playerToMove].TimeBank = state[playerToMove].TimeBank.Add(-sw.Elapsed);
@@ -308,8 +308,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 					default:
 						action = RunFold(state, playerToMove); break;
 				}
-				bots[playerToMove].Reaction(action, playerToMove);
-				bots[playerToMove.Other()].Reaction(action, playerToMove);
+				UpdateBots(bots, playerToMove, action);
 
 				// on fold return direct.
 				if (action == GameAction.Fold) { return new LastGameAction(playerToMove, action); }
@@ -319,6 +318,18 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 				playerToMove = playerToMove.Other();
 			}
+		}
+
+		protected virtual GameAction GetAction(Dictionary<PlayerType, ConsoleBot> bots, GameState state, PlayerType playerToMove)
+		{
+			var action = bots[playerToMove].Action(state.Personalize(playerToMove));
+			return action;
+		}
+
+		protected void UpdateBots(Dictionary<PlayerType, ConsoleBot> bots, PlayerType playerToMove, GameAction action)
+		{
+			bots[playerToMove].Reaction(action, playerToMove);
+			bots[playerToMove.Other()].Reaction(action, playerToMove);
 		}
 
 		private GameAction RunCheck(GameState state, PlayerType playerToMove)
@@ -351,7 +362,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 
 			if (state.MaxinumRaise == 0)
 			{
-				if (state.AmountToCall > 0)
+				if (state.GetAmountToCall(playerToMove) > 0)
 				{
 					log.WarnFormat("Raise of '{0}' would potentially lead to a negative stack, raise action changed to 'call'.", this[playerToMove].FullName);
 					return RunCall(state, playerToMove);
@@ -393,7 +404,7 @@ namespace AIGames.HeadsUpOmaha.Arena
 			return GameAction.Fold;
 		}
 
-		private static void StartNewRound(Dictionary<PlayerType, ConsoleBot> bots, GameState state)
+		protected virtual void StartNewRound(Dictionary<PlayerType, ConsoleBot> bots, GameState state)
 		{
 			foreach (var kvp in bots)
 			{
