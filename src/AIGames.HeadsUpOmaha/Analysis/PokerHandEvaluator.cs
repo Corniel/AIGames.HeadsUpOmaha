@@ -3,11 +3,11 @@ using Troschuetz.Random.Generators;
 
 namespace AIGames.HeadsUpOmaha.Analysis
 {
-	/// <summary>Evaluates pokerhands.</summary>
+	/// <summary>Evaluates poker hands.</summary>
 	public class PokerHandEvaluator
 	{
 		/// <summary>Calculates the winning change of a hand.</summary>
-		public static double Calculate(Cards hand, Cards table, MT19937Generator rnd, int runs = 1000)
+		public static PokerHandOutcome Calculate(Cards hand, Cards table, MT19937Generator rnd, int runs = 1000)
 		{
 			UInt64Cards[] tblSub = null;
 
@@ -18,7 +18,9 @@ namespace AIGames.HeadsUpOmaha.Analysis
 
 			var ownSub = uhnd.GetHandSubsets();
 
-			var score = 0;
+			var w = 0;
+			var d = 0;
+			var l = 0;
 
 			if (tAdd == 0)
 			{
@@ -36,10 +38,12 @@ namespace AIGames.HeadsUpOmaha.Analysis
 				var uopp = UInt64Cards.GetRandom(dead.Combine(tbl), 4, rnd);
 				var oppSub = uopp.GetHandSubsets();
 
-				score += UInt32PokerHand.Compare(ownSub, oppSub, tblSub);
+				var c = UInt32PokerHand.Compare(ownSub, oppSub, tblSub);
+				if (c > 0) { w++; }
+				else if (c < 0) { l++; }
+				else { d++; }
 			}
-			var e = 0.5 + 0.5 * (double)(score) / (double)runs;
-			return e;
+			return new PokerHandOutcome(w, d, l);
 		}
 	}
 }

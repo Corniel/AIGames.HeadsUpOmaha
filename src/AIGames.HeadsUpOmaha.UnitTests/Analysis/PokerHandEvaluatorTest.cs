@@ -108,8 +108,11 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 
 			sw.Stop();
 
-			Console.WriteLine("Avarage: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
+			Console.WriteLine("Average: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
+
+			AssertPokerHandOutcome(0.838, 0.011, 0.150, score);
 		}
+
 		[Test]
 		public void Calculate_SpeedTable5_IsDoable()
 		{
@@ -128,7 +131,9 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 
 			sw.Stop();
 
-			Console.WriteLine("Avarage: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
+			Console.WriteLine("Average: {0:#,##0.00} runs/ms", (double)runs / (double)sw.ElapsedMilliseconds);
+
+			AssertPokerHandOutcome(0.887, 0.012, 0.102, score);
 		}
 
 		[Test]
@@ -209,10 +214,10 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			var hand = Cards.Parse("[Tc,9c,8d,Qh]");
 			var table = Cards.Parse("[Jc,2d,4s,3h]");
 
-			//var ch = OmahaHand.Calculate(hand, table, 1024, rnd);
 			var ch = PokerHandEvaluator.Calculate(hand, table, rnd, 100000);
 
 			Assert.AreEqual(0.096, ch, 0.01);
+			AssertPokerHandOutcome(0.093, 0.007, 0.900, ch);
 		}
 		[Test]
 		public void Calculate_Tc9c8dQhTable5_AreEqual()
@@ -222,10 +227,19 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Analysis
 			var hand = Cards.Parse("[Tc,9c,8d,Qh]");
 			var table = Cards.Parse("[Qd,Jc,2d,4s,3h]");
 
-			//var ch = OmahaHand.Calculate(hand, table, 1024, rnd);
 			var ch = PokerHandEvaluator.Calculate(hand, table, rnd, 100000);
 
 			Assert.AreEqual(0.382, ch, 0.01);
+			AssertPokerHandOutcome(0.372, 0.008, 0.615, ch);
+		}
+
+		private static void AssertPokerHandOutcome(double expW, double expD, double expL, PokerHandOutcome act, double delta = 0.01)
+		{
+			Console.WriteLine(act.DebuggerDisplay);
+
+			Assert.AreEqual(expW,act.Win, delta, "Win");
+			Assert.AreEqual(expD,act.Draw, delta, "Draw");
+			Assert.AreEqual(expL,act.Loss, delta, "Loss");
 		}
 	}
 }

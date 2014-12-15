@@ -54,6 +54,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Game\InvalidStateException.Debug.cs" />
+    <Compile Include="Analysis\PokerHandOutcome.cs" />
     <Compile Include="Game\RoundResult.cs" />
     <Compile Include="StatisticalMath.cs" />
     <Compile Include="Game\GameAction.cs" />
