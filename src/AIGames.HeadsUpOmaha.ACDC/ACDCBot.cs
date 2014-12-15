@@ -2,7 +2,9 @@
 using AIGames.HeadsUpOmaha.Bot;
 using AIGames.HeadsUpOmaha.Game;
 using AIGames.HeadsUpOmaha.Platform;
+using System.Collections.Generic;
 using Troschuetz.Random.Generators;
+using System.Linq;
 
 namespace AIGames.HeadsUpOmaha.ACDC
 {
@@ -46,48 +48,49 @@ namespace AIGames.HeadsUpOmaha.ACDC
 				return PreFlopAction(state);
 			}
 
-			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd);
+			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 1000);
+			var pLos = 1.0 - pWin;
 
-			if (state.MaxinumRaise > 0)
+			var options = new Dictionary<GameAction, double>();
+
+			if (state.NoAmountToCall)
 			{
-				if (pWin > 0.8)
+				options[GameAction.Check] = pWin * GetP(state.Own.Stack + state.Pot, state) + pLos * GetP(state.Own.Stack, state);
+				if (state.CanRaise)
 				{
-					return GameAction.Raise(state.MaxinumRaise);
-				}
-				if (pWin > 0.7)
-				{
-					return GameAction.Raise(state.MinimumRaise);
-				}
-				if (pWin > 0.55 && state.AmountToCall == 0)
-				{
-					return GameAction.Raise(state.MinimumRaise);
+					for (var raise = state.MinimumRaise; raise <= state.MinimumRaise; raise += 20)
+					{
+						// asuming that ther is no folding.
+						var stackWin = state.Own.Stack + state.Pot + raise;
+						var stackLos = state.Own.Stack - raise;
+						options[GameAction.Raise(raise)] = pWin * GetP(stackWin, state) + pLos * GetP(stackLos, state);
+					}
 				}
 			}
-			if (pWin < 0.35 && state.AmountToCall > 0)
+			else
 			{
-				return GameAction.Fold;
+				options[GameAction.Fold] = GetP(state.Own.Stack, state);
+				options[GameAction.Call] = pWin * GetP(state.Own.Stack + state.Pot, state) + pLos * GetP(state.Own.Stack - state.AmountToCall, state);
 			}
-			return GameAction.CheckOrCall(state);
+			return options.OrderByDescending(kvp => kvp.Value).FirstOrDefault().Key;
 		}
 
 		public GameAction PreFlopAction(GameState state)
 		{
 			var pWin = PokerHandEvaluator.Calculate(state.Own.Hand, state.Table, this.Rnd, 500);
+			var pLos = 1.0 - pWin;
 
-			// Only play doable small blinds. This value counts for roughly 70% of the hands. 0.465
-			if (pWin < 0.40 && state.AmountToCall == state.SmallBlind)
+			var options = new Dictionary<GameAction, double>();
+
+			if (state.NoAmountToCall)
 			{
-				return GameAction.Fold;
+				return GameAction.Check;
+				//options[GameAction.Check] = pWin * GetP(state.Own.Stack + state.Pot, state) + pLos * GetP(state.Own.Stack, state);
 			}
-			if (state.AmountToCall > 0)
-			{
-				// Don't follow raises on weaker hands.
-				if (pWin < 0.45)
-				{
-					return GameAction.Fold;
-				}
-			}
-			return GameAction.CheckOrCall(state);
+			options[GameAction.Fold] = GetP(state.Own.Stack, state);
+			options[GameAction.Call] = pWin * GetP(state.Own.Stack + state.Pot, state) + pLos * GetP(state.Own.Stack - state.AmountToCall, state);
+
+			return options.OrderByDescending(kvp => kvp.Value).FirstOrDefault().Key;
 		}
 
 		/// <summary>The reaction of the opponent.</summary>
@@ -111,5 +114,23 @@ namespace AIGames.HeadsUpOmaha.ACDC
 
 		/// <summary>The state when a final result (first, second) was made.</summary>
 		public void FinalResult(GameState state) { }
+
+		/// <summary>Gets a guessed winning change base, based on the stack.</summary>
+		/// <remarks>
+		/// As guess the 3 times big blind is choosen as -2 SD.
+		/// </remarks>
+		public static double GetP(int stack, GameState state)
+		{
+			if (stack < state.BigBlind) { return 0; }
+			if (stack > state.Chips - state.BigBlind) { return 1; }
+			double avg = state.Chips / 2.0;
+			double min2sd = 3 * state.BigBlind;
+
+			var a = (min2sd - avg) / 2.0;
+
+			var x = (avg - stack) / a;
+
+			return Gauss.GetZ(x);
+		}
 	}
 }

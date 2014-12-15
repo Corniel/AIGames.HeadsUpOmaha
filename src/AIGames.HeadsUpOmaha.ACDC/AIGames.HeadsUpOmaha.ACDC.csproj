@@ -45,6 +45,7 @@
     <Compile Include="ActionData.cs" />
     <Compile Include="ActionDataRecord.cs" />
     <Compile Include="GameSimulation.cs" />
+    <Compile Include="Gauss.cs" />
     <Compile Include="ISimulationBot.cs" />
     <Compile Include="OpponentBot.cs" />
     <Compile Include="Score.cs" />

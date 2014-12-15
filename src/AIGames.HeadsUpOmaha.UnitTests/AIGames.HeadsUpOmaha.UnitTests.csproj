@@ -61,8 +61,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ACDC\ACDCBotTest.cs" />
     <Compile Include="ACDC\ActionDataTest.cs" />
     <Compile Include="ACDC\GameSimulationTest.cs" />
+    <Compile Include="ACDC\GaussTest.cs" />
     <Compile Include="Analysis\PokerHandEvaluatorTest.cs" />
     <Compile Include="Analysis\UInt64CardsTest.cs" />
     <Compile Include="AppConfig.cs" />

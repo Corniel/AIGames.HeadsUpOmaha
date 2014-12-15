@@ -79,7 +79,7 @@ namespace AIGames.HeadsUpOmaha.UnitTests.Deploy
 		public void Deploy_ACDC_Successful()
 		{
 			var collectDir = new DirectoryInfo(Path.Combine(AppConfig.AppDir.FullName, "AIGames.HeadsUpOmaha.ACDC"));
-			Deployer.Run(collectDir, "ACDC", "00201", IsDebugDeploy);
+			Deployer.Run(collectDir, "ACDC", "00300", IsDebugDeploy);
 		}
 	}
 }
