@@ -108,6 +108,9 @@ namespace AIGames.HeadsUpOmaha.Game
 		/// <summary>The amount of chips your bot has to put in to call.</summary>
 		public int AmountToCall { get; set; }
 
+		/// <summary>Returns true if ther is no amount to call, otherwise false.</summary>
+		public bool NoAmountToCall { get { return AmountToCall == 0; } }
+
 		/// <summary>Get the amount of chips the player has to put in to call.</summary>
 		public int GetAmountToCall(PlayerType player)
 		{
@@ -145,6 +148,9 @@ namespace AIGames.HeadsUpOmaha.Game
 				return Math.Min(minStack, MaxWinPot + AmountToCall);
 			}
 		}
+
+		/// <summary>Returns true if there is an option to raise, otherwise false.</summary>
+		public bool CanRaise { get { return MaxinumRaise > 0; } }
 
 		/// <summary>Returns true if pre flop (empty table), otherwise false.</summary>
 		public bool IsPreFlop { get { return this.Table == null || this.Table.Count == 0; } }

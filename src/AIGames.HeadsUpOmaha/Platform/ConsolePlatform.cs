@@ -52,7 +52,8 @@ namespace AIGames.HeadsUpOmaha.Platform
 
 			foreach (var instruction in instructions)
 			{
-				HandleOpponentReaction(bot, state, instruction);
+				var previous = state.Copy();
+				HandleOpponentReaction(bot, previous, instruction);
 				state.Update(instruction);
 
 				switch (instruction.InstructionType)
